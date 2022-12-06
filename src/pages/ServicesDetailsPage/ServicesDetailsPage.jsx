@@ -4,7 +4,7 @@ import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
 
 
-function ServiceDetails() {
+function ServiceDetailsPage() {
 
     const { service_id } = useParams()
     const [service, setService] = useState()
@@ -57,4 +57,4 @@ function ServiceDetails() {
 
 }
 
-export default ServiceDetails
+export default ServiceDetailsPage
