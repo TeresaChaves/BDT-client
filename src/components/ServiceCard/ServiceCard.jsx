@@ -1,6 +1,7 @@
 import './ServiceCard.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom"
 
 function ServiceCard({ name, image, _id }) {
     return (
@@ -9,7 +10,9 @@ function ServiceCard({ name, image, _id }) {
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <div className='d-grid'>
-                    <Button variant="success" size="sm">Ver detalles</Button>
+                    <Link to={`/servicios/detalles/${_id}`}>
+                        <Button variant="success" size="sm">Ver detalles</Button>
+                    </Link>
                 </div>
             </Card.Body>
         </Card>

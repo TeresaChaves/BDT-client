@@ -1,6 +1,6 @@
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
 
-function AddService() {
+function AddServicePage() {
 
 
 
@@ -14,4 +14,4 @@ function AddService() {
 
 }
 
-export default AddService
+export default AddServicePage
