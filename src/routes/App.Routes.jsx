@@ -1,7 +1,8 @@
-import { Routes, Route } from "react-router-dom"
 import Login from "../pages/Login/Login"
 import HomePage from "../pages/HomePage/HomePage"
 import Profile from "../pages/Profile/Profile"
+import { Routes, Route } from "react-router-dom"
+
 
 
 function AppRoutes() {
