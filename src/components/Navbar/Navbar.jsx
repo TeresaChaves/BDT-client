@@ -17,13 +17,13 @@ function NavBar() {
                                 <Nav.Link as="div">Servicios</Nav.Link>
                             </Link>
                             <NavDropdown title="Mi perfil" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Mi perfil</NavDropdown.Item>
-                                <NavDropdown.Item href="#action3">Cerrar Sesión</NavDropdown.Item>
+                                <NavDropdown.Item href="/usuario/mi-perfil">Mi perfil</NavDropdown.Item>
+                                <NavDropdown.Item href="/usuario/cerrar-sesion">Cerrar Sesión</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
+                                <NavDropdown.Item href="/usuario/iniciar-sesion">
                                     Iniciar Sesión
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action5">
+                                <NavDropdown.Item href="/usuario/registro">
                                     Registrarse
                                 </NavDropdown.Item>
                             </NavDropdown>
