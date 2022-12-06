@@ -2,15 +2,16 @@ import { Routes, Route } from "react-router-dom"
 import Login from "../pages/Login/Login"
 import HomePage from "../pages/HomePage/HomePage"
 import Profile from "../pages/Profile/Profile"
-
+import ServiceDetails from "../pages/ServicesDetails/ServicesDetails"
+import AddService from "../pages/AddService/AddService"
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/servicios" element={<p>SERVICIOS</p>} />
-            <Route path="/servicios/detalles/:service_id" element={<p>DETALLE</p>} />
-            <Route path="/servicios/nuevo-servicio" element={<p>NUEVO SERVICIO</p>} />
+            <Route path="/servicios/detalles/:service_id" element={<ServiceDetails />} />
+            <Route path="/servicios/nuevo-servicio" element={<AddService />} />
             <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
             <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             <Route path="/usuario/registro" element={<p>registro</p>} />

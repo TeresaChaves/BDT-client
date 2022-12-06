@@ -4,11 +4,13 @@ import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import AppRoutes from './routes/App.Routes'
 
+
 function App() {
   return (
     <div className="App"> <NavBar />
       <AppRoutes />
       <Footer />
+
     </div>
   );
 }
