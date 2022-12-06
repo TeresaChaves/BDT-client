@@ -3,13 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import AppRoutes from './routes/App.Routes'
+import UserMessage from './components/UserMessage/UserMessage'
 
 
 function App() {
+
   return (
-    <div className="App pb-5"> <NavBar />
+    <div className="App pb-5">
+      <NavBar />
       <AppRoutes />
       <Footer />
+      <UserMessage />
 
     </div>
   );
