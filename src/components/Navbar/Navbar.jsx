@@ -1,7 +1,12 @@
+import { useContext } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth.context';
+
 
 function NavBar() {
+
+    const { user, logoutUser } = useContext(AuthContext)
     return (
         <>
             <Navbar bg="dark" variant="dark">
@@ -19,17 +24,32 @@ function NavBar() {
                             <Link to="/servicios/nuevo-servicio">
                                 <Nav.Link as="div">Crear Servicio</Nav.Link>
                             </Link>
-                            <NavDropdown title="Mi perfil" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="/usuario/mi-perfil">Mi perfil</NavDropdown.Item>
-                                <NavDropdown.Item href="/usuario/cerrar-sesion">Cerrar Sesión</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="/usuario/iniciar-sesion">
-                                    Iniciar Sesión
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="/usuario/registro">
-                                    Registrarse
-                                </NavDropdown.Item>
-                            </NavDropdown>
+
+                            {user ?
+                                <>
+                                    <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
+
+                                </>
+                                :
+                                <>
+                                    <Link to="/usuario/registro">
+                                        <Nav.Link as="div">Registro</Nav.Link>
+                                    </Link>
+
+                                    <Link to="/usuario/iniciar-sesion">
+                                        <Nav.Link as="div">Acceder</Nav.Link>
+                                    </Link>
+
+                                </>
+                            }
+                            <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>
+
+
+                            <Link to="/usuario/mi-perfil">
+                                <Nav.Link as="div">MI perfil</Nav.Link>
+                            </Link>
+
+
 
                         </Nav>
                     </Navbar.Collapse>

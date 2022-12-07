@@ -4,6 +4,13 @@ import servicesService from "../../services/services.service"
 import { Container, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
+import Loader from "../../components/Loader/Loader"
+import { MessageContext } from '../../contexts/userMessage.context'
+import UserMessage from "../../components/UserMessage/UserMessage"
+
+
+
+
 const ServicesListPage = () => {
 
     const [services, setServices] = useState([])
@@ -11,6 +18,10 @@ const ServicesListPage = () => {
 
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
+
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
+
+
 
     const refreshPages = () => {
         servicesService
@@ -28,6 +39,16 @@ const ServicesListPage = () => {
             .catch(err => console.log(err))
     }
 
+    const fireFinalActions = () => {
+        console.log("entro aqui")
+
+        setShowToast(true)
+        setToastMessage("Nuevo servicio creado")
+        loadServices()
+        closeModal()
+        refreshPages()
+    }
+
 
     useEffect(() => {
         loadServices()
@@ -42,7 +63,7 @@ const ServicesListPage = () => {
                 <h1>TODOS LOS SERVICIOS</h1>
                 <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>
                 <hr />
-                {!services ? <h1>Cargando...</h1> : <ServicesList services={services} />}
+                {!services ? <Loader /> : <ServicesList services={services} />}
                 <hr />
                 <Link to="/">
                     <Button variant="dark" as="div">Volver a inicio</Button>
@@ -55,10 +76,11 @@ const ServicesListPage = () => {
                     <Modal.Title>Servicio</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddServiceForm closeModal={closeModal} refreshPages={refreshPages} />
+                    <AddServiceForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
 
             </Modal>
+            <UserMessage />
 
         </>
 

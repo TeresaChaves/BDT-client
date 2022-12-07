@@ -1,7 +1,28 @@
-function LoginPage() {
+import { Container, Row, Col } from 'react-bootstrap'
+import LoginForm from '../../components/LoginForm/LoginForm'
+
+
+
+const LoginPage = () => {
 
     return (
-        <h1>Estoy conectada a la ruta</h1>
+
+        <Container>
+
+            <Row>
+
+                <Col md={{ offset: 3, span: 6 }}>
+
+                    <h1>Acceder</h1>
+
+                    <hr />
+
+                    <LoginForm />
+
+                </Col>
+            </Row>
+
+        </Container>
     )
 }
 

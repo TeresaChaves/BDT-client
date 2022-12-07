@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
+import Loader from "../../components/Loader/Loader"
 
 
 function ServiceDetailsPage() {
@@ -20,7 +21,7 @@ function ServiceDetailsPage() {
 
     return (
         <Container>
-            {!service ? <h1>Loading</h1>
+            {!service ? <Loader />
                 :
                 <Row>
                     <div>

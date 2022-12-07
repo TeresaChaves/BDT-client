@@ -4,7 +4,8 @@ import servicesService from "../../services/services.service"
 
 
 
-function AddServiceForm({ closeModal, refreshPages }) {
+
+function AddServiceForm({ fireFinalActions }) {
 
     const [serviceData, setDataService] = useState({
         name: "",
@@ -27,8 +28,7 @@ function AddServiceForm({ closeModal, refreshPages }) {
         servicesService
             .saveService(serviceData)
             .then(() => {
-                closeModal()
-                refreshPages()
+                fireFinalActions()
             })
             .catch(err => console.error(err))
 
