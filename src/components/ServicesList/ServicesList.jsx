@@ -6,15 +6,20 @@ const ServicesList = ({ services }) => {
 
     return (
 
-        <Row>
-            {services.map(elm => {
-                return (
-                    <Col sm={{ span: 4 }} key={elm._id} >
-                        <ServiceCard {...elm} />
-                    </Col>
-                )
-            })}
-        </Row>
+        <>
+
+            <Row>
+                {services.map(elm => {
+                    return (
+                        <Col sm={{ span: 4 }} key={elm._id} >
+                            <ServiceCard {...elm} />
+                        </Col>
+                    )
+                })}
+            </Row>
+
+
+        </>
     )
 }
 
