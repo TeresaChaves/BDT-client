@@ -2,6 +2,10 @@ import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import uploadServices from "../../services/upload.service"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
+
+
+
 
 function AddServiceForm({ fireFinalActions }) {
 
@@ -14,6 +18,7 @@ function AddServiceForm({ fireFinalActions }) {
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -35,17 +40,19 @@ function AddServiceForm({ fireFinalActions }) {
             })
             .catch(err => console.log(err))
     }
+    const { name, description, image, } = serviceData
 
     const handleFormSubmit = e => {
 
         e.preventDefault()
         servicesService
             .saveService(serviceData)
-            .then(() => fireFinalActions())
-            .catch(err => console.log(err))
+            .then(() => {
+                fireFinalActions()
+            })
+            .catch(err => setErrors(err.response.data.errorMessages))
 
     }
-    const { name, description, image, totalHours } = serviceData
 
 
     return (
@@ -74,13 +81,8 @@ function AddServiceForm({ fireFinalActions }) {
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Col>
-                    <Col>
-                        <Form.Group className="mb-3" controlId="totalHours">
-                            <Form.Label>Horas</Form.Label>
-                            <Form.Control type="number" value={totalHours} onChange={handleInputChange} name="totalHours" />
-                        </Form.Group>
-                    </Col>
                 </Row>
+                {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
                 <div className="d-grid">
                     <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Creando'}Crear Servicio</Button>
                 </div>

@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from '../../contexts/userMessage.context'
+// import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 const SignupForm = () => {
@@ -12,6 +13,8 @@ const SignupForm = () => {
         email: '',
         password: ''
     })
+    // const [errors, setErrors] = useState([])
+
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -33,7 +36,7 @@ const SignupForm = () => {
                 setToastMessage('Usuario creado correctamente')
                 navigate('/')
             })
-            .catch(err => console.log(err))
+        // .catch(err => setErrors(err.response.data.errorMessages))
     }
 
 
@@ -60,6 +63,8 @@ const SignupForm = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
+            {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
+
 
 
             <div className="d-grid">

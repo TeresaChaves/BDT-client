@@ -5,7 +5,9 @@ import { Container, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
 import Loader from "../../components/Loader/Loader"
+
 import { MessageContext } from '../../contexts/userMessage.context'
+import { AuthContext } from '../../contexts/auth.context'
 import UserMessage from "../../components/UserMessage/UserMessage"
 
 
@@ -20,6 +22,7 @@ const ServicesListPage = () => {
     const closeModal = () => setShowModal(false)
 
     const { setShowToast, setToastMessage } = useContext(MessageContext)
+    const { user } = useContext(AuthContext)
 
 
 
@@ -61,7 +64,7 @@ const ServicesListPage = () => {
 
             <Container>
                 <h1>TODOS LOS SERVICIOS</h1>
-                <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>
+                {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
                 {!services ? <Loader /> : <ServicesList services={services} />}
                 <hr />
