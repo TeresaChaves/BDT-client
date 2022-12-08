@@ -21,9 +21,7 @@ function NavBar() {
                             <Link to="/servicios">
                                 <Nav.Link as="div">Servicios</Nav.Link>
                             </Link>
-                            <Link to="/servicios/nuevo-servicio">
-                                <Nav.Link as="div">Crear Servicio</Nav.Link>
-                            </Link>
+
 
                             {user ?
                                 <>

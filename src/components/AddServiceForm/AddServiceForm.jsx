@@ -1,9 +1,7 @@
 import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import servicesService from "../../services/services.service"
-
-
-
+import uploadServices from "../../services/upload.service"
 
 function AddServiceForm({ fireFinalActions }) {
 
@@ -15,24 +13,40 @@ function AddServiceForm({ fireFinalActions }) {
 
     })
 
+    const [loadingImage, setLoadingImage] = useState(false)
+
     const handleInputChange = e => {
         const { name, value } = e.target
         setDataService({ ...serviceData, [name]: value })
     }
 
-    const { name, description, image, totalHours } = serviceData
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setDataService({ ...serviceData, image: res.data.cloudinary_url })
+                setLoadingImage(false)
+
+            })
+            .catch(err => console.log(err))
+    }
 
     const handleFormSubmit = e => {
 
         e.preventDefault()
         servicesService
             .saveService(serviceData)
-            .then(() => {
-                fireFinalActions()
-            })
-            .catch(err => console.error(err))
+            .then(() => fireFinalActions())
+            .catch(err => console.log(err))
 
     }
+    const { name, description, image, totalHours } = serviceData
+
 
     return (
         <div>
@@ -47,10 +61,17 @@ function AddServiceForm({ fireFinalActions }) {
                     <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
                 </Form.Group>
                 <Row>
-                    <Col>
+                    {/* <Col>
                         <Form.Group className="mb-3" controlId="image">
                             <Form.Label>Image</Form.Label>
                             <Form.Control type="url" value={image} onChange={handleInputChange} name="image" />
+                        </Form.Group>
+                    </Col> */}
+
+                    <Col>
+                        <Form.Group className="mb-3" controlId="image">
+                            <Form.Label>Image</Form.Label>
+                            <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Col>
                     <Col>
@@ -61,7 +82,7 @@ function AddServiceForm({ fireFinalActions }) {
                     </Col>
                 </Row>
                 <div className="d-grid">
-                    <Button variant="dark" type="submit">Crear Servicio</Button>
+                    <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Creando'}Crear Servicio</Button>
                 </div>
 
             </Form>

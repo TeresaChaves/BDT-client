@@ -25,7 +25,7 @@ function ServiceDetailsPage() {
                 :
                 <Row>
                     <div>
-                        <h3>Soy los detalles de {service.name}</h3>
+                        <h3>{service.name}</h3>
                     </div>
                     <Col md={{ span: 6, offset: 1 }}>
                         <p>{service.description}</p>
