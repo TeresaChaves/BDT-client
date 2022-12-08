@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import servicesService from "../../services/services.service"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 
@@ -15,12 +16,14 @@ function AddServiceForm({ fireFinalActions }) {
 
     })
 
+    const [errors, setErrors] = useState([])
+
     const handleInputChange = e => {
         const { name, value } = e.target
         setDataService({ ...serviceData, [name]: value })
     }
 
-    const { name, description, image, totalHours } = serviceData
+    const { name, description, image, } = serviceData
 
     const handleFormSubmit = e => {
 
@@ -30,7 +33,7 @@ function AddServiceForm({ fireFinalActions }) {
             .then(() => {
                 fireFinalActions()
             })
-            .catch(err => console.error(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
 
     }
 
@@ -53,13 +56,8 @@ function AddServiceForm({ fireFinalActions }) {
                             <Form.Control type="url" value={image} onChange={handleInputChange} name="image" />
                         </Form.Group>
                     </Col>
-                    <Col>
-                        <Form.Group className="mb-3" controlId="totalHours">
-                            <Form.Label>Horas</Form.Label>
-                            <Form.Control type="number" value={totalHours} onChange={handleInputChange} name="totalHours" />
-                        </Form.Group>
-                    </Col>
                 </Row>
+                {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
                 <div className="d-grid">
                     <Button variant="dark" type="submit">Crear Servicio</Button>
                 </div>
