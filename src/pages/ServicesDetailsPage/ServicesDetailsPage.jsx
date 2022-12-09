@@ -1,11 +1,12 @@
 import { useParams, Link } from "react-router-dom"
-import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import EditServiceForm from "../../components/EditServiceForm/EditServiceForm"
 import Loader from "../../components/Loader/Loader"
+import HireServiceForm from "../../components/HireServiceForm/HireServiceForm"
 
 
 function ServiceDetailsPage({ owner }) {
@@ -31,6 +32,7 @@ function ServiceDetailsPage({ owner }) {
     }
 
     return (
+
 
         <Container>
             {!service ? <Loader />
@@ -84,10 +86,16 @@ function ServiceDetailsPage({ owner }) {
                                     </>
 
                             }
+                            <Container />
 
 
-                        </Container>
+
                     </Col>
+
+                    <Col md={{ span: 4 }}>
+                        <img src={service.image} style={{ width: '100%' }} />
+                    </Col>
+
 
                     <Col md={{ span: 4 }}>
                         <img src={service.image} style={{ width: '100%' }} />
@@ -95,13 +103,19 @@ function ServiceDetailsPage({ owner }) {
 
                 </Row>
             }
-
         </Container>
 
+            </Container >
+
+        <Modal show={showModal} onHide={closeModal} >
+            <Modal.Header closeButton>
+                <Modal.Title>Servicio</Modal.Title>
+                <HireServiceForm />
+            </Modal.Header>
+        </Modal>
+        
+        
     )
 
 
-
-}
-
-export default ServiceDetailsPage
+    export default ServiceDetailsPage

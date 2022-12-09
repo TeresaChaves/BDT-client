@@ -11,8 +11,6 @@ function AddServiceForm({ fireFinalActions }) {
         name: "",
         description: "",
         image: "",
-        totalHours: 0,
-
     })
 
     const [loadingImage, setLoadingImage] = useState(false)

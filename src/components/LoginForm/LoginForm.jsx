@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import { MessageContext } from "../../contexts/userMessage.context"
 import authService from "../../services/auth.service"
-// import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 
@@ -15,6 +15,9 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
+
+    // const [errors, setErrors] = useState([])
+
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -33,7 +36,6 @@ const LoginForm = () => {
         authService
             .login(signupData)
             .then(({ data }) => {
-                console.log("este es el data", { data })
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()
@@ -41,6 +43,7 @@ const LoginForm = () => {
                 setToastMessage('Sesión iniciada')
                 navigate('/servicios')
             })
+        // .catch(err => setErrors(err.response.data.errorMessages))
     }
 
 
@@ -59,6 +62,10 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
+            {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
+
+
+
 
 
             <div className="d-grid">
