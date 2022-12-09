@@ -2,23 +2,26 @@ import './ServiceCard.css'
 import { Button, ButtonGroup } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from "../../contexts/auth.context"
 import servicesService from '../../services/services.service'
 
+function ServiceCard({ name, image, _id, owner, loadServices }) {
 
-function ServiceCard({ name, image, _id, owner }) {
 
     const delOneServcice = () => {
         servicesService
             .deleteService(_id)
             .then(({ data }) => {
-                loadService()
+                loadServices()
             })
             .catch(err => console.error(err))
     }
 
     const { user } = useContext(AuthContext)
+
+    console.log("holasoy", user)
+
     return (
         <Card className="mb-4 ServiceCard">
             <Card.Img variant="top" src={image} />
@@ -26,23 +29,13 @@ function ServiceCard({ name, image, _id, owner }) {
                 <Card.Title>{name}</Card.Title>
                 <div className='d-grid'>
                     {
-                        !owner || owner != user?._id
+                        user?.role === 'ADMIN' || owner === user?._id
                             ?
-                            <>
-                                <Link to={`/servicios/detalles/${_id}`}>
-                                    <div className='d-grid'>
-                                        <Button variant="success" size="sm">Ver detalles</Button>
-                                    </div>
-                                </Link>
-                            </>
-                            :
                             <>
                                 <div className='d-grid'>
                                     <ButtonGroup aria-label="Basic example" size="sm">
-                                        <Link to={'/'}>
-                                            <Button variant="danger" onClick={delOneServcice}>Eliminar</Button>
-                                        </Link>
-                                        <Link to={"/servicios/editar-servicio/:service_id"}>
+                                        <Link to={'/servicios'} >
+                                            <Button variant="danger" onClick={delOneServcice}  >Eliminar</Button>
                                         </Link>
                                     </ButtonGroup>
                                 </div>
@@ -53,6 +46,15 @@ function ServiceCard({ name, image, _id, owner }) {
                                         </div>
                                     </Link>
                                 </>
+                            </>
+                            :
+                            <>
+
+                                <Link to={`/servicios/detalles/${_id}`}>
+                                    <div className='d-grid'>
+                                        <Button variant="success" size="sm">Ver detalles</Button>
+                                    </div>
+                                </Link>
                             </>
                     }
 

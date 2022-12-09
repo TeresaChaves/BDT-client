@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom"
 import HomePage from "../pages/HomePage/HomePage"
 import ServicesListPage from "../pages/ServicesListPage/ServicesListPage"
 import ServiceDetailsPage from "../pages/ServicesDetailsPage/ServicesDetailsPage"
-import AddService from "../pages/AddServicePage/AddServicePage"
 import Profile from "../pages/ProfilePage/ProfilePage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
@@ -16,7 +15,6 @@ function AppRoutes() {
             <Route path="/" element={<HomePage />} />
             <Route path="/servicios" element={<ServicesListPage />} />
             <Route path="/servicios/detalles/:service_id" element={<ServiceDetailsPage />} />
-            <Route path="/servicios/nuevo-servicio" element={<AddService />} />
             <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
             <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             <Route path="/servicio/contratar" element={<HireServicePage />} />
@@ -25,7 +23,6 @@ function AppRoutes() {
 
             <Route element={<PrivateRoute />}>
                 <Route path="/usuario/mi-perfil" element={<Profile />} />
-                <Route path="/servicios/nuevo-servicio" element={<AddService />} />
                 <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
                 <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             </Route>

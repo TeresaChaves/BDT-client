@@ -42,10 +42,10 @@ const ServicesListPage = () => {
         <>
 
             <Container>
-                <h1>TODOS LOS SERVICIOS</h1>
+                <h2>Servicios</h2>
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
-                {!services ? <Loader /> : <ServicesList services={services} />}
+                {!services ? <Loader /> : <ServicesList services={services} loadServices={loadServices} />}
                 <hr />
                 <Link to="/">
                     <Button variant="dark" as="div">Volver a inicio</Button>

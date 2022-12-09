@@ -30,7 +30,7 @@ function ServiceDetailsPage() {
             .catch(err => console.error(err))
     }
 
-    const { name, description } = service
+    // const { name, description } = service
 
     return (
 
@@ -39,13 +39,11 @@ function ServiceDetailsPage() {
                 :
                 <Row>
                     <div>
-                        <h3>{name}</h3>
+                        <h3>{service.name}</h3>
                     </div>
                     <Col md={{ span: 6, offset: 1 }}>
-                        <p>{description}</p>
-                        <ul>
-                            <li>Horas: {service.totalhours}</li>
-                        </ul>
+                        <p>{service.description}</p>
+
                         <hr />
 
                         <Container>
@@ -94,6 +92,9 @@ function ServiceDetailsPage() {
                                     </>
 
                             }
+
+
+
                         </Container>
 
                     </Col>

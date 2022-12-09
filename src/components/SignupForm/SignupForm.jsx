@@ -1,17 +1,21 @@
 import { useState, useContext } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from '../../contexts/userMessage.context'
 import authService from "../../services/auth.service"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import uploadServices from "../../services/upload.service"
 
 
 const SignupForm = () => {
 
+    const [loadingImage, setLoadingImage] = useState(false)
+
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        avatar: ''
     })
     const [errors, setErrors] = useState([])
 
@@ -39,6 +43,22 @@ const SignupForm = () => {
     }
 
 
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setSignupData({ ...signupData, avatar: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => console.log(err))
+    }
+
+
     const { username, password, email } = signupData
 
     return (
@@ -56,6 +76,15 @@ const SignupForm = () => {
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
+            <Row>
+                <Col>
+                    <Form.Group className="mb-3" controlId="image">
+                        <Form.Label>Avatar</Form.Label>
+                        <Form.Control type="file" onChange={handleFileUpload} />
+                    </Form.Group>
+                </Col>
+            </Row>
+
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -65,8 +94,9 @@ const SignupForm = () => {
 
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Registrarme</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : "Registrar"}</Button>
             </div>
+
 
         </Form>
     )
