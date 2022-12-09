@@ -32,6 +32,14 @@ class ServicesService {
     saveService(serviceData) {
         return this.api.post('/addService', serviceData)
     }
+
+    deleteService(service_id) {
+        return this.api.delete(`/delete-service/${service_id}`)
+    }
+
+    editService(service_id, serviceData) {
+        return this.api.put(`/edit-service/${service_id}`, serviceData)
+    }
 }
 
 const servicesService = new ServicesService()

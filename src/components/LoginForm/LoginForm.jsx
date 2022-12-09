@@ -16,9 +16,6 @@ const LoginForm = () => {
         password: ''
     })
 
-    // const [errors, setErrors] = useState([])
-
-
     const handleInputChange = e => {
         const { value, name } = e.target
         setSignupData({ ...signupData, [name]: value })
@@ -44,9 +41,7 @@ const LoginForm = () => {
                 setToastMessage('Sesión iniciada')
                 navigate('/servicios')
             })
-        // .catch(err => setErrors(err.response.data.errorMessages))
     }
-
 
 
     const { password, email } = signupData
@@ -64,10 +59,6 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
-            {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
-
-
-
 
 
             <div className="d-grid">

@@ -5,7 +5,6 @@ import { Container, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
 import Loader from "../../components/Loader/Loader"
-
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
 import UserMessage from "../../components/UserMessage/UserMessage"
@@ -25,7 +24,6 @@ const ServicesListPage = () => {
     const { user } = useContext(AuthContext)
 
 
-
     const refreshPages = () => {
         servicesService
             .getServices()
@@ -42,16 +40,13 @@ const ServicesListPage = () => {
             .catch(err => console.log(err))
     }
 
-    const fireFinalActions = () => {
-        console.log("entro aqui")
 
+    const fireFinalActions = () => {
         setShowToast(true)
         setToastMessage("Nuevo servicio creado")
-        loadServices()
         closeModal()
         refreshPages()
     }
-
 
     useEffect(() => {
         loadServices()
@@ -59,8 +54,6 @@ const ServicesListPage = () => {
 
     return (
         <>
-
-
 
             <Container>
                 <h1>TODOS LOS SERVICIOS</h1>
@@ -81,12 +74,11 @@ const ServicesListPage = () => {
                 <Modal.Body>
                     <AddServiceForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
-
             </Modal>
+
             <UserMessage />
 
         </>
-
 
     )
 }

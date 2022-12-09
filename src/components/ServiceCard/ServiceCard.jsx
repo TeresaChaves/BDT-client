@@ -3,12 +3,21 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom"
 import { useContext } from 'react';
-
-
-
 import { AuthContext } from "../../contexts/auth.context"
+import servicesService from '../../services/services.service'
+import { useState } from 'react'
+
 
 function ServiceCard({ name, image, _id, owner }) {
+
+    const [delService, setDeleteService] = useState()
+
+    const delOneServcice = () => {
+        servicesService
+            .deleteService(_id)
+            .then(({ data }) => setDeleteService(data))
+            .catch(err => console.error(err))
+    }
 
     const { user } = useContext(AuthContext)
     return (
@@ -17,8 +26,6 @@ function ServiceCard({ name, image, _id, owner }) {
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <div className='d-grid'>
-
-
                     {
                         !owner || owner != user?._id
                             ?
@@ -33,17 +40,22 @@ function ServiceCard({ name, image, _id, owner }) {
                             <>
                                 <div className='d-grid'>
                                     <ButtonGroup aria-label="Basic example" size="sm">
-                                        <Link to={`/servicios/detalles/${_id}`}>
-
-                                            <Button variant="success">Left</Button>
+                                        <Link to={'/'}>
+                                            <Button variant="danger" onClick={delOneServcice}>Eliminar</Button>
                                         </Link>
-                                        <Link to={`/edit-service/service/${_id}`}>
-                                            <Button variant="warning">Editar</Button>
+                                        <Link to={"/servicios/editar-servicio/:service_id"}>
+                                            {/* <Button variant="warning" onClick={editOneService}>Editar</Button> */}
                                         </Link>
                                     </ButtonGroup>
                                 </div>
+                                <>
+                                    <Link to={`/servicios/detalles/${_id}`}>
+                                        <div className='d-grid'>
+                                            <Button variant="success" size="sm">Ver detalles</Button>
+                                        </div>
+                                    </Link>
+                                </>
                             </>
-
                     }
 
                 </div>

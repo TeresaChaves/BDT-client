@@ -1,25 +1,37 @@
 import { useParams, Link } from "react-router-dom"
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/auth.context"
+import EditServiceForm from "../../components/EditServiceForm/EditServiceForm"
 import Loader from "../../components/Loader/Loader"
 
 
-function ServiceDetailsPage() {
-
+function ServiceDetailsPage({ owner }) {
+    console.log(owner)
     const { service_id } = useParams()
     const [service, setService] = useState()
+    const [showModal, setShowModal] = useState(false)
 
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
+        loadService()
+    }, [])
+
+    const loadService = () => {
         servicesService
             .getOneService(service_id)
             .then(({ data }) => setService(data))
             .catch(err => console.error(err))
-    }, [])
-
+    }
 
     return (
+
         <Container>
             {!service ? <Loader />
                 :
@@ -33,16 +45,50 @@ function ServiceDetailsPage() {
                             <li>Horas: {service.totalhours}</li>
                         </ul>
                         <hr />
-                        <Link to="/servicios">
-                            <Button as="div" variant="dark">Volver a la servicios</Button>
-                        </Link>
-                        <br />
-                        <br />
-                        <Link to="/servicios/contratar/:service_id">
-                            <Button as="div" variant="dark">Contratar</Button>
-                        </Link>
+                        <Container>
+                            {
+                                service.owner == user?._id
+                                    ?
+                                    <>
+                                        <Button onClick={openModal} variant="dark">editar</Button>
+                                        <hr />
 
+                                        <Modal show={showModal} onHide={closeModal} >
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Editar</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>
+                                                <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
+                                            </Modal.Body>
+                                        </Modal>
+
+                                        <Link to="/">
+                                            <Button variant="dark" as="div">Volver a inicio</Button>
+                                        </Link>
+
+                                        {/* <Link to="/servicios/contratar/:service_id">
+                                            <Button as="div" variant="dark">Contratar</Button>
+                                        </Link> */}
+                                        <hr />
+                                    </>
+                                    :
+                                    <>
+                                        <Link to="/">
+                                            <Button variant="dark" as="div">Volver a inicio</Button>
+                                        </Link>
+
+                                        <Link to="/servicios/contratar/:service_id">
+                                            <Button as="div" variant="dark">Contratar</Button>
+                                        </Link>
+
+                                    </>
+
+                            }
+
+
+                        </Container>
                     </Col>
+
                     <Col md={{ span: 4 }}>
                         <img src={service.image} style={{ width: '100%' }} />
                     </Col>

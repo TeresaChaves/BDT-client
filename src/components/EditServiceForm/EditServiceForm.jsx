@@ -2,17 +2,15 @@ import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import uploadServices from "../../services/upload.service"
-import ErrorMessage from "../ErrorMessage/ErrorMessage"
+// import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
-function AddServiceForm({ fireFinalActions }) {
+function EditServiceForm({ _id, name, description, image, closeModal, loadService }) {
 
-    const [serviceData, setDataService] = useState({
-        name: "",
-        description: "",
-        image: "",
-        totalHours: 0,
-
+    const [editServ, setEditService] = useState({
+        name: name,
+        description: description,
+        image: image,
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -20,7 +18,7 @@ function AddServiceForm({ fireFinalActions }) {
 
     const handleInputChange = e => {
         const { name, value } = e.target
-        setDataService({ ...serviceData, [name]: value })
+        setEditService({ ...editServ, [name]: value })
     }
 
     const handleFileUpload = e => {
@@ -32,23 +30,23 @@ function AddServiceForm({ fireFinalActions }) {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setDataService({ ...serviceData, image: res.data.cloudinary_url })
+                setEditService({ ...editServ, image: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
             .catch(err => console.log(err))
     }
-    const { name, description, image, } = serviceData
 
     const handleFormSubmit = e => {
 
         e.preventDefault()
+
         servicesService
-            .saveService(serviceData)
+            .editService(_id, editServ)
             .then(() => {
-                fireFinalActions()
+                loadService()
+                closeModal()
             })
             .catch(err => setErrors(err.response.data.errorMessages))
-
     }
 
     return (
@@ -57,11 +55,11 @@ function AddServiceForm({ fireFinalActions }) {
 
                 <Form.Group className="mb-3" controlId="name">
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
+                    <Form.Control type="text" value={editServ.name} onChange={handleInputChange} name="name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Descripción</Form.Label>
-                    <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
+                    <Form.Control type="text" value={editServ.description} onChange={handleInputChange} name="description" />
                 </Form.Group>
                 <Row>
                     <Col>
@@ -71,7 +69,7 @@ function AddServiceForm({ fireFinalActions }) {
                         </Form.Group>
                     </Col>
                 </Row>
-                {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
+                {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
                 <div className="d-grid">
                     <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Creando'}Crear Servicio</Button>
                 </div>
@@ -83,4 +81,4 @@ function AddServiceForm({ fireFinalActions }) {
 
 }
 
-export default AddServiceForm
+export default EditServiceForm
