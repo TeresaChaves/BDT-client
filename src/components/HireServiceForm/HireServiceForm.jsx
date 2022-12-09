@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Form, Button, Row, Col, FormGroup } from "react-bootstrap"
 import RangeSlider from 'react-bootstrap-range-slider'
 import servicesService from "../../services/services.service"
-import ErrorMessage from "../ErrorMessage/ErrorMessage"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 
@@ -46,7 +45,6 @@ function HireServiceForm({ fireFinalActions }) {
                     <Form.Control type="date" value={serviceDate} onChange={handleInputChange} name="serviceDate" />
 
                     <br />
-
 
                 </Form.Group>
 

@@ -2,7 +2,6 @@ import { Container, Row, Col } from 'react-bootstrap'
 import HireServiceForm from '../../components/HireServiceForm/HireServiceForm'
 
 
-
 const HireServicePage = () => {
     return (
 
@@ -12,13 +11,10 @@ const HireServicePage = () => {
                     <h1>Acceder</h1>
                     <hr />
                     <HireServiceForm />
-
-
                 </Col>
             </Row>
         </Container>
     )
-
 
 }
 

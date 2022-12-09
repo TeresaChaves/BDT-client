@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import { MessageContext } from "../../contexts/userMessage.context"
 import authService from "../../services/auth.service"
-import ErrorMessage from "../ErrorMessage/ErrorMessage"
+// import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 
@@ -17,7 +17,6 @@ const LoginForm = () => {
     })
 
     // const [errors, setErrors] = useState([])
-
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -63,9 +62,6 @@ const LoginForm = () => {
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
             {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
-
-
-
 
 
             <div className="d-grid">

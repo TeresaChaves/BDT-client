@@ -18,7 +18,6 @@ function AppRoutes() {
             <Route path="/servicios/detalles/:service_id" element={<ServiceDetailsPage />} />
             <Route path="/servicios/nuevo-servicio" element={<AddService />} />
             <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
-            <Route path="/servicios/eliminar-servicio/:service_id" element={<p>ELIMINAR</p>} />
             <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             <Route path="/servicio/contratar" element={<HireServicePage />} />
             <Route path="/usuario/registro" element={<SignupPage />} />

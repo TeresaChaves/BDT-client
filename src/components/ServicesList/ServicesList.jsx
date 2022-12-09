@@ -18,7 +18,6 @@ const ServicesList = ({ services }) => {
                 })}
             </Row>
 
-
         </>
     )
 }

@@ -10,7 +10,6 @@ import HireServiceForm from "../../components/HireServiceForm/HireServiceForm"
 
 
 function ServiceDetailsPage({ owner }) {
-    console.log(owner)
     const { service_id } = useParams()
     const [service, setService] = useState()
     const [showModal, setShowModal] = useState(false)
@@ -33,7 +32,6 @@ function ServiceDetailsPage({ owner }) {
 
     return (
 
-
         <Container>
             {!service ? <Loader />
                 :
@@ -47,6 +45,7 @@ function ServiceDetailsPage({ owner }) {
                             <li>Horas: {service.totalhours}</li>
                         </ul>
                         <hr />
+
                         <Container>
                             {
                                 service.owner == user?._id
@@ -79,16 +78,14 @@ function ServiceDetailsPage({ owner }) {
                                             <Button variant="dark" as="div">Volver a inicio</Button>
                                         </Link>
 
-                                        <Link to="/servicios/contratar/:service_id">
+                                        <Link to={`/servicios/contratar/${service_id}`}>
                                             <Button as="div" variant="dark">Contratar</Button>
                                         </Link>
 
                                     </>
 
                             }
-                            <Container />
-
-
+                        </Container>
 
                     </Col>
 
@@ -103,19 +100,18 @@ function ServiceDetailsPage({ owner }) {
 
                 </Row>
             }
+
+            <Modal show={showModal} onHide={closeModal} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Servicio</Modal.Title>
+                    <HireServiceForm />
+                </Modal.Header>
+            </Modal>
+
         </Container>
 
-            </Container >
-
-        <Modal show={showModal} onHide={closeModal} >
-            <Modal.Header closeButton>
-                <Modal.Title>Servicio</Modal.Title>
-                <HireServiceForm />
-            </Modal.Header>
-        </Modal>
-        
-        
     )
+}
 
 
-    export default ServiceDetailsPage
+export default ServiceDetailsPage

@@ -15,7 +15,6 @@ const SignupForm = () => {
     })
     const [errors, setErrors] = useState([])
 
-
     const handleInputChange = e => {
         const { value, name } = e.target
         setSignupData({ ...signupData, [name]: value })
@@ -38,7 +37,6 @@ const SignupForm = () => {
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
-
 
 
     const { username, password, email } = signupData
@@ -64,7 +62,6 @@ const SignupForm = () => {
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
             {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
-
 
 
             <div className="d-grid">

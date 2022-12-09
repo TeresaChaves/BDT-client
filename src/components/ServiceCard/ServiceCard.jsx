@@ -44,7 +44,6 @@ function ServiceCard({ name, image, _id, owner }) {
                                             <Button variant="danger" onClick={delOneServcice}>Eliminar</Button>
                                         </Link>
                                         <Link to={"/servicios/editar-servicio/:service_id"}>
-                                            {/* <Button variant="warning" onClick={editOneService}>Editar</Button> */}
                                         </Link>
                                     </ButtonGroup>
                                 </div>

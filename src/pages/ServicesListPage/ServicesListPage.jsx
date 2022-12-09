@@ -10,8 +10,6 @@ import { AuthContext } from '../../contexts/auth.context'
 import UserMessage from "../../components/UserMessage/UserMessage"
 
 
-
-
 const ServicesListPage = () => {
 
     const [services, setServices] = useState([])
@@ -32,14 +30,12 @@ const ServicesListPage = () => {
 
     }
 
-
     const loadServices = () => {
         servicesService
             .getServices()
             .then(({ data }) => setServices(data))
             .catch(err => console.log(err))
     }
-
 
     const fireFinalActions = () => {
         setShowToast(true)
