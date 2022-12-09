@@ -1,9 +1,9 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
-import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from '../../contexts/userMessage.context'
-// import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import authService from "../../services/auth.service"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 const SignupForm = () => {
@@ -13,7 +13,7 @@ const SignupForm = () => {
         email: '',
         password: ''
     })
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
 
     const handleInputChange = e => {
@@ -36,7 +36,7 @@ const SignupForm = () => {
                 setToastMessage('Usuario creado correctamente')
                 navigate('/')
             })
-        // .catch(err => setErrors(err.response.data.errorMessages))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
 
@@ -63,7 +63,7 @@ const SignupForm = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
-            {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
+            {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
 
 

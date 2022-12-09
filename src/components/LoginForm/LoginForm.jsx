@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import { MessageContext } from "../../contexts/userMessage.context"
 import authService from "../../services/auth.service"
-// import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 
@@ -16,7 +16,7 @@ const LoginForm = () => {
         password: ''
     })
 
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState(null)
 
 
     const handleInputChange = e => {
@@ -36,7 +36,6 @@ const LoginForm = () => {
         authService
             .login(signupData)
             .then(({ data }) => {
-                console.log("este es el data", { data })
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()
@@ -44,7 +43,10 @@ const LoginForm = () => {
                 setToastMessage('Sesión iniciada')
                 navigate('/servicios')
             })
-        // .catch(err => setErrors(err.response.data.errorMessages))
+            .catch(err => {
+                console.log('estos son los errore!!!!', err.response.data.message)
+                setErrors(err.response.data.message)
+            })
     }
 
 
@@ -64,9 +66,7 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
-            {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
-
-
+            {errors && <ErrorMessage>{errors}</ErrorMessage>}
 
 
 

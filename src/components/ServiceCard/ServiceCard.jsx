@@ -35,7 +35,7 @@ function ServiceCard({ name, image, _id, owner }) {
                                     <ButtonGroup aria-label="Basic example" size="sm">
                                         <Link to={`/servicios/detalles/${_id}`}>
 
-                                            <Button variant="success">Left</Button>
+                                            <Button variant="success">Ver detalles</Button>
                                         </Link>
                                         <Link to={`/edit-service/service/${_id}`}>
                                             <Button variant="warning">Editar</Button>
