@@ -30,8 +30,6 @@ function AppRoutes() {
                 <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             </Route>
 
-            <Route path="/usuario/cerrar-sesion" element={<p>cerrar sesion</p>} />
-
             <Route path="/*" element={<p>404</p>} />
         </Routes>
 

@@ -71,7 +71,7 @@ function AddServiceForm({ fireFinalActions }) {
                 </Row>
                 {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
                 <div className="d-grid">
-                    <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Creando'}Crear Servicio</Button>
+                    <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : "Crear Servicio"}</Button>
                 </div>
 
             </Form>

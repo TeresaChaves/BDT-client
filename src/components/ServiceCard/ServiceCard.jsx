@@ -5,17 +5,16 @@ import { Link } from "react-router-dom"
 import { useContext } from 'react';
 import { AuthContext } from "../../contexts/auth.context"
 import servicesService from '../../services/services.service'
-import { useState } from 'react'
 
 
 function ServiceCard({ name, image, _id, owner }) {
 
-    const [delService, setDeleteService] = useState()
-
     const delOneServcice = () => {
         servicesService
             .deleteService(_id)
-            .then(({ data }) => setDeleteService(data))
+            .then(({ data }) => {
+                loadService()
+            })
             .catch(err => console.error(err))
     }
 

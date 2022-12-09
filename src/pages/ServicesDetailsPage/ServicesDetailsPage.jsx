@@ -9,7 +9,7 @@ import Loader from "../../components/Loader/Loader"
 import HireServiceForm from "../../components/HireServiceForm/HireServiceForm"
 
 
-function ServiceDetailsPage({ owner }) {
+function ServiceDetailsPage() {
     const { service_id } = useParams()
     const [service, setService] = useState()
     const [showModal, setShowModal] = useState(false)
@@ -30,6 +30,8 @@ function ServiceDetailsPage({ owner }) {
             .catch(err => console.error(err))
     }
 
+    const { name, description } = service
+
     return (
 
         <Container>
@@ -37,10 +39,10 @@ function ServiceDetailsPage({ owner }) {
                 :
                 <Row>
                     <div>
-                        <h3>{service.name}</h3>
+                        <h3>{name}</h3>
                     </div>
                     <Col md={{ span: 6, offset: 1 }}>
-                        <p>{service.description}</p>
+                        <p>{description}</p>
                         <ul>
                             <li>Horas: {service.totalhours}</li>
                         </ul>
@@ -78,9 +80,16 @@ function ServiceDetailsPage({ owner }) {
                                             <Button variant="dark" as="div">Volver a inicio</Button>
                                         </Link>
 
-                                        <Link to={`/servicios/contratar/${service_id}`}>
-                                            <Button as="div" variant="dark">Contratar</Button>
-                                        </Link>
+
+                                        <Button onClick={openModal} variant="dark">contratar</Button>
+
+                                        <Modal show={showModal} onHide={closeModal} >
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Servicio</Modal.Title>
+                                                <HireServiceForm />
+                                            </Modal.Header>
+                                        </Modal>
+
 
                                     </>
 
@@ -93,20 +102,8 @@ function ServiceDetailsPage({ owner }) {
                         <img src={service.image} style={{ width: '100%' }} />
                     </Col>
 
-
-                    <Col md={{ span: 4 }}>
-                        <img src={service.image} style={{ width: '100%' }} />
-                    </Col>
-
                 </Row>
             }
-
-            <Modal show={showModal} onHide={closeModal} >
-                <Modal.Header closeButton>
-                    <Modal.Title>Servicio</Modal.Title>
-                    <HireServiceForm />
-                </Modal.Header>
-            </Modal>
 
         </Container>
 

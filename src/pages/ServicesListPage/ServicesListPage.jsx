@@ -7,7 +7,6 @@ import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
 import Loader from "../../components/Loader/Loader"
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
-import UserMessage from "../../components/UserMessage/UserMessage"
 
 
 const ServicesListPage = () => {
@@ -21,15 +20,6 @@ const ServicesListPage = () => {
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const { user } = useContext(AuthContext)
 
-
-    const refreshPages = () => {
-        servicesService
-            .getServices()
-            .then(({ data }) => setServices(data))
-            .catch(err => console.log(err))
-
-    }
-
     const loadServices = () => {
         servicesService
             .getServices()
@@ -41,7 +31,7 @@ const ServicesListPage = () => {
         setShowToast(true)
         setToastMessage("Nuevo servicio creado")
         closeModal()
-        refreshPages()
+        loadServices()
     }
 
     useEffect(() => {
@@ -72,7 +62,6 @@ const ServicesListPage = () => {
                 </Modal.Body>
             </Modal>
 
-            <UserMessage />
 
         </>
 
