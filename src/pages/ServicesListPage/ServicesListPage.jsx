@@ -8,11 +8,13 @@ import Loader from "../../components/Loader/Loader"
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
 import SearchBar from "../../components/SearchBar/SearchBar"
+import SearchResultsPages from "../SearchResultsPages/SearchResultsPages"
 
 
 const ServicesListPage = () => {
 
     const [services, setServices] = useState([])
+    const [searchResults, setSearchResults] = useState([])
     const [showModal, setShowModal] = useState(false)
 
     const openModal = () => setShowModal(true)
@@ -21,10 +23,17 @@ const ServicesListPage = () => {
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const { user } = useContext(AuthContext)
 
+    useEffect(() => {
+        loadServices()
+    }, [])
+
     const loadServices = () => {
         servicesService
             .getServices()
-            .then(({ data }) => setServices(data))
+            .then(({ data }) => {
+                setServices(data)
+                setSearchResults(data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -35,9 +44,7 @@ const ServicesListPage = () => {
         loadServices()
     }
 
-    useEffect(() => {
-        loadServices()
-    }, [])
+
 
     return (
         <>
@@ -46,7 +53,8 @@ const ServicesListPage = () => {
                 <h2>Servicios</h2>
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
-                <SearchBar />
+                <SearchBar services={services} setSearchResults={setSearchResults} />
+                <SearchResultsPages searchResults={searchResults} />
                 <br />
                 {!services ? <Loader /> : <ServicesList services={services} loadServices={loadServices} />}
                 <hr />

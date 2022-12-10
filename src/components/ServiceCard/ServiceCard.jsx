@@ -20,7 +20,6 @@ function ServiceCard({ name, image, _id, owner, loadServices }) {
 
     const { user } = useContext(AuthContext)
 
-    console.log("holasoy", user)
 
     return (
         <Card className="mb-4 ServiceCard">
