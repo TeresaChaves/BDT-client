@@ -6,6 +6,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import './HomePage.css'
 import SobreNosotros from "../../assests/images/SobreNosotros.jpg"
 import SearchBar from '../../components/SearchBar/SearchBar';
+import pictureExample from "../../assests/images/example.jpg"
 
 
 function HomePage() {
@@ -123,10 +124,9 @@ function HomePage() {
                     </Col>
                     <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'end'}>
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Sobre nosotros</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            Nosotros somos muy grandes
+                            <img src={pictureExample} className="picExample" alt="" />
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Row>

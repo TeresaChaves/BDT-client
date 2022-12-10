@@ -14,14 +14,16 @@
     object-fit: cover;
 }
 
-.col1 {
-    background-color: rgb(7, 213, 224);
+.col1 {}
+
+.col2 {}
+
+.col3 {}
+
+.picExample {
+    max-width: 367px;
 }
 
-.col2 {
-    background-color: green;
-}
-
-.col3 {
-    background-color: red;
+.offcanvas-body {
+    padding: 0;
 }
