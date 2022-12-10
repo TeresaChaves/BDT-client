@@ -1,4 +1,4 @@
-import { Container, Form, Button, Stack } from 'react-bootstrap'
+import { Container, Form, Stack } from 'react-bootstrap'
 
 
 
@@ -16,36 +16,21 @@ const SearchBar = ({ services, setSearchResults }) => {
     }
 
     return (
-        <header>
-            <form className="search" onSubmit={handleSubmit}>
-                <input
-                    className="search__input"
-                    type="text"
-                    id="search"
-                    onChange={handleSearchChange}
-                />
-                <Button variant="success">Buscar</Button>
+        <main>
 
-            </form>
-        </header>
+
+            < Container >
+                <Stack direction="horizontal" gap={3}>
+                    <Form.Control className="me-auto search__input" placeholder="Introduce el servicio"
+                        type="text"
+                        id="search"
+                        onChange={handleSearchChange}
+
+                    />
+                </Stack>
+            </Container >
+            <br />
+        </main>
     )
 }
 export default SearchBar
-
-
-
-
-
-
-
-        // <Container>
-        //     <Stack direction="horizontal" gap={3}>
-        //         <Form.Control className="me-auto" placeholder="Introduce el servicio" />
-        //         <Button variant="success">Buscar</Button>
-        //         <div className="vr" />
-        //         <Button variant="outline-danger">Reiniciar</Button>
-        //     </Stack>
-        // </Container>
-
-
-

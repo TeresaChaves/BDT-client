@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react"
-import ServicesList from "../../components/ServicesList/ServicesList"
 import servicesService from "../../services/services.service"
 import { Container, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
@@ -8,7 +7,7 @@ import Loader from "../../components/Loader/Loader"
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
 import SearchBar from "../../components/SearchBar/SearchBar"
-import SearchResultsPages from "../SearchResultsPages/SearchResultsPages"
+import SearchResults from "../../components/SearchResults/SearchResults"
 
 
 const ServicesListPage = () => {
@@ -54,15 +53,14 @@ const ServicesListPage = () => {
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
                 <SearchBar services={services} setSearchResults={setSearchResults} />
-                <SearchResultsPages searchResults={searchResults} />
+                <SearchResults searchResults={searchResults} />
                 <br />
-                {!services ? <Loader /> : <ServicesList services={services} loadServices={loadServices} />}
                 <hr />
                 <Link to="/">
                     <Button variant="dark" as="div">Volver a inicio</Button>
                 </Link>
-
             </Container>
+            <hr />
 
             <Modal show={showModal} onHide={closeModal} >
                 <Modal.Header closeButton>
@@ -72,8 +70,6 @@ const ServicesListPage = () => {
                     <AddServiceForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
             </Modal>
-
-
         </>
 
     )
