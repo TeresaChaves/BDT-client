@@ -70,10 +70,6 @@ function HomePage() {
                 </Carousel.Item>
             </Carousel>
 
-            <Container>
-                <SearchBar />
-            </Container>
-
             <br />
 
             <Container>
