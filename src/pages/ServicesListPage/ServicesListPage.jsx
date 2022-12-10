@@ -7,6 +7,7 @@ import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
 import Loader from "../../components/Loader/Loader"
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
+import SearchBar from "../../components/SearchBar/SearchBar"
 
 
 const ServicesListPage = () => {
@@ -45,6 +46,8 @@ const ServicesListPage = () => {
                 <h2>Servicios</h2>
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
+                <SearchBar />
+                <br />
                 {!services ? <Loader /> : <ServicesList services={services} loadServices={loadServices} />}
                 <hr />
                 <Link to="/">

@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Stack } from 'react-bootstrap'
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 import Carousel from 'react-bootstrap/Carousel';
 import './HomePage.css'
+import SobreNosotros from "../../assests/images/SobreNosotros.jpg"
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 function HomePage() {
@@ -11,6 +15,16 @@ function HomePage() {
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
+
+    const [showHistory, setShowHistory] = useState(false);
+
+    const handleCloseHistory = () => setShowHistory(false);
+    const handleShowHistory = () => setShowHistory(true);
+
+    const [showAboutUs, setShowAboutUs] = useState(false);
+
+    const handleCloseAboutUs = () => setShowAboutUs(false);
+    const handleShowAboutUs = () => setShowAboutUs(true);
 
     return (
         <Container fluid className='HomePage'>
@@ -56,13 +70,7 @@ function HomePage() {
             </Carousel>
 
             <Container>
-                <Stack direction="horizontal" gap={3}>
-                    <Form.Control className="me-auto" placeholder="Introduce el servicio" />
-                    <Button variant="success">Buscar</Button>
-                    <div className="vr" />
-                    <Button variant="outline-danger">Reiniciar</Button>
-
-                </Stack>
+                <SearchBar />
             </Container>
 
             <br />
@@ -71,14 +79,25 @@ function HomePage() {
                 <Row>
                     <Col as="div" className='col1'>
                         <div className='bg-image'>
-                            <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className='w-100' alt='Sample' />
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                                <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className='w-100' alt='Sample' />
                                 <div className='d-flex justify-content-center align-items-center h-100'>
-                                    <h3 className='text-white mb-0'>Historia de los Bancos de Tiempo</h3>
+                                    <Button variant="primary" onClick={handleShowHistory}>
+                                        Historia del movimiento
+                                    </Button>
                                 </div>
                             </div>
                         </div>
                     </Col>
+                    <Offcanvas show={showHistory} onHide={handleCloseHistory}>
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Historia</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            Banco de tiempo.
+                        </Offcanvas.Body>
+                    </Offcanvas>
+
                     <Col as="div" className='col2'>
                         <div className='bg-image'>
                             <img src='https://thumbs.dreamstime.com/b/services-concept-flat-line-design-icons-elements-modern-services-concept-s-collection-services-concept-lettering-thin-68961333.jpg' className='w-100' alt='Sample' />
@@ -89,23 +108,33 @@ function HomePage() {
                             </div>
                         </div>
                     </Col>
+
                     <Col as="div" className='col3'>
                         <div className='bg-image'>
-                            <img src='https://mdbootstrap.com/img/new/standard/city/053.webp' className='w-100' alt='Sample' />
+                            <img src={SobreNosotros} className='w-100' alt='Sample' />
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                                 <div className='d-flex justify-content-center align-items-center h-100'>
-                                    <p className='text-white mb-0'>Prueba 1</p>
+                                    <Button variant="primary" onClick={handleShowAboutUs}>
+                                        Sobre nosotros
+                                    </Button>
                                 </div>
                             </div>
                         </div>
                     </Col>
+                    <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'end'}>
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Sobre nosotros</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            Nosotros somos muy grandes
+                        </Offcanvas.Body>
+                    </Offcanvas>
                 </Row>
             </Container>
             <br />
             <br />
         </Container>
     )
-
 }
 
 export default HomePage
