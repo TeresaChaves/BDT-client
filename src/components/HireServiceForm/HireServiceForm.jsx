@@ -56,9 +56,9 @@ function HireServiceForm({ fireFinalActions }) {
                             onChange={e => setMinutes(e.target.value)}
                             tooltipLabel={currentValue => `${currentValue} minutos`}
                             variant='success'
-                            min={15}
-                            max={120}
-                            step={15}
+                            min={30}
+                            max={180}
+                            step={30}
                         />
                     </Col>
                     <Col xs="3">
