@@ -13,7 +13,6 @@ function ServiceCard({ name, image, _id, owner }) {
         servicesService
             .deleteService(_id)
             .then(({ data }) => {
-                loadService()
             })
             .catch(err => console.error(err))
     }
