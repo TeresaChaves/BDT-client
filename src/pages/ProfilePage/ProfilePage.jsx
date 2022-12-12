@@ -3,7 +3,6 @@ import { AuthContext } from "../../contexts/auth.context"
 import { useContext } from 'react';
 import { Link } from 'react-router-dom'
 import { Card, Badge, Button, Container, Row, Col } from 'react-bootstrap';
-
 function ProfilePage({ signupData }) {
 
     const { user } = useContext(AuthContext)
@@ -13,14 +12,17 @@ function ProfilePage({ signupData }) {
 
         <Container>
             <Row>
-                <Col>
+                <Col sm={{ span: 4 }}>
                     <img src={user.avatar} className="avatar" />
                 </Col>
-                <Col>
+                <Col sm={{ span: 8 }}>
                     <h2 className="userName">{user.username} </h2>
+                    <hr />
+                    <h2>Mis servicios</h2>
+
                 </Col>
             </Row>
-        </Container>
+        </Container >
 
         // <Container >
         //     <Card style={{ width: '18rem' }} className="profileCard">

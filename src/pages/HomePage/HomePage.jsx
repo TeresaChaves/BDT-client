@@ -7,6 +7,8 @@ import './HomePage.css'
 import SobreNosotros from "../../assests/images/SobreNosotros.jpg"
 import SearchBar from '../../components/SearchBar/SearchBar';
 import pictureExample from "../../assests/images/example.jpg"
+import Josiah from "../../assests/images/JosiahWarren.jpg"
+import Gon from "../../assests/images/Gon.jpg"
 
 
 function HomePage() {
@@ -27,9 +29,13 @@ function HomePage() {
     const handleCloseAboutUs = () => setShowAboutUs(false);
     const handleShowAboutUs = () => setShowAboutUs(true);
 
+    const [showHowitWorks, setShowHowitWorks] = useState(false);
+
+    const handleCloseHowitWorks = () => setShowHowitWorks(false);
+    const handleShowHowitWorks = () => setShowHowitWorks(true);
+
     return (
         <Container fluid className='HomePage'>
-
             <Carousel activeIndex={index} onSelect={handleSelect} as="div" className='Hero' showControls fade>
                 <Carousel.Item>
                     <img
@@ -73,8 +79,8 @@ function HomePage() {
             <br />
 
             <Container>
-                <Row>
-                    <Col as="div" className='col1'>
+                <Row className='row'>
+                    <Col as="div" className='col'>
                         <div className='bg-image'>
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                                 <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className='w-100' alt='Sample' />
@@ -86,43 +92,67 @@ function HomePage() {
                             </div>
                         </div>
                     </Col>
+
                     <Offcanvas show={showHistory} onHide={handleCloseHistory}>
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Historia</Offcanvas.Title>
+                            <Offcanvas.Title>Todo empezó...</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            Banco de tiempo.
+                            <img src={Josiah} className="Josiah" alt="Josiah Warren" />
                         </Offcanvas.Body>
                     </Offcanvas>
 
-                    <Col as="div" className='col2'>
-                        <div className='bg-image'>
-                            <img src='https://thumbs.dreamstime.com/b/services-concept-flat-line-design-icons-elements-modern-services-concept-s-collection-services-concept-lettering-thin-68961333.jpg' className='w-100' alt='Sample' />
-                            <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-                                <div className='d-flex justify-content-center align-items-center h-100'>
-                                    <h3 className='text-white mb-0'>Ver todos los servicios</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
 
-                    <Col as="div" className='col3'>
+                    <Col as="div" className='col'>
                         <div className='bg-image'>
                             <img src={SobreNosotros} className='w-100' alt='Sample' />
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                                 <div className='d-flex justify-content-center align-items-center h-100'>
                                     <Button variant="primary" onClick={handleShowAboutUs}>
-                                        Sobre nosotros
+                                        ¿Quienes somos?
                                     </Button>
                                 </div>
                             </div>
                         </div>
                     </Col>
-                    <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'end'}>
+
+                    <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'bottom'} className="aboutUs">
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Sobre nosotros</Offcanvas.Title>
+
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <p>Prueba</p>
+                            <Row>
+                                <Col>
+                                    <img src={Gon} className="profilePictures" />
+                                </Col>
+                                <Col>
+                                    <img src="https://d1hbpr09pwz0sk.cloudfront.net/profile_pic/teresa-chaves-maza-341494be.jpg" className="profilePictures" />
+                                </Col>
+                            </Row>
+                        </Offcanvas.Body>
+                    </Offcanvas>
+
+
+                    <Col as="div" className='col'>
+                        <div className='bg-image'>
+                            <img src='https://images.unsplash.com/photo-1575197478864-c83e1d2a4443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80' className='w-100' alt='Sample' />
+                            <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                                <div className='d-flex justify-content-center align-items-center h-100'>
+                                    <Button variant="primary" onClick={handleShowHowitWorks}>
+                                        ¿Cómo funciona el banco?
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </Col>
+
+                    <Offcanvas show={showHowitWorks} onHide={handleCloseHowitWorks} placement={'end'}>
                         <Offcanvas.Header closeButton>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <img src={pictureExample} className="picExample" alt="" />
+                            <img src={pictureExample} className="picExample" alt="Como funciona" />
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Row>

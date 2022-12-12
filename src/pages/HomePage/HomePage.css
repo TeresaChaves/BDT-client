@@ -14,11 +14,10 @@
     object-fit: cover;
 }
 
-.col1 {}
+.bg-image {
+    object-fit: cover;
 
-.col2 {}
-
-.col3 {}
+}
 
 .picExample {
     max-width: 367px;
@@ -26,4 +25,20 @@
 
 .offcanvas-body {
     padding: 0;
+    justify-content: center;
+}
+
+.Josiah {
+    max-height: 400px;
+    padding: 20px;
+}
+
+.profilePictures {
+    max-width: 200px;
+}
+
+.row {
+    align-items: center;
+    align-content: space-between;
+    margin: 0%;
 }
