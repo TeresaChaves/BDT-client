@@ -12,36 +12,35 @@ function HireServiceForm({ owner }) {
 
     const handleInputChange = e => {
         setHours(e.target.value)
+
     }
-
-
-    //     const [service, setService] = useState({
-
-    e.preventDefault()
 
     const bankAccountTime = { hours }
 
+    const handleFormSubmit = e => {
 
-    uploadUsers
-        .updateUser(owner, bankAccountTime)
-        .then((res) => {
-            console.log(res)
-        })
-    // .catch(err => setErrors(err.response.data.errorMessages))
-}
+        e.preventDefault()
+        uploadUsers
+            .updateUser(owner, bankAccountTime)
+            .then((res) => {
+                console.log(res)
+            })
 
-return (
-    <div>
-        <Form onSubmit={handleFormSubmit}>
-            <Form.Label>bankAccountTime</Form.Label>
-            <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" />
-            <Button variant="dark" type="submit">Contratar</Button>
+        // .catch(err => setErrors(err.response.data.errorMessages))
 
-//             </Form>
+    }
 
 
-    </div>
+    return (
+        <div>
+            <Form onSubmit={handleFormSubmit}>
+                <Form.Label>bankAccountTime</Form.Label>
+                <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" />
+                <Button variant="dark" type="submit">Contratar</Button>
 
-)
+            </Form>
+        </div>
+
+    )
 }
 export default HireServiceForm
