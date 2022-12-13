@@ -27,14 +27,14 @@ function HireServiceForm({ owner }) {
     }
 
     const handleFormSubmit = e => {
-
         e.preventDefault()
         uploadHours
             .updateHours(owner, hours)
-            .then((res) => {
+            .then(() => {
+                console.log("hola soy", hours)
             })
 
-        // .catch(err => setErrors(err.response.data.errorMessages))
+            .catch(err => console.log(err))
 
     }
 

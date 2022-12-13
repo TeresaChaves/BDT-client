@@ -25,8 +25,8 @@ class UploadHours {
         return this.api.get(`/get-available-hours/${user_id}`)
     }
 
-    updateUser(owner, bankAccountTime) {
-        return this.api.put(`/update-hours/${owner}`, bankAccountTime)
+    updateHours(owner, bankAccountTime) {
+        return this.api.put(`/update-hours/${owner}`, { hours: bankAccountTime })
     }
 
 

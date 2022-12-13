@@ -36,7 +36,7 @@ function HomePage() {
 
     return (
         <Container fluid className='HomePage'>
-            <Carousel activeIndex={index} onSelect={handleSelect} as="div" className='Hero' showControls fade>
+            <Carousel activeIndex={index} onSelect={handleSelect} as="div" className='Hero' showcontrols fade>
                 <Carousel.Item>
                     <img
                         className="d-block w-100 heroImage"
