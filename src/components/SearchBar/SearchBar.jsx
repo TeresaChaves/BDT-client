@@ -2,8 +2,6 @@ import { Container, Form, Stack } from 'react-bootstrap'
 
 
 
-
-
 const SearchBar = ({ services, setSearchResults }) => {
     const handleSubmit = (e) => e.preventDefault()
 

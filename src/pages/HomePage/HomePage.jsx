@@ -81,6 +81,7 @@ function HomePage() {
             <Container>
                 <Row className='row'>
                     <Col as="div" className='col'>
+
                         <div className='bg-image'>
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                                 <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className='w-100' alt='Sample' />
@@ -105,7 +106,7 @@ function HomePage() {
 
                     <Col as="div" className='col'>
                         <div className='bg-image'>
-                            <img src={SobreNosotros} className='w-100' alt='Sample' />
+                            <img src={SobreNosotros} className='w-50' alt='Sample' />
                             <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                                 <div className='d-flex justify-content-center align-items-center h-100'>
                                     <Button variant="primary" onClick={handleShowAboutUs}>
@@ -153,6 +154,7 @@ function HomePage() {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <img src={pictureExample} className="picExample" alt="Como funciona" />
+
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Row>

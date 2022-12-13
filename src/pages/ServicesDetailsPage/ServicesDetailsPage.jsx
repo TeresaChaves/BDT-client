@@ -69,9 +69,6 @@ function ServiceDetailsPage() {
                                             <Button variant="dark" as="div">Volver a inicio</Button>
                                         </Link>
 
-                                        {/* <Link to="/servicios/contratar/:service_id">
-                                            <Button as="div" variant="dark">Contratar</Button>
-                                        </Link> */}
                                         <hr />
                                     </>
                                     :
