@@ -1,11 +1,17 @@
 import './ProfilePage.css'
 import { AuthContext } from "../../contexts/auth.context"
 import { useContext } from 'react';
-import { Link } from 'react-router-dom'
 import { Card, Badge, Button, Container, Row, Col } from 'react-bootstrap';
-function ProfilePage({ signupData }) {
+import servicesService from "../../services/services.service"
+import ServiceDetailsPage from '../ServicesDetailsPage/ServicesDetailsPage';
 
+function ProfilePage() {
+
+
+    // const [services, setServices] = useState([])
     const { user } = useContext(AuthContext)
+
+
 
     return (
 
@@ -21,6 +27,9 @@ function ProfilePage({ signupData }) {
                     <h2>Mis servicios</h2>
 
                 </Col>
+
+
+
             </Row>
         </Container >
 

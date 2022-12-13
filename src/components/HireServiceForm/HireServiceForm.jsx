@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Form, Button, Row, Col, FormGroup } from "react-bootstrap"
+import { Form, Button, Container } from "react-bootstrap"
 // import RangeSlider from 'react-bootstrap-range-slider'
 // import servicesService from "../../services/services.service"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import uploadUsers from "../../services/users.service"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/auth.context"
 
 
 function HireServiceForm({ owner }) {
@@ -16,6 +18,9 @@ function HireServiceForm({ owner }) {
     }
 
     const bankAccountTime = { hours }
+
+    const { user } = useContext(AuthContext)
+    console.log("que tiene el user", user.bankAccountTime)
 
     const handleFormSubmit = e => {
 
@@ -30,15 +35,22 @@ function HireServiceForm({ owner }) {
 
     }
 
-
     return (
         <div>
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Label>bankAccountTime</Form.Label>
-                <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" />
-                <Button variant="dark" type="submit">Contratar</Button>
+            <Container>
+                {
 
-            </Form>
+
+                    <Form onSubmit={handleFormSubmit}>
+                        <Form.Label>bankAccountTime</Form.Label>
+                        <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" />
+                        <Button variant="dark" type="submit">Contratar</Button>
+
+                    </Form>
+
+
+                }
+            </Container>
         </div>
 
     )
