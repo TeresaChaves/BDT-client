@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, FormGroup } from "react-bootstrap"
 // import RangeSlider from 'react-bootstrap-range-slider'
 // import servicesService from "../../services/services.service"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import uploadUsers from "../../services/users.service"
+import uploadHours from "../../services/hours.service"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 
@@ -16,7 +16,7 @@ function HireServiceForm({ owner }) {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        uploadUsers
+        uploadHours
             .getAvailableHours(user._id)
             .then(({ data }) => setAvailableHours(data))
             .catch(err => console.log(err))
@@ -29,10 +29,9 @@ function HireServiceForm({ owner }) {
     const handleFormSubmit = e => {
 
         e.preventDefault()
-        uploadUsers
-            .updateUser(owner, hours)
+        uploadHours
+            .updateHours(owner, hours)
             .then((res) => {
-                console.log('que nos llega aquii????', res)
             })
 
         // .catch(err => setErrors(err.response.data.errorMessages))

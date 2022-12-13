@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-class UploadUsers {
+class UploadHours {
 
     constructor() {
 
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/uploadUsers`
+            baseURL: `${process.env.REACT_APP_API_URL}/uploadHours`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -26,12 +26,12 @@ class UploadUsers {
     }
 
     updateUser(owner, bankAccountTime) {
-        return this.api.put(`/update-user/${owner}`, bankAccountTime)
+        return this.api.put(`/update-hours/${owner}`, bankAccountTime)
     }
 
 
 }
 
-const uploadUsers = new UploadUsers()
+const uploadHours = new UploadHours()
 
-export default uploadUsers
+export default uploadHours
