@@ -20,6 +20,11 @@ class UploadUsers {
         })
 
     }
+
+    getAvailableHours(user_id) {
+        return this.api.get(`/get-available-hours/${user_id}`)
+    }
+
     updateUser(owner, bankAccountTime) {
         return this.api.put(`/update-user/${owner}`, bankAccountTime)
     }
