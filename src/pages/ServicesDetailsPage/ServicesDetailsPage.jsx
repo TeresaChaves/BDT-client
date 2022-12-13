@@ -83,21 +83,13 @@ function ServiceDetailsPage() {
                                         <Modal show={showModal} onHide={closeModal} >
                                             <Modal.Header closeButton>
                                                 <Modal.Title>Servicio</Modal.Title>
-                                                <HireServiceForm />
+                                                <HireServiceForm owner={service.owner} />
                                             </Modal.Header>
                                         </Modal>
-
-
                                     </>
-
                             }
-
-
-
                         </Container>
-
                     </Col>
-
                     <Col md={{ span: 4 }}>
                         <img src={service.image} style={{ width: '100%' }} />
                     </Col>

@@ -14,14 +14,16 @@ function AuthProviderWrapper(props) {
     const authenticateUser = () => {
 
         const token = localStorage.getItem("authToken")
-
-        authService
-            .verify(token)
-            .then(({ data }) => {
-                setUser(data)
-                setisLoading(false)
-            })
-            .catch(err => console.error('algo malo paso aw :3', err))
+        if (token) {
+            setisLoading(true)
+            authService
+                .verify(token)
+                .then(({ data }) => {
+                    setUser(data)
+                    setisLoading(false)
+                })
+                .catch(err => console.error('algo malo paso aw :3', err))
+        }
     }
 
     const logoutUser = () => {
