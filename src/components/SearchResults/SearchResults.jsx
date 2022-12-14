@@ -2,7 +2,7 @@ import ServiceCard from "../ServiceCard/ServiceCard"
 import { Col, Row } from "react-bootstrap"
 
 
-function SearchResultsPages({ searchResults }) {
+function SearchResultsPages({ searchResults, loadServices }) {
 
 
     return (
@@ -12,7 +12,7 @@ function SearchResultsPages({ searchResults }) {
                     {searchResults.map(elm => {
                         return (
                             <Col sm={{ span: 4 }} key={elm._id} >
-                                <ServiceCard {...elm} searchResults={searchResults} />
+                                <ServiceCard {...elm} searchResults={searchResults} loadServices={loadServices} />
                             </Col>
                         )
                     })}

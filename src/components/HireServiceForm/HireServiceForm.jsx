@@ -6,14 +6,21 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import uploadHours from "../../services/hours.service"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth.context"
+import { MessageContext } from '../../contexts/userMessage.context'
 
 
 
-function HireServiceForm({ owner }) {
+function HireServiceForm({ owner, loadService }) {
 
     const [hours, setHours] = useState(0)
     const [availableHours, setAvailableHours] = useState(0)
     const { user } = useContext(AuthContext)
+
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     useEffect(() => {
         uploadHours
@@ -26,12 +33,20 @@ function HireServiceForm({ owner }) {
         setHours(e.target.value)
     }
 
+    const fireFinalActions = () => {
+        setShowToast(true)
+        setToastMessage("Has contratado el servicio")
+        closeModal()
+        loadService()
+    }
+
     const handleFormSubmit = e => {
         e.preventDefault()
         uploadHours
             .updateHours(owner, hours)
             .then(() => {
-                console.log("hola soy", hours)
+                fireFinalActions()
+                // console.log(res)
             })
 
             .catch(err => console.log(err))

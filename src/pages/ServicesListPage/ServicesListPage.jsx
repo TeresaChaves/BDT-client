@@ -3,7 +3,7 @@ import servicesService from "../../services/services.service"
 import { Container, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
-import Loader from "../../components/Loader/Loader"
+// import Loader from "../../components/Loader/Loader"
 import { MessageContext } from '../../contexts/userMessage.context'
 import { AuthContext } from '../../contexts/auth.context'
 import SearchBar from "../../components/SearchBar/SearchBar"
@@ -43,8 +43,6 @@ const ServicesListPage = () => {
         loadServices()
     }
 
-
-
     return (
         <>
 
@@ -53,7 +51,7 @@ const ServicesListPage = () => {
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
                 <hr />
                 <SearchBar services={services} setSearchResults={setSearchResults} />
-                <SearchResults searchResults={searchResults} />
+                <SearchResults searchResults={searchResults} loadServices={loadServices} />
                 <br />
                 <hr />
                 <Link to="/">
