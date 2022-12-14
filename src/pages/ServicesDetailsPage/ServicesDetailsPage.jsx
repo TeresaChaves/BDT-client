@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom"
-import { Container, Row, Col, Button, Modal } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
 import { useContext } from "react"
@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/auth.context"
 import EditServiceForm from "../../components/EditServiceForm/EditServiceForm"
 import Loader from "../../components/Loader/Loader"
 import HireServiceForm from "../../components/HireServiceForm/HireServiceForm"
-
+import './ServicesDetailsPage.css'
 
 function ServiceDetailsPage() {
     const { service_id } = useParams()
@@ -37,12 +37,13 @@ function ServiceDetailsPage() {
         <Container>
             {!service ? <Loader />
                 :
-                <Row>
-                    <div>
-                        <h3>{service.name}</h3>
-                    </div>
+                <Row className="detailMargin">
+
+
                     <Col md={{ span: 6, offset: 1 }}>
-                        <p>{service.description}</p>
+                        <h3 className="nameDetail">{service.name}</h3>
+                        <h4 className="descriptionDetail"> {service.description}</h4>
+
 
                         <hr />
 
@@ -76,7 +77,7 @@ function ServiceDetailsPage() {
                                         </Link>
 
 
-                                        <Button onClick={openModal} variant="dark">contratar</Button>
+                                        <Button onClick={openModal} variant="dark">Contratar</Button>
 
                                         <Modal show={showModal} onHide={closeModal} >
                                             <Modal.Header closeButton>
@@ -89,8 +90,10 @@ function ServiceDetailsPage() {
                         </Container>
                     </Col>
                     <Col md={{ span: 4 }}>
-                        <img src={service.image} style={{ width: '100%' }} />
+                        <img className="detailPhoto" src={service.image} style={{ width: '100%' }} />
                     </Col>
+
+
 
                 </Row>
             }

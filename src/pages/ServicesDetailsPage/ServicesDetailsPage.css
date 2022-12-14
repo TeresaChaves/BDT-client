@@ -1,0 +1,26 @@
+.detailPhoto {
+
+    border-radius: 0 10px 20px;
+    box-shadow: 10px 10px 5px
+}
+
+.detailMargin {
+
+    margin-top: 20px;
+
+}
+
+.nameDetail {
+
+    display: inline;
+    border-bottom: 3px solid #609f80;
+    text-transform: uppercase;
+
+
+}
+
+.descriptionDetail {
+
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
