@@ -1,4 +1,5 @@
 import { Container, Form, Stack } from 'react-bootstrap'
+import "./SearchBar.css"
 
 
 
@@ -17,7 +18,7 @@ const SearchBar = ({ services, setSearchResults }) => {
         <main>
 
 
-            < Container >
+            < Container className='searchBar'>
                 <Stack direction="horizontal" gap={3}>
                     <Form.Control className="me-auto search__input" placeholder="Introduce el servicio"
                         type="text"

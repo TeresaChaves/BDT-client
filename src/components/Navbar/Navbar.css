@@ -1,0 +1,18 @@
+.greeting:hover {
+    color: white;
+}
+
+.greeting {
+    color: white;
+}
+
+.navBar {
+    color: #af420a;
+    background-color: #609c7dd5;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+
+}

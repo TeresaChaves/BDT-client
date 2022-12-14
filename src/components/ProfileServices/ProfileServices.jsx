@@ -31,7 +31,7 @@ function ProfileServices({ profileServices }) {
                 {profileServices.map(elm => {
 
                     return (
-                        <Col sm={{ span: 4 }} key={elm._id} >
+                        <Col sm={{ span: 6 }} key={elm._id} >
                             <ServiceCard {...elm} profileServices={profileServices} />
                         </Col>
                     )

@@ -48,18 +48,16 @@ function ProfilePage() {
     return (
         <>
             <Container>
-                <h1>{profileServices.name}</h1>
-
-                <Row>
-                    <Col md={{ span: 4 }}>
+                <Row className='row'>
+                    <Col lg={{ span: 3 }}>
                         <img src={user.avatar} className="avatar" />
                     </Col>
 
-                    <Col md={{ span: 8 }}>
+                    <Col lg={{ span: 9 }}>
                         <h2 className="userName">{user.username} </h2>
                         <hr />
                         <h2>Mis servicios</h2>
-                        {user && <Button onClick={openModal} variant="dark" size="sm">Crear nuevo servicio</Button>}
+                        {user && <Button onClick={openModal} variant="success" size="sm" className='newServiceButton'>Crear nuevo servicio</Button>}
 
 
                         <ProfileServices profileServices={profileServices} />

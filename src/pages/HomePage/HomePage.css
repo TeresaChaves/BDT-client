@@ -4,6 +4,28 @@
 
 }
 
+.heroText {
+    color: white;
+    text-shadow: 2px 5px 5px #000000;
+}
+
+.homePageCardsMask {
+    background-color: #00000064;
+}
+
+.homePageCardsTitle {
+    color: white;
+    text-shadow: 2px 5px 5px #000000;
+    font-size: large;
+}
+
+.homePageCardsText {
+    color: white;
+    text-shadow: 2px 5px 5px #000000;
+    font-size: smaller;
+}
+
+
 .Hero {
     height: 400px;
 
@@ -12,6 +34,8 @@
 .heroImage {
     height: 350px;
     object-fit: cover;
+    opacity: 80%;
+    mask-image: (250px at 40% 50%, black 75%, transparent 76%);
 }
 
 .bg-image {
@@ -29,8 +53,8 @@
 }
 
 .Josiah {
-    max-height: 400px;
-    padding: 20px;
+    max-height: 200px;
+    padding: 0px 10px;
 }
 
 .profilePictures {
@@ -41,4 +65,13 @@
     align-items: center;
     align-content: space-between;
     margin: 0%;
+}
+
+.figcaption {
+    margin: 0%;
+    padding-left: 10px;
+}
+
+.offcanvasText {
+    padding: 10px;
 }
