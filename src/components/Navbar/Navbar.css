@@ -1,8 +1,18 @@
-.color-nav {
-    background-color: #609f80
+.greeting:hover {
+    color: white;
 }
 
-.btn-success {
-    background-color: #af420a;
+.greeting {
+    color: white;
+}
+
+.navBar {
+    color: #af420a;
+    background-color: #609c7dd5;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
 
 }

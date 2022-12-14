@@ -1,3 +1,4 @@
+import "./ServicesListPage.css"
 import { useState, useEffect, useContext } from "react"
 import servicesService from "../../services/services.service"
 import { Container, Button, Modal } from "react-bootstrap"
@@ -44,16 +45,12 @@ const ServicesListPage = () => {
         loadServices()
     }
 
-
-
-
     return (
         <>
 
             <Container>
-                <h2>Servicios</h2>
+                <h2 className="listPageH2">Servicios</h2>
                 {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
-                <hr />
                 <SearchBar services={services} setSearchResults={setSearchResults} />
                 <SearchResults searchResults={searchResults} loadServices={loadServices} />
                 <br />

@@ -37,6 +37,7 @@ function ServiceCard({ name, image, _id, owner, loadServices }) {
                                             <Button variant="danger" onClick={delOneServcice}  >Eliminar</Button>
                                         </Link>
                                     </ButtonGroup>
+                                    <br />
                                 </div>
                                 <>
                                     <Link to={`/servicios/detalles/${_id}`}>

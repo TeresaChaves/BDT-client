@@ -1,55 +1,62 @@
+import './Navbar.css'
+
 import { useContext } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../contexts/auth.context'
-import './Navbar.css'
+import { AuthContext } from '../../contexts/auth.context';
+import logo from "../../assests/images/logo.ico"
 
 
 function NavBar() {
 
     const { user, logoutUser } = useContext(AuthContext)
     return (
-        <>
-            <Navbar className='color-nav' variant="dark">
-                <Container>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Navbar.Brand href="#home">Banco de Tiempo</Navbar.Brand>
-                        <Nav className="me-auto">
-                            <Link to="/">
-                                <Navbar.Brand as="div">Home</Navbar.Brand>
-                            </Link>
-                            <Link to="/servicios">
-                                <Nav.Link as="div">Servicios</Nav.Link>
-                            </Link>
 
-                            {user ?
-                                <>
-                                    <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
+        <Navbar className='navBar' sticky="top" expand="sm">
+            <Container>
+                <Link className='navLink' to="/">
+                    <Navbar.Brand href="/" className='nav-link'>
+                        <img
+                            src={logo}
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top mt-1 me-1 "
+                            alt="React Bootstrap logo"
+                        />
+                        TimeShare
+                    </Navbar.Brand>
+                </Link>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
 
-                                </>
-                                :
-                                <>
-                                    <Link to="/usuario/registro">
-                                        <Nav.Link as="div">Registro</Nav.Link>
-                                    </Link>
+                        <Link className='navLink' to="/servicios">
+                            <Nav.Link as="div">Servicios</Nav.Link>
+                        </Link>
 
-                                    <Link to="/usuario/iniciar-sesion">
-                                        <Nav.Link as="div">Acceder</Nav.Link>
-                                    </Link>
+                        {user ?
+                            <>
+                                <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
 
-                                </>
-                            }
-                            <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>
+                            </>
+                            :
+                            <>
+                                <Link to="/usuario/registro">
+                                    <Nav.Link as="div">Registro</Nav.Link>
+                                </Link>
 
-                            <Link to="/usuario/mi-perfil">
-                                <Nav.Link as="div">MI perfil</Nav.Link>
-                            </Link>
+                                <Link to="/usuario/iniciar-sesion">
+                                    <Nav.Link as="div">Acceder</Nav.Link>
+                                </Link>
 
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                            </>
+                        }
+                        <Nav.Link as="div" className='greeting'>Hola {!user ? 'invitad@' : user.username}</Nav.Link>
+
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
 
         </>
     );
