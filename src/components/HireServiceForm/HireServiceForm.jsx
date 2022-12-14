@@ -10,16 +10,13 @@ import { MessageContext } from '../../contexts/userMessage.context'
 
 
 
-function HireServiceForm({ owner, loadService }) {
+function HireServiceForm({ owner, loadService, closeModal }) {
 
     const [hours, setHours] = useState(0)
     const [availableHours, setAvailableHours] = useState(0)
     const { user } = useContext(AuthContext)
 
-    const [showModal, setShowModal] = useState(false)
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
     const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     useEffect(() => {
@@ -36,8 +33,8 @@ function HireServiceForm({ owner, loadService }) {
     const fireFinalActions = () => {
         setShowToast(true)
         setToastMessage("Has contratado el servicio")
-        closeModal()
         loadService()
+        closeModal()
     }
 
     const handleFormSubmit = e => {
@@ -46,9 +43,8 @@ function HireServiceForm({ owner, loadService }) {
             .updateHours(owner, hours)
             .then(() => {
                 fireFinalActions()
-                // console.log(res)
-            })
 
+            })
             .catch(err => console.log(err))
 
     }
@@ -60,12 +56,8 @@ function HireServiceForm({ owner, loadService }) {
                 <p>Te quedan {availableHours} horas disponibles, estás solicitando {hours} horas</p>
                 <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" min={0} max={availableHours} />
                 <Button variant="dark" type="submit">Contratar</Button>
-
             </Form>
         </div>
-
-
-
 
     )
 }

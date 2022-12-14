@@ -30,7 +30,6 @@ function ServiceDetailsPage() {
             .catch(err => console.error(err))
     }
 
-    // const { name, description } = service
 
     return (
 
@@ -43,9 +42,7 @@ function ServiceDetailsPage() {
                     </div>
                     <Col md={{ span: 6, offset: 1 }}>
                         <p>{service.description}</p>
-                        <ul>
-                            <li>Horas: {service.totalhours}</li>
-                        </ul>
+
                         <hr />
 
                         <Container>
@@ -83,7 +80,7 @@ function ServiceDetailsPage() {
                                         <Modal show={showModal} onHide={closeModal} >
                                             <Modal.Header closeButton>
                                                 <Modal.Title>Servicio</Modal.Title>
-                                                <HireServiceForm owner={service.owner} loadService={loadService} />
+                                                <HireServiceForm owner={service.owner} loadService={loadService} closeModal={{ closeModal }} />
                                             </Modal.Header>
                                         </Modal>
                                     </>
