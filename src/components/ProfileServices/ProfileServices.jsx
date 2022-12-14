@@ -8,30 +8,28 @@ import { AuthContext } from "../../contexts/auth.context"
 
 function ProfileServices({ profileServices }) {
 
-    const [services, setServices] = useState([])
-    const { user } = useContext(AuthContext)
 
 
-    useEffect(() => {
-        loadServices()
-    }, [])
 
-    const loadServices = () => {
-        servicesService
-            .getServices()
-            .then(({ data }) => {
-                setServices(data)
+    // const mapOwner = profileServices.map(elm => elm.owner)
 
-            })
-            .catch(err => console.log(err))
-        console.log(user._id)
-    }
+    // const { user } = useContext(AuthContext)
+
+
+
+
+
+    // const resultsArray = services.filter(service => service.onwer)
+    // console.log ()
+    // setServices(resultsArray)
 
 
     return (
         <>
+
             <Row>
                 {profileServices.map(elm => {
+
                     return (
                         <Col sm={{ span: 4 }} key={elm._id} >
                             <ServiceCard {...elm} profileServices={profileServices} />
@@ -39,29 +37,8 @@ function ProfileServices({ profileServices }) {
                     )
                 })}
             </Row>
-            :
-            <article><p>Aún no has creado ningún servicio</p></article>
 
-            {/* {searchResults?.length ?
-                <Row>
-                    {searchResults.map(elm => {
-                        return (
-                            <Col sm={{ span: 4 }} key={elm._id} >
-                                <ServiceCard {...elm} searchResults={searchResults} />
-                            </Col>
-                        )
-                    })}
-                </Row>
-                :
-                <article><p>Aún no has creado ningún servicio</p></article>
-            } */}
 
-            <div>
-                <h1>
-                    ¿Hola?
-                    {services.name}
-                </h1>
-            </div>
         </>
     )
 

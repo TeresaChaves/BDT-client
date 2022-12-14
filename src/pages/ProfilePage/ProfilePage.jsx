@@ -10,9 +10,7 @@ import ProfileServices from '../../components/ProfileServices/ProfileServices';
 
 function ProfilePage() {
 
-    const [services, setServices] = useState([])
     const [profileServices, setprofileServices] = useState([])
-
 
     const [showModal, setShowModal] = useState(false)
 
@@ -27,14 +25,17 @@ function ProfilePage() {
     }, [])
 
     const loadServices = () => {
+
         servicesService
-            .getServices()
+            .getServices(user._id)
             .then(({ data }) => {
-                setServices(data)
                 setprofileServices(data)
             })
             .catch(err => console.log(err))
     }
+
+
+
 
     const fireFinalActions = () => {
         setShowToast(true)
@@ -44,11 +45,10 @@ function ProfilePage() {
     }
 
 
-
-
     return (
         <>
             <Container>
+                <h1>{profileServices.name}</h1>
 
                 <Row>
                     <Col md={{ span: 4 }}>
@@ -60,6 +60,7 @@ function ProfilePage() {
                         <hr />
                         <h2>Mis servicios</h2>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Crear nuevo servicio</Button>}
+
 
                         <ProfileServices profileServices={profileServices} />
 

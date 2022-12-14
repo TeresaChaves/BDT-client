@@ -8,8 +8,8 @@ const SearchBar = ({ services, setSearchResults }) => {
     const handleSearchChange = (e) => {
         if (!e.target.value) return setSearchResults(services)
 
+
         const resultsArray = services.filter(service => service.name.includes(e.target.value))
-        console.log({ resultsArray })
         setSearchResults(resultsArray)
     }
 

@@ -22,6 +22,7 @@ const ServicesListPage = () => {
     const { setShowToast, setToastMessage } = useContext(MessageContext)
     const { user } = useContext(AuthContext)
 
+
     useEffect(() => {
         loadServices()
     }, [])
@@ -42,6 +43,9 @@ const ServicesListPage = () => {
         closeModal()
         loadServices()
     }
+
+
+
 
     return (
         <>
