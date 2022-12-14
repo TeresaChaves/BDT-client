@@ -44,7 +44,6 @@ function ServiceDetailsPage() {
                         <h3 className="nameDetail">{service.name}</h3>
                         <h4 className="descriptionDetail"> {service.description}</h4>
 
-
                         <hr />
 
                         <Container>
