@@ -30,7 +30,7 @@ function ServiceDetailsPage() {
             .catch(err => console.error(err))
     }
 
-    // const { name, description } = service
+
 
     return (
 

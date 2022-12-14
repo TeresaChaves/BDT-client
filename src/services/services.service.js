@@ -21,8 +21,8 @@ class ServicesService {
     }
 
 
-    getServices() {
-        return this.api.get('/allServices')
+    getServices(userId) {
+        return this.api.get(`/allServices?user=${userId}`)
     }
 
     getOneService(service_id) {

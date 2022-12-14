@@ -23,8 +23,6 @@ function SearchResultsPages({ searchResults, loadServices }) {
         </>
     )
 
-
-
 }
 
 export default SearchResultsPages
