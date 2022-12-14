@@ -31,7 +31,6 @@ function HireServiceForm({ owner }) {
         uploadHours
             .updateHours(owner, hours)
             .then(() => {
-                console.log("hola soy", hours)
             })
 
             .catch(err => console.log(err))
