@@ -38,6 +38,7 @@ function NavBar() {
                             <>
                                 <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
 
+
                             </>
                             :
                             <>
@@ -51,6 +52,9 @@ function NavBar() {
 
                             </>
                         }
+                        <Link to="/usuario/mi-perfil">
+                            <Nav.Link as="div">Mi perfil</Nav.Link>
+                        </Link>
                         <Nav.Link as="div" className='greeting'>Hola {!user ? 'invitad@' : user.username}</Nav.Link>
 
                     </Nav>
