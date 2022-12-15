@@ -11,7 +11,7 @@ function AddServiceForm({ fireFinalActions }) {
         name: "",
         description: "",
         image: "",
-        disponibility: ""
+        disponibility: "",
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -36,7 +36,7 @@ function AddServiceForm({ fireFinalActions }) {
             })
             .catch(err => console.log(err))
     }
-    const { name, description, image, disponibility } = serviceData
+    const { name, description, disponibility } = serviceData
 
     const handleFormSubmit = e => {
 
@@ -69,7 +69,7 @@ function AddServiceForm({ fireFinalActions }) {
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="image">
-                            <Form.Label>Image</Form.Label>
+                            <Form.Label>Imagen</Form.Label>
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Col>
