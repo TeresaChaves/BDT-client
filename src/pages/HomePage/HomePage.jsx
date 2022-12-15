@@ -8,7 +8,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import './HomePage.css'
 import SobreNosotros from "../../assests/images/SobreNosotros.jpg"
 import SearchBar from '../../components/SearchBar/SearchBar';
-import pictureExample from "../../assests/images/example.jpg"
+import TimeShare from "../../assests/images/TimeShare.jpg"
 import Josiah from "../../assests/images/JosiahWarren.jpg"
 import Gon from "../../assests/images/Gon.jpg"
 
@@ -201,7 +201,7 @@ function HomePage() {
                         <Offcanvas.Header closeButton>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <img src={pictureExample} className="picExample" alt="Como funciona" />
+                            <img src={TimeShare} className="picExample" alt="Como funciona" />
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Row>

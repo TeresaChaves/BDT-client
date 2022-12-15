@@ -12,17 +12,15 @@
 
 .nameDetail {
 
-    display: inline;
     border-bottom: 3px solid #609f80;
     text-transform: uppercase;
+    margin-bottom: 20px;
 
 }
 
-.descriptionDetail {
 
-    margin-bottom: 10px;
-    margin-top: 2em;
-}
+
+
 
 .btn-dark {
     background-color: #4b574d;
@@ -59,4 +57,24 @@
 .mailToOwner:hover {
     color: #fff;
     box-shadow: inset 200px 0 0 0 #609c7d;
+}
+
+.descriptionDetail {
+    font-size: 25px;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #4b574d;
+    text-decoration: underline dotted #4b574d;
+}
+
+.descriptionDetail2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-decoration-color: #4b574d;
+}
+
+.descriptionbox {
+    margin-bottom: 20px;
+
 }

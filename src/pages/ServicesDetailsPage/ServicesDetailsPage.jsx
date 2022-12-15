@@ -67,10 +67,14 @@ function ServiceDetailsPage() {
                     <Col md={{ span: 6, offset: 1 }}>
 
                         <h3 className="nameDetail">{service.name}</h3>
-                        <h5 className="descriptionDetail"> Descripción:</h5>
-                        <h4>{service.description}</h4>
+                        <div className="descriptionbox">
+                            <span className="descriptionDetail"> Descripción: </span>
+                            <span className="descriptionDetail2">{service.description}</span>
 
-                        <h5>Disponibilidad: {service.disponibility}</h5>
+                        </div>
+
+
+                        <span className="descriptionDetail">Disponibilidad: </span> <span className="descriptionDetail2">{service.disponibility}</span>
                         <div className="mail">
                             <h4><b><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></b></h4>
                         </div>
