@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import uploadServices from "../../services/upload.service"
+import capitalize from "../../utils/capitalize"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
@@ -45,6 +46,7 @@ function AddServiceForm({ fireFinalActions }) {
             .saveService(serviceData)
             .then(() => {
                 fireFinalActions()
+
             })
             .catch(err => setErrors(err.response.data.errorMessages))
 
@@ -55,7 +57,7 @@ function AddServiceForm({ fireFinalActions }) {
             <Form onSubmit={handleFormSubmit}>
 
                 <Form.Group className="mb-3" controlId="name">
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label class="text-capitalize">Nombre</Form.Label>
                     <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="description">

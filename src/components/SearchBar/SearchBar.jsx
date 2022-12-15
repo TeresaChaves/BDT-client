@@ -1,16 +1,22 @@
 import { Container, Form, Stack } from 'react-bootstrap'
+import capitalize from '../../utils/capitalize'
 import "./SearchBar.css"
 
 
 
 const SearchBar = ({ services, setSearchResults }) => {
+
+
+
+
+
     const handleSubmit = (e) => e.preventDefault()
 
     const handleSearchChange = (e) => {
         if (!e.target.value) return setSearchResults(services)
 
 
-        const resultsArray = services.filter(service => service.name.includes(e.target.value))
+        const resultsArray = services.filter(service => service.name.includes(capitalize(e.target.value)))
         setSearchResults(resultsArray)
     }
 
