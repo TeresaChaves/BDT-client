@@ -47,32 +47,30 @@ function ProfilePage() {
 
     return (
         <>
-            <div className="profilePhoto">
-                <img src={user.avatar} className="avatar" />
 
+            <Container>
+                <Row className='profileRow'>
+                    <Col xxl={{ span: 4 }} className='profileCol'>
+                        <img src={user.avatar} className="avatar" />
+                    </Col>
 
-                <Container>
-                    <Row className='row'>
-                        <Col >
+                    <Col xxl={{ span: 8 }} className='profileCol'>
+                        <h2 className="userName">{user.username} </h2>
+                        <div className='hoursBalance'>
 
+                            <h2>Tu saldo es:</h2>
+                            <h3>{user.bankAccountTime} horas</h3>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
 
-                        </Col>
+                    <h2>Servicios que ofreces</h2>
 
-                        <Col >
-                            <h2 className="userName">{user.username} </h2>
-                            <h3>Tu saldo es {user.bankAccountTime}</h3>
-                            <hr />
-                            <h2>Mis servicios</h2>
-                            {user && <Button onClick={openModal} variant="success" size="sm" className='newServiceButton'>Crear nuevo servicio</Button>}
-
-
-                            <ProfileServices profileServices={profileServices} />
-
-                        </Col>
-
-                    </Row>
-                </Container >
-            </div>
+                    {user && <Button onClick={openModal} variant="success" size="sm" className='newServiceButton'>Crear nuevo servicio</Button>}
+                    <ProfileServices profileServices={profileServices} />
+                </Row>
+            </Container >
 
             <Modal show={showModal} onHide={closeModal} >
                 <Modal.Header closeButton>
