@@ -1,7 +1,7 @@
 import './Navbar.css'
 
 import { useContext } from 'react';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown, NavItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context';
 import logo from "../../assests/images/logo.ico"

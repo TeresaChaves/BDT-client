@@ -130,6 +130,12 @@
 
 .homeCardTitle {
     text-align: center;
+
+}
+
+.homeCardTitle:hover {
+    color: black;
+
 }
 
 .linkedInLink {
