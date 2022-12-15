@@ -15,7 +15,7 @@ function HireServiceForm({ owner, loadService, closeModal }) {
 
     const [hours, setHours] = useState(0)
     const [availableHours, setAvailableHours] = useState(0)
-    const { user } = useContext(AuthContext)
+    const { user, refreshToken } = useContext(AuthContext)
 
 
     const { setShowToast, setToastMessage } = useContext(MessageContext)
@@ -35,6 +35,7 @@ function HireServiceForm({ owner, loadService, closeModal }) {
         setShowToast(true)
         setToastMessage("Has contratado el servicio")
         loadService()
+        refreshToken()
         closeModal()
     }
 
