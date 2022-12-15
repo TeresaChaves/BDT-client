@@ -28,7 +28,7 @@ function ServiceCard({ name, image, _id, owner, loadServices }) {
                 <Card.Title>{name}</Card.Title>
                 <div className='d-grid'>
                     {
-                        user?.role === 'ADMIN' || owner === user?._id
+                        user?.role === 'ADMIN'
                             ?
                             <>
                                 <div className='d-grid'>

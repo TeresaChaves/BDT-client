@@ -34,9 +34,29 @@ function ServiceDetailsPage() {
             .then(({ data }) => setService(data))
             .catch(err => console.error(err))
     }
-    console.log('estara ya el owner???', service)
-    // const { name, description } = service
 
+
+    const delOneServcice = () => {
+        servicesService
+            .deleteService(service_id)
+            .then(({ data }) => {
+                loadServices()
+            })
+            .catch(err => console.error(err))
+    }
+
+
+    const loadServices = () => {
+        servicesService
+            .getServices()
+            .then(({ data }) => {
+                setService(data)
+            })
+            .catch(err => console.log(err))
+    }
+
+    // const { name, description } = service
+    console.log('el serviciooooo!', service)
     return (
 
         <Container>
@@ -57,9 +77,42 @@ function ServiceDetailsPage() {
 
                         <Container>
                             {
-                                service.owner == user?._id
+                                service.owner._id == user?._id
                                     ?
                                     <>
+                                        <Row>
+                                            <Col>
+                                                <div className="d-grid gap-2">
+                                                    <Button onClick={openModal} variant="dark">Editar</Button>
+                                                </div>
+                                            </Col>
+
+                                            <Modal show={showModal} onHide={closeModal} >
+                                                <Modal.Header closeButton>
+
+                                                    <Modal.Title>Editar</Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
+                                                </Modal.Body>
+                                            </Modal>
+                                            <Col>
+
+                                                <Link to="/">
+                                                    <div className="d-grid gap-2">
+                                                        <Button variant="dark" onClick={delOneServcice}>Eliminar</Button>
+                                                    </div>
+                                                </Link>
+
+
+
+                                            </Col>
+                                        </Row>
+
+                                    </>
+                                    :
+                                    <>
+
                                         <Row>
                                             <Col>
                                                 <Link to="/">
@@ -82,41 +135,6 @@ function ServiceDetailsPage() {
                                                 </Modal>
                                             </Col>
 
-                                        </Row>
-
-
-                                    </>
-                                    :
-                                    <>
-
-
-
-                                        <Row>
-                                            <Col>
-                                                <div className="d-grid gap-2">
-                                                    <Button onClick={openModal} variant="dark">Editar</Button>
-                                                </div>
-                                            </Col>
-
-
-                                            <Modal show={showModal} onHide={closeModal} >
-                                                <Modal.Header closeButton>
-
-                                                    <Modal.Title>Editar</Modal.Title>
-                                                </Modal.Header>
-                                                <Modal.Body>
-                                                    <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
-                                                </Modal.Body>
-                                            </Modal>
-                                            <Col>
-
-                                                <Link to="/">
-                                                    <div className="d-grid gap-2">
-                                                        <Button variant="dark" as="div">Volver a inicio</Button>
-                                                    </div>
-                                                </Link>
-
-                                            </Col>
                                         </Row>
                                     </>
                             }
