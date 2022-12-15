@@ -84,3 +84,43 @@
 .homePageCard {
     max-height: 500px;
 }
+
+.aboutUsPicture {
+    margin: 20px;
+    width: 228px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 50px;
+
+}
+
+.aboutUsTitle {
+    text-align: right;
+    /* margin-top: 100px; */
+    color: aliceblue;
+    text-shadow: 5em;
+
+}
+
+.aboutUSnew {
+    width: 125px;
+    border: 2px solid #fff;
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    box-shadow: 10px 10px 5px #ccc;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+/* .aboutUsDiv {
+    border-radius: 5px;
+    border-color: red;
+    border-style: inset;
+} */
+.textAbUS {
+    padding: 50px;
+}

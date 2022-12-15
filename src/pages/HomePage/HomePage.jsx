@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Form, Button, Stack, Card } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Stack, Card, Popover } from 'react-bootstrap'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom'
 
@@ -134,10 +134,10 @@ function HomePage() {
                     </Offcanvas>
 
 
-                    <Col as="div">
+                    {/* <Col as="div">
                         <Link onClick={handleShowAboutUs}>
                             <Card className='homePageCard'>
-                                <Card.Img src={SobreNosotros} className="homeCardImage" />
+                                <Card.Img src={SobreNosotros} className="aboutUsPicture" />
                                 <Card.ImgOverlay className='homePageCardsMask'>
                                     <Card.Title className='homePageCardsTitle'>Sobre nosotros</Card.Title>
                                     <Card.Text className='homePageCardsText'>
@@ -146,7 +146,7 @@ function HomePage() {
                                 </Card.ImgOverlay>
                             </Card>
                         </Link>
-                    </Col>
+                    </Col> */}
 
                     <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'bottom'} className="aboutUs">
                         <Offcanvas.Header closeButton>
@@ -200,6 +200,22 @@ function HomePage() {
                             <img src={pictureExample} className="picExample" alt="Como funciona" />
                         </Offcanvas.Body>
                     </Offcanvas>
+                </Row>
+                <Row>
+                    <Col sm={5}>
+                        <Card>
+                            <Card.Title>Gonzalo</Card.Title>
+                            <Card.Body>Gonzalo es el mejor</Card.Body>
+                        </Card>
+
+                    </Col>
+                    <Col sm={2}>
+                        <img className='aboutUSnew' src={SobreNosotros} alt="" />
+                    </Col>
+                    <Col sm={5}>
+
+                    </Col>
+
                 </Row>
             </Container>
         </Container >

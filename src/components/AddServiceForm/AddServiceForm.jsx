@@ -62,9 +62,9 @@ function AddServiceForm({ fireFinalActions }) {
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="disponibility ">
+                <Form.Group className="mb-3" controlId="disponibility">
                     <Form.Label>Disponibilidad</Form.Label>
-                    <Form.Control type="text" value={disponibility} onChange={handleInputChange} name="disponibility " />
+                    <Form.Control type="text" value={disponibility} onChange={handleInputChange} name="disponibility" />
                 </Form.Group>
                 <Row>
                     <Col>
