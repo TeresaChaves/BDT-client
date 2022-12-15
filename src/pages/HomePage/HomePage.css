@@ -124,3 +124,12 @@
 .textAbUS {
     padding: 50px;
 }
+
+.homeCardTitle {
+    text-align: center;
+}
+
+.linkedInLink {
+    text-decoration: none;
+    color: #7aac92;
+}

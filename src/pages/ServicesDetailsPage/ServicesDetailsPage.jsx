@@ -49,7 +49,7 @@ function ServiceDetailsPage() {
                         <h3 className="nameDetail">{service.name}</h3>
 
                         <h4 className="descriptionDetail"> {service.description}</h4>
-                        <p>{service.owner.email}</p>
+                        <p><b><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></b></p>
 
 
 

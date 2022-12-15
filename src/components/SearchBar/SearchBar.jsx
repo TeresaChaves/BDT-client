@@ -20,7 +20,7 @@ const SearchBar = ({ services, setSearchResults }) => {
 
             < Container className='searchBar'>
                 <Stack direction="horizontal" gap={3}>
-                    <Form.Control className="me-auto search__input" placeholder="Introduce el servicio"
+                    <Form.Control className="me-auto search__input" placeholder="¿Qué necesitas?"
                         type="text"
                         id="search"
                         onChange={handleSearchChange}

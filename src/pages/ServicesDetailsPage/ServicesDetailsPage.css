@@ -36,3 +36,8 @@
     margin: 20px;
 
 }
+
+.mailToOwner {
+    text-decoration: none;
+    color: #609f80;
+}

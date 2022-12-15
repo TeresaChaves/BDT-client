@@ -41,7 +41,7 @@ function HireServiceForm({ owner, loadService, closeModal }) {
     const handleFormSubmit = e => {
         e.preventDefault()
         uploadHours
-            .updateHours(owner, hours)
+            .updateHours(owner._id, hours)
             .then(() => {
                 fireFinalActions()
 
