@@ -14,17 +14,17 @@ function AppRoutes() {
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/servicios" element={<ServicesListPage />} />
-            <Route path="/servicios/detalles/:service_id" element={<ServiceDetailsPage />} />
-            <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
-            <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
+
+            {/* <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} /> */}
             <Route path="/servicio/contratar" element={<HireServicePage />} />
             <Route path="/usuario/registro" element={<SignupPage />} />
             <Route path="/usuario/iniciar-sesion" element={<LoginPage />} />
+            <Route path="/servicios/detalles/:service_id" element={<ServiceDetailsPage />} />
+
 
             <Route element={<PrivateRoute />}>
                 <Route path="/usuario/mi-perfil" element={<Profile />} />
                 <Route path="/servicios/editar-servicio/:service_id" element={<p>EDITAR</p>} />
-                <Route path="/servicios/contratar/:service_id" element={<p>CONTRATAR</p>} />
             </Route>
 
             <Route path="/*" element={<p>404</p>} />

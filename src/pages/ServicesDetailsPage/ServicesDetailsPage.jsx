@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap"
 import servicesService from "../../services/services.service"
 import { useEffect, useState } from "react"
@@ -13,11 +13,16 @@ function ServiceDetailsPage() {
     const { service_id } = useParams()
     const [service, setService] = useState()
     const [showModal, setShowModal] = useState(false)
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    const openModal = () => setShowModal(true)
+    const openModal = () => {
+        !user
+            ? navigate("/usuario/iniciar-sesion")
+            : setShowModal(true)
+    }
     const closeModal = () => setShowModal(false)
 
-    const { user } = useContext(AuthContext)
 
     useEffect(() => {
         loadService()
@@ -29,7 +34,7 @@ function ServiceDetailsPage() {
             .then(({ data }) => setService(data))
             .catch(err => console.error(err))
     }
-
+    console.log('estara ya el owner???', service)
     // const { name, description } = service
 
     return (
@@ -41,8 +46,13 @@ function ServiceDetailsPage() {
 
 
                     <Col md={{ span: 6, offset: 1 }}>
+
                         <h3 className="nameDetail">{service.name}</h3>
+
                         <h4 className="descriptionDetail"> {service.description}</h4>
+                        <p>{service.owner.email}</p>
+
+
 
                         <hr />
 
@@ -50,40 +60,60 @@ function ServiceDetailsPage() {
                             {
                                 service.owner == user?._id
                                     ?
-                                    <>
-                                        <Button onClick={openModal} variant="dark">editar</Button>
-                                        <hr />
+                                    <><Row>
+                                        <Col>
+                                            <div className="d-grid gap-2">
+                                                <Button onClick={openModal} variant="dark">Editar</Button>
+                                            </div>
+                                        </Col>
+
 
                                         <Modal show={showModal} onHide={closeModal} >
                                             <Modal.Header closeButton>
+
                                                 <Modal.Title>Editar</Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
                                                 <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
                                             </Modal.Body>
                                         </Modal>
+                                        <Col>
 
-                                        <Link to="/">
-                                            <Button variant="dark" as="div">Volver a inicio</Button>
-                                        </Link>
+                                            <Link to="/">
+                                                <div className="d-grid gap-2">
+                                                    <Button variant="dark" as="div">Volver a inicio</Button>
+                                                </div>
+                                            </Link>
 
-                                        <hr />
+                                        </Col>
+                                    </Row>
+
                                     </>
                                     :
                                     <>
-                                        <Link to="/">
-                                            <Button variant="dark" as="div">Volver a inicio</Button>
-                                        </Link>
+                                        <Row>
+                                            <Col>
+                                                <Link to="/">
+                                                    <div className="d-grid gap-2">
+                                                        <Button variant="dark" as="div">Volver a inicio</Button>
+                                                    </div>
+                                                </Link>
+                                            </Col>
 
+                                            <Col>
+                                                <div className="d-grid gap-2">
+                                                    <Button onClick={openModal} variant="dark">Contratar</Button>
+                                                </div>
 
-                                        <Button onClick={openModal} variant="dark">Contratar</Button>
+                                                <Modal show={showModal} onHide={closeModal} >
+                                                    <Modal.Header closeButton>
+                                                        <Modal.Title className="nameServMod">Servicio</Modal.Title>
+                                                        <HireServiceForm owner={service.owner} loadService={loadService} closeModal={closeModal} />
+                                                    </Modal.Header>
+                                                </Modal>
+                                            </Col>
 
-                                        <Modal show={showModal} onHide={closeModal} >
-                                            <Modal.Header closeButton>
-                                                <Modal.Title>Servicio</Modal.Title>
-                                                <HireServiceForm owner={service.owner} loadService={loadService} closeModal={{ closeModal }} />
-                                            </Modal.Header>
-                                        </Modal>
+                                        </Row>
                                     </>
                             }
                         </Container>

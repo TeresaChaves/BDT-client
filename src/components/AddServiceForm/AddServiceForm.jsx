@@ -11,6 +11,7 @@ function AddServiceForm({ fireFinalActions }) {
         name: "",
         description: "",
         image: "",
+        disponibility: ""
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -35,7 +36,7 @@ function AddServiceForm({ fireFinalActions }) {
             })
             .catch(err => console.log(err))
     }
-    const { name, description, image, } = serviceData
+    const { name, description, image, disponibility } = serviceData
 
     const handleFormSubmit = e => {
 
@@ -60,6 +61,10 @@ function AddServiceForm({ fireFinalActions }) {
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="disponibility ">
+                    <Form.Label>Disponibilidad</Form.Label>
+                    <Form.Control type="text" value={disponibility} onChange={handleInputChange} name="disponibility " />
                 </Form.Group>
                 <Row>
                     <Col>

@@ -13,6 +13,7 @@ const PrivateRoute = () => {
     }
 
     if (!user) {
+
         return <Navigate to="/usuario/iniciar-sesion" />
     }
 

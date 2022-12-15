@@ -16,11 +16,23 @@
     border-bottom: 3px solid #609f80;
     text-transform: uppercase;
 
-
 }
 
 .descriptionDetail {
 
     margin-bottom: 2em;
     margin-top: 2em;
+}
+
+.btn-dark {
+    background-color: #4b574d;
+
+}
+
+.nameServMod {
+    display: inline;
+    border-bottom: 3px solid #609f80;
+    text-transform: uppercase;
+    margin: 20px;
+
 }

@@ -49,8 +49,13 @@ const ServicesListPage = () => {
         <>
 
             <Container>
-                <h2 className="listPageH2">Servicios</h2>
-                {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
+                <div className="title" >
+                    <h2 className="serviceDetail">Servicios</h2>
+                </div>
+
+                <div className="d-grid gap-2" >
+                    {user && <Button onClick={openModal} className="buttonCreate" variant="dark" size="sm">Crear nueva</Button>}
+                </div>
                 <SearchBar services={services} setSearchResults={setSearchResults} />
                 <SearchResults searchResults={searchResults} loadServices={loadServices} />
                 <br />

@@ -31,10 +31,10 @@ function HireServiceForm({ owner, loadService, closeModal }) {
     }
 
     const fireFinalActions = () => {
+        closeModal()
         setShowToast(true)
         setToastMessage("Has contratado el servicio")
         loadService()
-        closeModal()
     }
 
     const handleFormSubmit = e => {
@@ -45,15 +45,26 @@ function HireServiceForm({ owner, loadService, closeModal }) {
                 fireFinalActions()
 
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                closeModal()
+                setShowToast(true)
+                setToastMessage('Ha ocurrido un problema')
+            })
 
     }
 
     return (
         <div>
             <Form onSubmit={handleFormSubmit}>
-                <Form.Label>¿Cuanto tiempo necesitas?</Form.Label>
-                <p>Te quedan {availableHours} horas disponibles, estás solicitando {hours} horas</p>
+                <Row>
+
+                    <Form.Label>¿Cuanto tiempo necesitas?</Form.Label>
+                </Row>
+                <Row>
+                    <Col>
+                        <p>Te quedan {availableHours} horas disponibles, estás solicitando {hours} horas</p>
+                    </Col>
+                </Row>
                 <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" min={0} max={availableHours} />
                 <Button variant="dark" type="submit">Contratar</Button>
             </Form>

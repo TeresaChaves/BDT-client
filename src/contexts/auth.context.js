@@ -11,9 +11,11 @@ function AuthProviderWrapper(props) {
     const storeToken = (token) => {
         localStorage.setItem("authToken", token)
     }
+
     const authenticateUser = () => {
 
         const token = localStorage.getItem("authToken")
+
         if (token) {
             setisLoading(true)
             authService
@@ -22,7 +24,11 @@ function AuthProviderWrapper(props) {
                     setUser(data)
                     setisLoading(false)
                 })
-                .catch(err => console.error('algo malo paso aw :3', err))
+                .catch(err => {
+                    logoutUser()
+                })
+        } else {
+            logoutUser()
         }
     }
 

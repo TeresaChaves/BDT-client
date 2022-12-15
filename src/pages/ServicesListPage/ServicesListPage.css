@@ -1,4 +1,38 @@
-.listPageH2 {
-    margin: 50px;
-    text-align: center;
+.btn-success {
+    background-color: #4b574d;
+
+}
+
+.buttonCreate {
+    background-color: #af420a;
+
+}
+
+.serviceDetail {
+
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    position: relative;
+    text-decoration-style: solid;
+    text-decoration-color: rgb(17, 133, 65);
+    text-decoration-line: underline;
+
+}
+
+.serviceDetail::after {
+    position: absolute;
+    content: ‘’;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(24, 178, 73, 0.674);
+    max-width: 12ch;
+    margin-inline: auto;
+
+}
+
+.title {
+    margin: 20px
 }

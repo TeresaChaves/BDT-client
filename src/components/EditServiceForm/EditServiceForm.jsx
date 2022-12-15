@@ -5,12 +5,13 @@ import uploadServices from "../../services/upload.service"
 // import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
-function EditServiceForm({ _id, name, description, image, closeModal, loadService }) {
+function EditServiceForm({ _id, name, description, image, disponibility, closeModal, loadService }) {
 
     const [editServ, setEditService] = useState({
         name: name,
         description: description,
         image: image,
+        disponibility: disponibility,
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -19,6 +20,7 @@ function EditServiceForm({ _id, name, description, image, closeModal, loadServic
     const handleInputChange = e => {
         const { name, value } = e.target
         setEditService({ ...editServ, [name]: value })
+
     }
 
     const handleFileUpload = e => {
@@ -60,6 +62,10 @@ function EditServiceForm({ _id, name, description, image, closeModal, loadServic
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control type="text" value={editServ.description} onChange={handleInputChange} name="description" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="disponibility">
+                    <Form.Label>Disponibilidad</Form.Label>
+                    <Form.Control type="text" value={editServ.disponibility} onChange={handleInputChange} name="disponibility" />
                 </Form.Group>
                 <Row>
                     <Col>
