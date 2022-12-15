@@ -38,43 +38,47 @@ function HomePage() {
 
     return (
         <Container fluid className='HomePage'>
-            <Carousel as="div" className='Hero'>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 heroImage"
-                        src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/que_necesitas_vv8x3j.jpg"
-                        alt="First slide"
-                    />
-                    <Carousel.Caption >
-                        <h3 className='heroText'>¿Qué necesitas?</h3>
-                        <p className='heroText'>Elige entre los servicios que los usuarios ponen a tu disposición</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 heroImage"
-                        src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/que_ofreces_jg5ez3.jpg"
-                        alt="Second slide"
-                    />
+            <Link to={"/servicios"}>
+                <Carousel as="div" className='Hero'>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100 heroImage"
+                            src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/que_necesitas_vv8x3j.jpg"
+                            alt="First slide"
+                        />
+                        <Carousel.Caption >
+                            <h3 className='heroText'>¿Qué necesitas?</h3>
+                            <p className='heroText'>Elige entre los servicios que los usuarios ponen a tu disposición</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100 heroImage"
+                            src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/que_ofreces_jg5ez3.jpg"
+                            alt="Second slide"
+                        />
 
-                    <Carousel.Caption>
-                        <h3 className='heroText'>¿Qué ofreces?</h3>
-                        <p className='heroText'>Pon tus habilidades a disposición de tu comunidad</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 heroImage"
-                        src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/comparte_misvfo.jpg"
-                        alt="Third slide"
-                    />
+                        <Carousel.Caption>
+                            <h3 className='heroText'>¿Qué ofreces?</h3>
+                            <p className='heroText'>Pon tus habilidades a disposición de tu comunidad</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100 heroImage"
+                            src="https://res.cloudinary.com/dlt2cjtvj/image/upload/v1671033332/comparte_misvfo.jpg"
+                            alt="Third slide"
+                        />
 
-                    <Carousel.Caption>
-                        <h3 className='heroText'>¡Comparte!</h3>
-                        <p className='heroText'>Participa en una economía colavoratiba basada en el tiempo</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
+                        <Carousel.Caption>
+                            <h3 className='heroText'>¡Comparte!</h3>
+                            <p className='heroText'>Participa en una economía colavoratiba basada en el tiempo</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
+
+            </Link>
+
 
 
             <Container>
@@ -202,22 +206,30 @@ function HomePage() {
                     </Offcanvas>
                 </Row>
                 <Row>
-                    <Col sm={5}>
+                    <Col md={5}>
                         <Card>
-                            <Card.Title>Gonzalo</Card.Title>
-                            <Card.Body>Gonzalo es el mejor</Card.Body>
+                            <a className='linkedInLink' href="https://www.linkedin.com/in/gonzalo-garcia-corrales-fullstack-web-developer/">
+                                <Card.Title className='homeCardTitle'>Gonzalo García</Card.Title>
+                            </a>
                         </Card>
 
                     </Col>
-                    <Col sm={2}>
+                    <Col md={2}>
                         <img className='aboutUSnew' src={SobreNosotros} alt="" />
                     </Col>
-                    <Col sm={5}>
+                    <Col md={5}>
 
+                        <Card>
+                            <a className='linkedInLink' href="https://www.linkedin.com/in/teresachavesmaza/">
+
+                                <Card.Title className='homeCardTitle'>Teresa Chaves</Card.Title>
+                            </a>
+                        </Card>
                     </Col>
 
                 </Row>
             </Container>
+
         </Container >
     )
 }

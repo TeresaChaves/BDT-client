@@ -12,10 +12,10 @@ function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
     return (
 
-        <Navbar className='navBar' sticky="top" expand="sm">
+        <Navbar className='navBar' sticky="top" expand="sm" >
             <Container>
-                <Link className='navLink' to="/">
-                    <Navbar.Brand href="/" className='nav-link'>
+                <Link to="/">
+                    <Navbar.Brand className='nav-link'>
                         <img
                             src={logo}
                             width="30"
@@ -36,8 +36,13 @@ function NavBar() {
 
                         {user ?
                             <>
-                                <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
+                                <Link to="/usuario/mi-perfil">
+                                    <Nav.Link as="div">Mi perfil</Nav.Link>
+                                </Link>
+                                <Link onClick={logoutUser}>
 
+                                    <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
+                                </Link>
 
                             </>
                             :
@@ -52,9 +57,7 @@ function NavBar() {
 
                             </>
                         }
-                        <Link to="/usuario/mi-perfil">
-                            <Nav.Link as="div">Mi perfil</Nav.Link>
-                        </Link>
+
                         <Nav.Link as="div" className='greeting'>Hola {!user ? 'invitad@' : user.username}</Nav.Link>
 
                     </Nav>

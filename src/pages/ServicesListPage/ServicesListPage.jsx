@@ -54,7 +54,7 @@ const ServicesListPage = () => {
                 </div>
 
                 <div className="d-grid gap-2" >
-                    {user && <Button onClick={openModal} className="buttonCreate" variant="dark" size="sm">Crear nueva</Button>}
+                    {user && <Button onClick={openModal} className="buttonCreate" variant="dark" size="sm">Da de alta tu servicio</Button>}
                 </div>
                 <SearchBar services={services} setSearchResults={setSearchResults} />
                 <SearchResults searchResults={searchResults} loadServices={loadServices} />

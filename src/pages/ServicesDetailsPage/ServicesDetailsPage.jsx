@@ -49,7 +49,7 @@ function ServiceDetailsPage() {
                         <h3 className="nameDetail">{service.name}</h3>
 
                         <h4 className="descriptionDetail"> {service.description}</h4>
-                        <p>{service.owner.email}</p>
+                        <p><b><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></b></p>
 
 
 
@@ -59,33 +59,34 @@ function ServiceDetailsPage() {
                             {
                                 service.owner == user?._id
                                     ?
-                                    <><Row>
-                                        <Col>
-                                            <div className="d-grid gap-2">
-                                                <Button onClick={openModal} variant="dark">Editar</Button>
-                                            </div>
-                                        </Col>
-
-
-                                        <Modal show={showModal} onHide={closeModal} >
-                                            <Modal.Header closeButton>
-
-                                                <Modal.Title>Editar</Modal.Title>
-                                            </Modal.Header>
-                                            <Modal.Body>
-                                                <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
-                                            </Modal.Body>
-                                        </Modal>
-                                        <Col>
-
-                                            <Link to="/">
+                                    <>
+                                        <Row>
+                                            <Col>
                                                 <div className="d-grid gap-2">
-                                                    <Button variant="dark" as="div">Volver a inicio</Button>
+                                                    <Button onClick={openModal} variant="dark">Editar</Button>
                                                 </div>
-                                            </Link>
+                                            </Col>
 
-                                        </Col>
-                                    </Row>
+
+                                            <Modal show={showModal} onHide={closeModal} >
+                                                <Modal.Header closeButton>
+
+                                                    <Modal.Title>Editar</Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
+                                                </Modal.Body>
+                                            </Modal>
+                                            <Col>
+
+                                                <Link to="/">
+                                                    <div className="d-grid gap-2">
+                                                        <Button variant="dark" as="div">Volver a inicio</Button>
+                                                    </div>
+                                                </Link>
+
+                                            </Col>
+                                        </Row>
 
                                     </>
                                     :
