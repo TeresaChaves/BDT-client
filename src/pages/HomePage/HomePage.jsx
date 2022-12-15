@@ -38,7 +38,7 @@ function HomePage() {
 
     return (
         <Container fluid className='HomePage'>
-            <Carousel activeIndex={index} onSelect={handleSelect} as="div" className='Hero' showcontrols variant='dark'>
+            <Carousel as="div" className='Hero'>
                 <Carousel.Item>
                     <img
                         className="d-block w-100 heroImage"
@@ -76,13 +76,12 @@ function HomePage() {
                 </Carousel.Item>
             </Carousel>
 
-            <br />
 
             <Container>
                 <Row className='row'>
                     <Col as="div">
                         <Link onClick={handleShowHistory}>
-                            <Card className="bg-dark text-white mb-4 ">
+                            <Card className='homePageCard'>
                                 <Card.Img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' />
                                 <Card.ImgOverlay className='homePageCardsMask'>
                                     <Card.Title className='homePageCardsTitle'>Historia del movimiento</Card.Title>
@@ -99,37 +98,54 @@ function HomePage() {
                             <Offcanvas.Title>Todo empezó...</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <p className='offcanvasText'>What is Lorem Ipsum?
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            <p className='offcanvasText'>
+                                <p>
+                                    Aunque los antecedentes de los primeros intercambios sin mediación económica se remontan al origen mismo de la especie, tenemos algunos ejemplos más modernos de la aplicación de esta idea.
+                                </p>
+                                <p>
+                                    Encontramos ejemplos de economía colaborativa en momentos históricos tan dispares como la <b>Comuna de París</b> , el <b> Cantón de Cartagena</b> , o las agrupaciones guerrilleras de corte libertario del <b>valle de Arán</b>  a principios del siglo XX.
+                                </p>
+                                <p>
+                                    Sin embargo la inspiración fundamental parte de los postulados de <b>Josiah Warren</b>  en Cincinnati a principios del s. XIX, ciudad en la que se fundaron los primeros bancos de tiempo modernos.
+                                </p>
+                                <figure>
+                                    <img src={Josiah} className="Josiah" alt="Josiah Warren" />
+                                    <figcaption className='figcaption'>Josiah Warren</figcaption>
+                                </figure>
+                                <p>
+                                    Pese a que los bancos de tiempo son una forma de organización ampliamente extendida entre asociaciones modernas, hasta donde sabemos, no ha habido muchos intentos de digitalizar el sistema.
+                                </p>
+                                <figure>
+                                    <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className="Josiah" alt="Josiah Warren" />
+                                    <figcaption className='figcaption'>Primer billete de 2 horas del banco de tiempo de Cincinnati</figcaption>
+                                </figure>
+
+                                <p>
+                                    Así nace TimeShare, aplicando a las experiencias exitosas del pasado la tecnología de vanguardia para mejorar la vida de las sociedades modernas.
+                                </p>
                             </p>
-                            <figure>
-                                <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Truck_system_of_payment_by_order_of_Robert_Owen_and_Benj_Woolfield%2C_July_22nd_1833_%281294620%29.jpg' className="Josiah" alt="Josiah Warren" />
-                                <figcaption className='figcaption'>Primer billete de 2 horas</figcaption>
-                            </figure>
-                            <p>
-                                Why do we use it?
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                            </p>
-                            <figure>
-                                <img src={Josiah} className="Josiah" alt="Josiah Warren" />
-                                <figcaption className='figcaption'>Josiah Warren</figcaption>
-                            </figure>
+
+
+
+
+
 
                         </Offcanvas.Body>
                     </Offcanvas>
 
 
                     <Col as="div">
-                        {/* <div className='bg-image'>
-                            <img src={SobreNosotros} className='w-50' alt='Sample' />
-                            <div className='mask'>
-                                <div className='d-flex justify-content-center align-items-center h-100'>
-                                    <Button variant="primary" onClick={handleShowAboutUs}>
-                                        ¿Quienes somos?
-                                    </Button>
-                                </div>
-                            </div>
-                        </div> */}
+                        <Link onClick={handleShowAboutUs}>
+                            <Card className='homePageCard'>
+                                <Card.Img src={SobreNosotros} className="homeCardImage" />
+                                <Card.ImgOverlay className='homePageCardsMask'>
+                                    <Card.Title className='homePageCardsTitle'>Sobre nosotros</Card.Title>
+                                    <Card.Text className='homePageCardsText'>
+                                        Acerca de los creadores
+                                    </Card.Text>
+                                </Card.ImgOverlay>
+                            </Card>
+                        </Link>
                     </Col>
 
                     <Offcanvas show={showAboutUs} onHide={handleCloseAboutUs} placement={'bottom'} className="aboutUs">
@@ -138,13 +154,24 @@ function HomePage() {
 
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <p>Prueba</p>
                             <Row>
-                                <Col>
+                                <Col sm={{ span: 2 }}>
+                                    <h5>Gonzalo García</h5>
                                     <img src={Gon} className="profilePictures" />
                                 </Col>
                                 <Col>
+                                    <p className='aboutUsDescription'>
+                                        Apasionado de la filosofía y las ciencias políticas, Gonzalo siempre está intentando aportar a su comunidad creando nuevas formas de organización social más justas y eficientes.
+                                    </p>
+                                </Col>
+                                <Col sm={{ span: 2 }}>
+                                    <h5>Teresa Chaves</h5>
                                     <img src="https://d1hbpr09pwz0sk.cloudfront.net/profile_pic/teresa-chaves-maza-341494be.jpg" className="profilePictures" />
+                                </Col>
+                                <Col>
+                                    <p>
+                                        Texto de descripción
+                                    </p>
                                 </Col>
                             </Row>
                         </Offcanvas.Body>
@@ -152,9 +179,8 @@ function HomePage() {
 
 
                     <Col as="div">
-
                         <Link onClick={handleShowHowitWorks}>
-                            <Card className="bg-dark text-white mb-4">
+                            <Card className='homePageCard'>
                                 <Card.Img src='https://images.unsplash.com/photo-1575197478864-c83e1d2a4443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80' />
                                 <Card.ImgOverlay className='homePageCardsMask'>
                                     <Card.Title className='homePageCardsTitle'>¿Cómo funciona el banco?</Card.Title>
@@ -172,12 +198,11 @@ function HomePage() {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <img src={pictureExample} className="picExample" alt="Como funciona" />
-
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Row>
             </Container>
-        </Container>
+        </Container >
     )
 }
 

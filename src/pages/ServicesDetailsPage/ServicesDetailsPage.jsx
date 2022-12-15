@@ -39,7 +39,6 @@ function ServiceDetailsPage() {
                 :
                 <Row className="detailMargin">
 
-
                     <Col md={{ span: 6, offset: 1 }}>
                         <h3 className="nameDetail">{service.name}</h3>
                         <h4 className="descriptionDetail"> {service.description}</h4>
@@ -91,8 +90,6 @@ function ServiceDetailsPage() {
                     <Col md={{ span: 4 }}>
                         <img className="detailPhoto" src={service.image} style={{ width: '100%' }} />
                     </Col>
-
-
 
                 </Row>
             }

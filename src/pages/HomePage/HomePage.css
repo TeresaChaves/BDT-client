@@ -1,7 +1,15 @@
 .HomePage {
     margin: 0%;
     padding: 0%;
+}
 
+.Hero {
+    height: 400px;
+}
+
+.heroImage {
+    height: 350px;
+    object-fit: cover;
 }
 
 .heroText {
@@ -25,23 +33,6 @@
     font-size: smaller;
 }
 
-
-.Hero {
-    height: 400px;
-
-}
-
-.heroImage {
-    height: 350px;
-    object-fit: cover;
-    opacity: 80%;
-    mask-image: (250px at 40% 50%, black 75%, transparent 76%);
-}
-
-.bg-image {
-    object-fit: cover;
-
-}
 
 .picExample {
     max-width: 367px;
@@ -74,4 +65,22 @@
 
 .offcanvasText {
     padding: 10px;
+}
+
+
+.offcanvas {
+    --bs-offcanvas-height: 55vh;
+}
+
+.homeCardImage {
+    object-fit: cover;
+}
+
+.aboutUsDescription {
+    margin: 0%;
+    text-align: left;
+}
+
+.homePageCard {
+    max-height: 500px;
 }

@@ -21,7 +21,7 @@ function HireServiceForm({ owner, loadService, closeModal }) {
 
     useEffect(() => {
         uploadHours
-            .getAvailableHours(user._id)
+            .getAvailableHours(user?._id)
             .then(({ data }) => setAvailableHours(data))
             .catch(err => console.log(err))
     }, [])
