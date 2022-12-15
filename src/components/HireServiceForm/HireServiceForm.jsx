@@ -7,6 +7,7 @@ import uploadHours from "../../services/hours.service"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import { MessageContext } from '../../contexts/userMessage.context'
+import './HireServiceForm.css'
 
 
 
@@ -31,10 +32,10 @@ function HireServiceForm({ owner, loadService, closeModal }) {
     }
 
     const fireFinalActions = () => {
-        closeModal()
         setShowToast(true)
         setToastMessage("Has contratado el servicio")
         loadService()
+        closeModal()
     }
 
     const handleFormSubmit = e => {
@@ -45,7 +46,8 @@ function HireServiceForm({ owner, loadService, closeModal }) {
                 fireFinalActions()
 
             })
-            .catch(err => {
+            .catch(res => {
+                console.log(res)
                 closeModal()
                 setShowToast(true)
                 setToastMessage('Ha ocurrido un problema')
@@ -62,11 +64,18 @@ function HireServiceForm({ owner, loadService, closeModal }) {
                 </Row>
                 <Row>
                     <Col>
-                        <p>Te quedan {availableHours} horas disponibles, estás solicitando {hours} horas</p>
+                        <h5>Te quedan {availableHours} horas</h5>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h5> Estás solicitando {hours} horas</h5>
                     </Col>
                 </Row>
                 <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" min={0} max={availableHours} />
-                <Button variant="dark" type="submit">Contratar</Button>
+                <div className="buttonContract">
+                    <Button variant="dark" type="submit">Contratar</Button>
+                </div>
             </Form>
         </div>
 

@@ -26,7 +26,8 @@ class UploadHours {
     }
 
     updateHours(owner, bankAccountTime) {
-        return this.api.put(`/update-hours/${owner}`, { hours: bankAccountTime })
+        console.log('que eres tu guapeton????', owner)
+        return this.api.put(`/update-hours/${owner._id}`, { hours: bankAccountTime })
     }
 
 

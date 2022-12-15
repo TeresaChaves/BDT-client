@@ -50,25 +50,31 @@ function ProfilePage() {
 
             <Container>
                 <Row className='profileRow'>
-                    <Col xxl={{ span: 4 }} className='profileCol'>
+                    <Col sm={3} className='profileCol'>
+                        <h2 className="userName">{user.username} </h2>
                         <img src={user.avatar} className="avatar" />
                     </Col>
-
-                    <Col xxl={{ span: 8 }} className='profileCol'>
-                        <h2 className="userName">{user.username} </h2>
-                        <div className='hoursBalance'>
-
-                            <h2>Tu saldo es:</h2>
-                            <h3>{user.bankAccountTime} horas</h3>
-                        </div>
+                    <Col>
+                        <h5 className='textYourAccount'>Saldo:</h5>
+                        <h1 className='numberProf'>{user.bankAccountTime} horas</h1>
                     </Col>
+
+                    <Col className='profileCol'>
+                    </Col>
+                    <Row className='cardMarg'>
+                        <Col sm={3} >
+                        </Col>
+                        <Col className='profCOl'>
+                            {user && <Button onClick={openModal} variant="success" size="sm" className='newServiceButton'>Crear nuevo servicio</Button>}
+                            <h5 className="texServOffer">Servicios que ofreces</h5>
+                            <ProfileServices profileServices={profileServices} />
+                        </Col>
+                    </Row>
                 </Row>
                 <Row>
 
-                    <h2>Servicios que ofreces</h2>
 
-                    {user && <Button onClick={openModal} variant="success" size="sm" className='newServiceButton'>Crear nuevo servicio</Button>}
-                    <ProfileServices profileServices={profileServices} />
+
                 </Row>
             </Container >
 

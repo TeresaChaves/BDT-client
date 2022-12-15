@@ -1,16 +1,15 @@
 .avatar {
-    max-width: 300px;
+    max-width: 180px;
     border-radius: 50%;
-    border-color: black;
+    border-color: rgb(158, 113, 113);
     border-style: solid;
     border-radius: 0 10px 20px;
     box-shadow: 10px 10px 5px;
-    margin: 20px;
+    margin-top: 20px;
 }
 
 .userName {
     margin: 20px;
-    text-align: center;
     border-bottom: 3px solid #609f80;
     display: inline;
     text-transform: uppercase;
@@ -18,26 +17,65 @@
 
 .newServiceButton {
     margin: 20px;
+    size: 10em;
 }
 
 .profileRow {
-    margin: 40px;
-    justify-content: center;
-    align-items: center;
+    margin: 25px;
+    display: flex;
+    align-items: flex-start;
 }
 
-
+/* 
 .profileCol {
     justify-content: center;
     justify-items: center;
 
-}
+} */
 
-.hoursBalance {
+
+/* .hoursBalance {
     margin: 20px;
     padding: 40px;
     border-radius: 20px;
     background-color: #7aac92;
     text-align: center;
     max-width: 400px;
+} */
+
+.textYourAccount {
+    margin-top: 40px;
+
+}
+
+.numberProf {
+    border: solid #609c7d;
+    border-radius: 4px;
+    text-align: center;
+
+
+    box-shadow: inset 0 0 0 0 #609c7d;
+    color: #609c7d;
+    padding: 0 .25rem;
+    margin: 0 -.25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+
+}
+
+.numberProf:hover {
+    color: #fff;
+    box-shadow: inset 200px 0 0 0 #609c7d;
+}
+
+
+.profCOl {
+    padding: 0;
+}
+
+.newServiceButton {
+    margin-right: 10px;
+}
+
+.cardMarg {
+    margin: 0;
 }
