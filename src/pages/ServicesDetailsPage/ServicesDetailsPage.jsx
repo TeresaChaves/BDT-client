@@ -74,7 +74,7 @@ function ServiceDetailsPage() {
                         </div>
 
 
-                        <span className="descriptionDetail">Disponibilidad: </span> <span className="descriptionDetail2">{service.disponibility}</span>
+                        <span className="descriptionDetail">Disponibilidad:</span> <span className="descriptionDetail2">{service.disponibility}</span>
                         <div className="mail">
                             <h4><b><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></b></h4>
                         </div>
