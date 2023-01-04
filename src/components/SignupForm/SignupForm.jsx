@@ -94,7 +94,7 @@ const SignupForm = () => {
 
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : "Registrar"}</Button>
+                <button className="btn2" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : "Registrar"}</button>
             </div>
 
 

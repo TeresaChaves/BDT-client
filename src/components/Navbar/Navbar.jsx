@@ -22,8 +22,10 @@ function NavBar() {
                             height="30"
                             className="d-inline-block align-top mt-1 me-1 "
                             alt="React Bootstrap logo"
+
                         />
-                        TimeShare
+                        <span className="nameNav">TimeShare</span>
+
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

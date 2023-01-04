@@ -1,53 +1,3 @@
-.avatar {
-    max-width: 180px;
-    border-radius: 50%;
-    border-color: rgb(158, 113, 113);
-    border-style: solid;
-    border-radius: 0 10px 20px;
-    box-shadow: 10px 10px 5px;
-    margin-top: 20px;
-}
-
-.userName {
-    margin: 20px;
-    border-bottom: 3px solid #609f80;
-    display: inline;
-    text-transform: uppercase;
-}
-
-.newServiceButton {
-    margin: 20px;
-    size: 10em;
-}
-
-.profileRow {
-    margin: 25px;
-    display: flex;
-    align-items: flex-start;
-}
-
-/* 
-.profileCol {
-    justify-content: center;
-    justify-items: center;
-
-} */
-
-
-/* .hoursBalance {
-    margin: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    background-color: #7aac92;
-    text-align: center;
-    max-width: 400px;
-} */
-
-.textYourAccount {
-    margin-top: 40px;
-
-}
-
 .numberProf {
     border: solid #609c7d;
     border-radius: 4px;
@@ -67,15 +17,176 @@
     box-shadow: inset 200px 0 0 0 #609c7d;
 }
 
-
-.profCOl {
-    padding: 0;
+.container4 {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
 }
 
-.newServiceButton {
-    margin-right: 10px;
+
+.avatar {
+    max-width: 120px;
+    border-radius: 50%;
+    border-radius: 0 10px 20px;
+    box-shadow: 10px 10px 5px;
+    margin-right: 20px;
 }
 
-.cardMarg {
-    margin: 0;
+
+.btn3 {
+    --color: #377079;
+    --color2: rgb(10, 25, 30);
+    padding: 0.8em 1.75em;
+    background-color: transparent;
+    border-radius: 6px;
+    border: .3px solid var(--color);
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 300;
+    font-size: 17px;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    color: var(--color);
+    margin: 15px;
+    align-items: center;
+    display: flex;
+
+}
+
+.btn3::after,
+.btn3::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: .5s ease-out;
+    background-color: var(--color);
+}
+
+.btn3::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn3:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn3:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn3:hover {
+    color: var(--color2);
+}
+
+.btn3:active {
+    filter: brightness(.7);
+    transform: scale(.98);
+}
+
+
+.scene {
+    width: 10em;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube {
+    color: #ccc;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.85s cubic-bezier(.17, .67, .14, .93);
+    transform-style: preserve-3d;
+    transform-origin: 100% 50%;
+    width: 10em;
+    height: 4em;
+}
+
+.cube:hover {
+    transform: rotateX(-90deg);
+}
+
+.side {
+    box-sizing: border-box;
+    position: absolute;
+    display: inline-block;
+    height: 4em;
+    width: 10em;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 1.5em;
+    font-weight: bold;
+
+}
+
+.top {
+    background: wheat;
+    color: #222229;
+    transform: rotateX(90deg) translate3d(0, 0, 2em);
+    box-shadow: inset 0 0 0 5px #fff;
+
+}
+
+
+.front {
+    background: #377079;
+    color: #fff;
+    box-shadow: inset 0 0 0 3px #fff;
+    transform: translate3d(0, 0, 2em);
+}
+
+.container5 {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+
+.span2 {
+
+    font-size: 1.25em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(rgb(198, 198, 196), rgb(252, 254, 255));
+    color: #377079;
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    transition: background-size .7s, background-position .5s ease-in-out;
+    margin: 20px;
+
+}
+
+.span2:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+.yourService {
+    margin-top: 50px;
+}
+
+.col-sm-6 {
+    margin-top: 60px;
 }

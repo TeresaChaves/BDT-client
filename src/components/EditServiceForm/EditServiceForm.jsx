@@ -77,7 +77,7 @@ function EditServiceForm({ _id, name, description, image, disponibility, closeMo
                 </Row>
                 {/* {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined} */}
                 <div className="d-grid">
-                    <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Editar servicio'}</Button>
+                    <button className="btn4" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Editar servicio'}</button>
                 </div>
 
             </Form>

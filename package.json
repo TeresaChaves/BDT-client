@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@remotion/lottie": "^3.3.25",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/react-router": "^5.1.20",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
+    "lottie-web": "^5.10.1",
     "react": "^18.2.0",
+    "react-bodymovin": "^2.0.0",
     "react-bootstrap": "^2.6.0",
     "react-bootstrap-range-slider": "^3.0.8",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
+    "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

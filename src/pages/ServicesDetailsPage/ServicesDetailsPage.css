@@ -1,14 +1,11 @@
 .detailPhoto {
 
     border-radius: 0 10px 20px;
-    box-shadow: 10px 10px 5px
+    box-shadow: 10px 10px 5px;
+    max-width: 175px;
+    max-height: 200px;
 }
 
-.detailMargin {
-
-    margin-top: 100px;
-
-}
 
 .nameDetail {
 
@@ -18,8 +15,10 @@
 
 }
 
-
-
+.card-img-top {
+    max-width: 250px;
+    max-height: 100px;
+}
 
 
 .btn-dark {
@@ -77,4 +76,146 @@
 .descriptionbox {
     margin-bottom: 20px;
 
+}
+
+
+.container6 {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.flip-card {
+    background-color: transparent;
+    width: 240px;
+    height: 254px;
+    perspective: 1000px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title3 {
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px;
+    color: aliceblue
+}
+
+.cardName {
+    color: white;
+
+}
+
+
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 1rem;
+}
+
+.flip-card-front {
+    background-color: #24596a;
+}
+
+.flip-card-back {
+    background-color: #173944;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.profileCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.btn4 {
+    --color: #377079;
+    --color2: rgb(7, 17, 20);
+    padding: 0.8em 1.75em;
+    background-color: transparent;
+    border-radius: 6px;
+    border: .3px solid var(--color);
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 300;
+    font-size: 17px;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    color: var(--color);
+    margin: 15px
+}
+
+.btn4::after,
+.btn4::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: .5s ease-out;
+    background-color: var(--color);
+}
+
+.btn4::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn4:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn4:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn4:hover {
+    color: var(--color2);
+}
+
+.btn4:active {
+    filter: brightness(.7);
+    transform: scale(.98);
 }

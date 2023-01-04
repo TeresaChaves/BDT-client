@@ -74,9 +74,7 @@ function HireServiceForm({ owner, loadService, closeModal }) {
                     </Col>
                 </Row>
                 <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" min={0} max={availableHours} />
-                <div className="buttonContract">
-                    <Button variant="dark" type="submit">Contratar</Button>
-                </div>
+                <button className="btn2" type="submit">Contratar</button>
             </Form>
         </div>
 

@@ -7,12 +7,19 @@
 }
 
 .navBar {
-    background-color: #609c7dd5;
+    background-color: #24596a;
+    opacity: 0.7;
     color: white;
 }
 
 .nav-link {
     text-decoration: none;
-    color: white;
+    color: #ffebee;
+
+
+}
+
+.nameNav {
+    color: #79b1c0;
 
 }

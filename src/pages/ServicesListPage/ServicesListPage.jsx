@@ -49,12 +49,18 @@ const ServicesListPage = () => {
         <>
 
             <Container>
-                <div className="title" >
-                    <h2 className="serviceDetail">Servicios</h2>
-                </div>
 
-                <div className="d-grid gap-2" >
-                    {user && <Button onClick={openModal} className="buttonCreate" variant="dark" size="sm">Da de alta tu servicio</Button>}
+                <div className="container3"> <a href="#" class="button">
+                    <div className="button__line"></div>
+                    <div className="button__line"></div> <span class="button__text">SERVICIOS</span>
+                    <div className="button__drow1"></div>
+                    <div className="button__drow2"></div>
+                </a>
+                    {/* <LottieComp /> */}
+                    <div  >
+                        {user && <button className="btn2" onClick={openModal} >Da de alta tu servicio</button>}
+
+                    </div>
                 </div>
                 <SearchBar services={services} setSearchResults={setSearchResults} />
                 <SearchResults searchResults={searchResults} loadServices={loadServices} />

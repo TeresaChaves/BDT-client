@@ -6,7 +6,7 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from "../../contexts/auth.context"
 import servicesService from '../../services/services.service'
 
-function ServiceCard({ name, image, _id, owner, loadServices }) {
+function ServiceCard({ name, image, _id, owner, loadServices, description }) {
 
 
     const delOneServcice = () => {
@@ -22,10 +22,13 @@ function ServiceCard({ name, image, _id, owner, loadServices }) {
 
 
     return (
+
+
+
+
         <Card className="mb-4 ServiceCard">
             <Card.Img variant="top" src={image} />
             <Card.Body>
-                <Card.Title>{name}</Card.Title>
                 <div className='d-grid'>
                     {
                         user?.role === 'ADMIN'
@@ -42,18 +45,18 @@ function ServiceCard({ name, image, _id, owner, loadServices }) {
                                 <>
                                     <Link to={`/servicios/detalles/${_id}`}>
                                         <div className='d-grid'>
-                                            <Button variant="success" size="sm">Ver detalles</Button>
+                                            <Button variant="success" size="sm">{name}</Button>
                                         </div>
                                     </Link>
                                 </>
                             </>
                             :
                             <>
+                                {name}
 
                                 <Link to={`/servicios/detalles/${_id}`}>
-                                    <div className='d-grid'>
-                                        <Button variant="success" size="sm">Ver detalles</Button>
-                                    </div>
+
+                                    <button class="card-button">Detalles</button>
                                 </Link>
                             </>
                     }

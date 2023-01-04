@@ -11,7 +11,7 @@ function SearchResultsPages({ searchResults, loadServices }) {
                 <Row>
                     {searchResults.map(elm => {
                         return (
-                            <Col sm={{ span: 4 }} key={elm._id} >
+                            <Col sm={{ span: 3 }} key={elm._id} >
                                 <ServiceCard {...elm} searchResults={searchResults} loadServices={loadServices} />
                             </Col>
                         )

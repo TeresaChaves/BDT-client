@@ -65,7 +65,7 @@ const LoginForm = () => {
 
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Acceder</Button>
+                <button className="btn2" type="submit">Acceder</button>
             </div>
 
         </Form>
