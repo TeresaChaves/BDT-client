@@ -163,7 +163,7 @@
 .span2 {
 
     font-size: 1.25em;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -185,8 +185,4 @@
 
 .yourService {
     margin-top: 50px;
-}
-
-.col-sm-6 {
-    margin-top: 60px;
 }

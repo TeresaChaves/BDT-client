@@ -65,10 +65,7 @@ const ServicesListPage = () => {
                 <SearchBar services={services} setSearchResults={setSearchResults} />
                 <SearchResults searchResults={searchResults} loadServices={loadServices} />
                 <br />
-                <hr />
-                <Link to="/">
-                    <Button variant="dark" as="div">Volver a inicio</Button>
-                </Link>
+
             </Container>
             <hr />
 

@@ -45,7 +45,7 @@ function ServiceCard({ name, image, _id, owner, loadServices, description }) {
                                 <>
                                     <Link to={`/servicios/detalles/${_id}`}>
                                         <div className='d-grid'>
-                                            <Button variant="success" size="sm">{name}</Button>
+                                            <button className="card-button" size="sm">{name}</button>
                                         </div>
                                     </Link>
                                 </>

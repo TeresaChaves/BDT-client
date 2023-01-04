@@ -70,23 +70,23 @@ function ProfilePage() {
                             </div>
                         </div>
                     </div>
-
-
-
-
+                </Row>
+                <Row>
                     <div className="span2">Tus servicios</div>
-
                     <div>
                         <ProfileServices className="yourService" profileServices={profileServices} />
                     </div>
-
-
-
-
-
-
-
                 </Row>
+
+
+
+
+
+
+
+
+
+
             </Container >
 
             <Modal show={showModal} onHide={closeModal} >

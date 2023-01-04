@@ -160,6 +160,11 @@ function HomePage() {
                 <Row className="UsNew">
 
 
+
+
+
+
+
                     <div class="card2">
                         <a href="https://www.linkedin.com/in/gonzalo-garcia-corrales-fullstack-web-developer/">
                             <p><span>gonzalo garcía</span></p>
