@@ -158,3 +158,36 @@ a:hover {
     padding: 0px;
     margin: 0px;
 }
+
+
+
+
+.button10 {
+    position: relative;
+    font-weight: 600;
+    height: 40px;
+    padding: 12px 20px;
+    outline: none;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: transparent;
+    border-radius: 5px;
+    color: #173a45;
+}
+
+.button10:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 7px;
+    left: 7px;
+    height: 100%;
+    background-color: #57aab7;
+    z-index: -1;
+    transition: all 0.35s;
+    border-radius: inherit;
+}
+
+.button10:hover:after {
+    top: 0px;
+    left: 0px;
+}

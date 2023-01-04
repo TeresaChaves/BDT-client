@@ -56,7 +56,7 @@ function ServiceCard({ name, image, _id, owner, loadServices, description }) {
 
                                 <Link to={`/servicios/detalles/${_id}`}>
 
-                                    <button class="card-button">Detalles</button>
+                                    <button className="button10">Contratar</button>
                                 </Link>
                             </>
                     }
