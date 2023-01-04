@@ -403,16 +403,16 @@ body {
 }
 
 
-
-
-
 .card2 {
-    width: 350px;
-    height: 254px;
+    width: 250px;
+    height: 554px;
     border-radius: 4px;
     display: flex;
     gap: 5px;
     padding: .4em;
+    margin: 0 auto;
+    height: 370px;
+    border-radius: 3px;
 }
 
 .card2 a p {
@@ -439,6 +439,7 @@ body {
     transition: all .5s;
     text-transform: uppercase;
     color: #cd7a06;
+    text-shadow: #17494D;
 }
 
 .card2 a p:hover span {
@@ -452,12 +453,6 @@ body {
 
 }
 
-.UsNew {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .ExampleOrigin {
     display: flex;
@@ -466,6 +461,10 @@ body {
     padding: 20px;
     margin: 10px;
 }
+
+
+
+
 
 .lottieDim {
     max-height: 70px;

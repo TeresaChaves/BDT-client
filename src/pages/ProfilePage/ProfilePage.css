@@ -173,7 +173,7 @@
     background-repeat: no-repeat;
     background-position: 100% 0%;
     transition: background-size .7s, background-position .5s ease-in-out;
-    margin: 20px;
+    margin-top: 50px;
 
 }
 

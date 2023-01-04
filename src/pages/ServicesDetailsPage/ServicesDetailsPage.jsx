@@ -89,67 +89,79 @@ function ServiceDetailsPage() {
                                     <p>{service.description}</p>
                                     <p class="title3">DISPONIBILIDAD</p>
                                     <p>{service.disponibility}</p>
-                                    <div className="mail">
-                                        <h4><b><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></b></h4>
 
-                                        <Container>
-                                            {
-                                                service.owner._id == user?._id
-                                                    ?
-                                                    <>
-                                                        <Row>
-                                                            <Col>
-                                                                <div className="d-grid gap-2">
-                                                                    <button onClick={openModal} className="btn4">Editar</button>
-                                                                </div>
-                                                            </Col>
 
-                                                            <Modal show={showModal} onHide={closeModal} >
-                                                                <Modal.Header closeButton>
 
-                                                                    <Modal.Title>Editar</Modal.Title>
-                                                                </Modal.Header>
-                                                                <Modal.Body>
-                                                                    <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
-                                                                </Modal.Body>
-                                                            </Modal>
-                                                            <Col>
-                                                                <div className="d-grid">
-                                                                    <Link to="/">
-                                                                        <button className="btn4" onClick={delOneServcice}>Eliminar</button >
-                                                                    </Link>
-                                                                </div>
+                                    <Row>
+                                        <div className="mail">
+                                            <h4><a className="mailToOwner" href={`mailto:${service.owner.email}`}>Email</a></h4>
 
-                                                            </Col>
-                                                        </Row>
-
-                                                    </>
-                                                    :
-                                                    <>
-
-                                                        <Row>
-                                                            <Col>
-                                                                <div className="d-grid gap-2">
-                                                                    <button onClick={openModal} className="btn4">Contratar</button >
-                                                                </div>
+                                            <Container>
+                                                {
+                                                    service.owner._id == user?._id
+                                                        ?
+                                                        <>
+                                                            <Row>
+                                                                <Col>
+                                                                    <div className="d-grid gap-2">
+                                                                        <button onClick={openModal} className="btn4">Editar</button>
+                                                                    </div>
+                                                                </Col>
 
                                                                 <Modal show={showModal} onHide={closeModal} >
                                                                     <Modal.Header closeButton>
-                                                                        <Modal.Title className="nameServMod">Servicio</Modal.Title>
-                                                                        <HireServiceForm owner={service.owner} loadService={loadService} closeModal={closeModal} />
-                                                                    </Modal.Header>
-                                                                </Modal>
-                                                            </Col>
 
-                                                        </Row>
-                                                    </>
-                                            }
-                                        </Container>
-                                    </div>
+                                                                        <Modal.Title>Editar</Modal.Title>
+                                                                    </Modal.Header>
+                                                                    <Modal.Body>
+                                                                        <EditServiceForm  {...service} closeModal={closeModal} loadService={loadService} />
+                                                                    </Modal.Body>
+                                                                </Modal>
+                                                                <Col>
+                                                                    <div className="d-grid">
+                                                                        <Link to="/">
+                                                                            <button className="btn4" onClick={delOneServcice}>Eliminar</button >
+                                                                        </Link>
+                                                                    </div>
+
+                                                                </Col>
+                                                            </Row>
+
+                                                        </>
+                                                        :
+                                                        <>
+
+                                                            <Row>
+                                                                <Col>
+                                                                    <div className="d-grid gap-2">
+                                                                        <button onClick={openModal} className="btn4">Contratar</button >
+                                                                    </div>
+
+                                                                    <Modal show={showModal} onHide={closeModal} >
+                                                                        <Modal.Header closeButton>
+                                                                            <Modal.Title className="nameServMod">Servicio</Modal.Title>
+                                                                            <HireServiceForm owner={service.owner} loadService={loadService} closeModal={closeModal} />
+                                                                        </Modal.Header>
+                                                                    </Modal>
+                                                                </Col>
+
+                                                            </Row>
+                                                        </>
+                                                }
+                                            </Container>
+                                        </div>
+                                    </Row>
+
                                 </div>
+
                             </div>
                         </div>
+
+
+
+
                     </div>
+
 
 
                 </div>

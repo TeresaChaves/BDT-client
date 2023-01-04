@@ -50,8 +50,8 @@ function HomePage() {
                     <LottieComp />
                 </div>
             </Link>
-
-            {/* <div>
+            {/* 
+            <div>
                 <body className='somos'>
                     <div class="Iam">
 
@@ -157,13 +157,7 @@ function HomePage() {
                 </Offcanvas>
 
 
-                <Row className="UsNew">
-
-
-
-
-
-
+                <div>
 
                     <div class="card2">
                         <a href="https://www.linkedin.com/in/gonzalo-garcia-corrales-fullstack-web-developer/">
@@ -176,11 +170,11 @@ function HomePage() {
                             </p>
                         </a>
                     </div>
+                </div>
 
 
 
 
-                </Row>
             </Container>
 
         </Container >

@@ -34,23 +34,19 @@
 
 }
 
-.mailToOwner {
-    text-decoration: none;
-    color: #609f80;
-}
-
 .mail {
-
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .mailToOwner {
-    box-shadow: inset 0 0 0 0 #609c7d;
-    color: #609c7d;
+
+    text-decoration: none;
+    color: #24596a;
+    box-shadow: inset 0 0 0 0 #24596a;
+    color: #24596a;
     padding: 0 .25rem;
     margin: 0 -.25rem;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-
 }
 
 .mailToOwner:hover {
@@ -58,25 +54,9 @@
     box-shadow: inset 200px 0 0 0 #609c7d;
 }
 
-.descriptionDetail {
-    font-size: 25px;
 
-    margin-bottom: 20px;
-    margin-top: 20px;
-    color: #4b574d;
-    text-decoration: underline dotted #4b574d;
-}
 
-.descriptionDetail2 {
-    font-size: 20px;
-    margin-bottom: 30px;
-    text-decoration-color: #4b574d;
-}
 
-.descriptionbox {
-    margin-bottom: 20px;
-
-}
 
 
 .container6 {
