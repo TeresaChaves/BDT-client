@@ -28,6 +28,7 @@
   border-bottom: 3px solid #609f80;
   text-transform: uppercase;
   margin: 20px;
+  width: 100%;
 }
 
 .mailToOwner {

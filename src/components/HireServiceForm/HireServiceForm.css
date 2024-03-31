@@ -1,8 +1,10 @@
 .buttonContract {
-    margin-top: 20px;
-
+  margin-top: 20px;
 }
 
 .numberForm {
-    text-decoration-color: blue;
+  text-decoration-color: blue;
+}
+.content-contrato {
+  width: 100%;
 }

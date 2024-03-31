@@ -63,7 +63,7 @@ function HomePage() {
         </h5>
       </div> */}
 
-      <Container>
+      <div className="container-footer-home">
         <div className="ExampleOrigin">
           <Link onClick={handleShowHistory}>
             <button className="btn2"> Orígenes</button>
@@ -139,7 +139,7 @@ function HomePage() {
           </Offcanvas.Body>
         </Offcanvas>
 
-        <div>
+        <div className="card-nombres">
           <div class="card2">
             <a href="https://www.linkedin.com/in/gonzalo-garcia-corrales-fullstack-web-developer/">
               <p>
@@ -159,7 +159,7 @@ function HomePage() {
             </a>
           </div>
         </div>
-      </Container>
+      </div>
     </Container>
   );
 }

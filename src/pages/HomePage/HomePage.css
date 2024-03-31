@@ -374,6 +374,10 @@ body {
     width: 124px;
   }
 }
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 
 .container2 {
   width: 100%;
@@ -382,6 +386,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.container-footer-home {
+  display: flex;
+  flex-direction: column;
 }
 
 .card2 {

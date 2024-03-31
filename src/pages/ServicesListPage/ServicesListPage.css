@@ -1,59 +1,56 @@
 .btn-success {
-    background-color: #4b574d;
-
+  background-color: #4b574d;
 }
 
 .buttonCreate {
-    background-color: #af420a;
-
+  background-color: #af420a;
 }
 
 .serviceDetail {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: center;
+  position: relative;
+  text-decoration-style: solid;
+  text-decoration-color: rgb(17, 133, 65);
+  text-decoration-line: underline;
+}
 
-    display: flex;
-    text-transform: uppercase;
-    justify-content: center;
-    position: relative;
-    text-decoration-style: solid;
-    text-decoration-color: rgb(17, 133, 65);
-    text-decoration-line: underline;
-
+.modal-header {
+  flex-direction: column !important;
 }
 
 .serviceDetail::after {
-    position: absolute;
-    content: ‘’;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(24, 178, 73, 0.674);
-    max-width: 12ch;
-    margin-inline: auto;
-
+  position: absolute;
+  content: ‘’;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(24, 178, 73, 0.674);
+  max-width: 12ch;
+  margin-inline: auto;
 }
 
 .title {
-    margin: 20px
+  margin: 20px;
 }
 
-
 .d-grid {
-    margin: 20px;
-
+  margin: 20px;
 }
 
 .col-sm-3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container3 {
-    width: 100%;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

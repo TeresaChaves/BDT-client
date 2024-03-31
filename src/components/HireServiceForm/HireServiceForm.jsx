@@ -1,83 +1,84 @@
 import { useEffect, useState } from "react";
-import { Form, Button, Row, Col, FormGroup } from "react-bootstrap"
+import { Form, Button, Row, Col, FormGroup } from "react-bootstrap";
 // import RangeSlider from 'react-bootstrap-range-slider'
 // import servicesService from "../../services/services.service"
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import uploadHours from "../../services/hours.service"
-import { useContext } from "react"
-import { AuthContext } from "../../contexts/auth.context"
-import { MessageContext } from '../../contexts/userMessage.context'
-import './HireServiceForm.css'
-
-
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import uploadHours from "../../services/hours.service";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/auth.context";
+import { MessageContext } from "../../contexts/userMessage.context";
+import "./HireServiceForm.css";
 
 function HireServiceForm({ owner, loadService, closeModal }) {
+  const [hours, setHours] = useState(0);
+  const [availableHours, setAvailableHours] = useState(0);
+  const { user, refreshToken } = useContext(AuthContext);
 
-    const [hours, setHours] = useState(0)
-    const [availableHours, setAvailableHours] = useState(0)
-    const { user, refreshToken } = useContext(AuthContext)
+  const { setShowToast, setToastMessage } = useContext(MessageContext);
 
+  useEffect(() => {
+    uploadHours
+      .getAvailableHours(user?._id)
+      .then(({ data }) => setAvailableHours(data))
+      .catch((err) => console.log(err));
+  }, []);
 
-    const { setShowToast, setToastMessage } = useContext(MessageContext)
+  const handleInputChange = (e) => {
+    setHours(e.target.value);
+  };
 
-    useEffect(() => {
-        uploadHours
-            .getAvailableHours(user?._id)
-            .then(({ data }) => setAvailableHours(data))
-            .catch(err => console.log(err))
-    }, [])
+  const fireFinalActions = () => {
+    setShowToast(true);
+    setToastMessage("Has contratado el servicio");
+    loadService();
+    refreshToken();
+    closeModal();
+  };
 
-    const handleInputChange = e => {
-        setHours(e.target.value)
-    }
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    uploadHours
+      .updateHours(owner._id, hours)
+      .then(() => {
+        fireFinalActions();
+      })
+      .catch((res) => {
+        console.log(res);
+        closeModal();
+        setShowToast(true);
+        setToastMessage("Ha ocurrido un problema");
+      });
+  };
 
-    const fireFinalActions = () => {
-        setShowToast(true)
-        setToastMessage("Has contratado el servicio")
-        loadService()
-        refreshToken()
-        closeModal()
-    }
-
-    const handleFormSubmit = e => {
-        e.preventDefault()
-        uploadHours
-            .updateHours(owner._id, hours)
-            .then(() => {
-                fireFinalActions()
-
-            })
-            .catch(res => {
-                console.log(res)
-                closeModal()
-                setShowToast(true)
-                setToastMessage('Ha ocurrido un problema')
-            })
-
-    }
-
-    return (
-        <div>
-            <Form onSubmit={handleFormSubmit}>
-                <Row>
-
-                    <Form.Label>¿Cuanto tiempo necesitas?</Form.Label>
-                </Row>
-                <Row>
-                    <Col>
-                        <h5>Te quedan {availableHours} horas</h5>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h5> Estás solicitando {hours} horas</h5>
-                    </Col>
-                </Row>
-                <Form.Control type="number" value={hours} onChange={handleInputChange} name="bankAccountTime" min={0} max={availableHours} />
-                <button className="btn2" type="submit">Contratar</button>
-            </Form>
-        </div>
-
-    )
+  return (
+    <div className="content-contrato">
+      <Form onSubmit={handleFormSubmit}>
+        <Row>
+          <Form.Label>¿Cuanto tiempo necesitas?</Form.Label>
+        </Row>
+        <Row>
+          <Col>
+            <h5>Te quedan {availableHours} horas</h5>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h5> Estás solicitando {hours} horas</h5>
+          </Col>
+        </Row>
+        <Form.Control
+          type="number"
+          value={hours}
+          onChange={handleInputChange}
+          name="bankAccountTime"
+          min={0}
+          max={availableHours}
+        />
+        <button className="btn2" style={{ marginLeft: "0px" }} type="submit">
+          Contratar
+        </button>
+      </Form>
+    </div>
+  );
 }
-export default HireServiceForm
+export default HireServiceForm;
