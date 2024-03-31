@@ -54,6 +54,11 @@ function HomePage() {
           <span class="title-word title-word-2">SHARE</span>
         </h2>
       </div>
+      <div class="container10">
+        <h2 class="title12">
+          <span class="title-word title-word-2"> tu banco de tiempo</span>
+        </h2>
+      </div>
       {/* <div class="container10">
         <h5 class="title10">
           <span class="title-word title-word-3">TU</span>
@@ -139,7 +144,7 @@ function HomePage() {
           </Offcanvas.Body>
         </Offcanvas>
 
-        <div className="card-nombres">
+        {/* <div className="card-nombres">
           <div class="card2">
             <a href="https://www.linkedin.com/in/gonzalo-garcia-corrales-fullstack-web-developer/">
               <p>
@@ -158,7 +163,7 @@ function HomePage() {
               </p>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

@@ -31,6 +31,26 @@
   max-width: 12ch;
   margin-inline: auto;
 }
+.btn2 {
+  --color: #377079;
+  --color2: rgb(10, 25, 30);
+  padding: 0.8em 1em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  margin: 15px;
+  max-height: 50px;
+}
 
 .title {
   margin: 20px;

@@ -693,10 +693,20 @@ body {
   text-transform: uppercase;
   color: #24596a;
 }
+.title12 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 1.2vw;
+  text-transform: uppercase;
+  color: #5f808b;
+}
 
 @media only screen and (max-width: 768px) {
   /* Agrega estilos específicos para dispositivos móviles aquí */
   .title10 {
     font-size: 12vw;
+  }
+  .title12 {
+    font-size: 4vw;
   }
 }
