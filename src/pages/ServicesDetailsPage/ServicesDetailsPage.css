@@ -1,201 +1,225 @@
 .detailPhoto {
-
-    border-radius: 0 10px 20px;
-    box-shadow: 10px 10px 5px;
-    max-width: 175px;
-    max-height: 200px;
+  max-height: 512px;
+  max-width: 763px;
+  min-height: 389px;
+  object-fit: cover;
+  opacity: 0.3;
+  overflow: hidden;
 }
 
-
 .nameDetail {
-
-    border-bottom: 3px solid #609f80;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-
+  border-bottom: 3px solid #609f80;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .card-img-top {
-    max-width: 250px;
-    max-height: 100px;
+  max-width: 370px;
+  max-height: 129px;
+  object-fit: cover;
 }
 
-
 .btn-dark {
-    background-color: #4b574d;
-
+  background-color: #4b574d;
 }
 
 .nameServMod {
-    display: inline;
-    border-bottom: 3px solid #609f80;
-    text-transform: uppercase;
-    margin: 20px;
-
-}
-
-.mail {
-    margin-top: 50px;
+  display: inline;
+  border-bottom: 3px solid #609f80;
+  text-transform: uppercase;
+  margin: 20px;
 }
 
 .mailToOwner {
-
-    text-decoration: none;
-    color: #24596a;
-    box-shadow: inset 0 0 0 0 #24596a;
-    color: #24596a;
-    padding: 0 .25rem;
-    margin: 0 -.25rem;
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  text-decoration: none;
+  color: #24596a;
+  box-shadow: inset 0 0 0 0 #24596a;
+  color: #24596a;
+  padding: 0 0.25rem;
+  margin: 0 -0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .mailToOwner:hover {
-    color: #fff;
-    box-shadow: inset 200px 0 0 0 #609c7d;
+  color: #fff;
+  box-shadow: inset 200px 0 0 0 #609c7d;
 }
-
-
-
-
-
 
 .container6 {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    padding: 0px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
 }
 
-
-
 .flip-card {
-    background-color: transparent;
-    width: 240px;
-    height: 254px;
-    perspective: 1000px;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: transparent;
+  width: 633px;
+  height: 353px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
 }
 
 .title3 {
-    font-size: 1em;
-    font-weight: 700;
-    text-align: center;
-    margin: 20px;
-    color: aliceblue
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px;
+  color: aliceblue;
 }
 
 .cardName {
-    color: white;
-
+  color: white;
+  padding-left: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 10px;
 }
 
-
-
 .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .flip-card-front,
 .flip-card-back {
-    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
-    position: absolute;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid rgb(234, 234, 234);
-    border-radius: 1rem;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+}
+.container-img-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.85)
+  );
 }
 
 .flip-card-front {
-    background-color: #24596a;
+  background-color: #24596a;
+}
+.mail {
+  margin: 0px;
 }
 
-.flip-card-back {
-    background-color: #173944;
-    color: white;
-    transform: rotateY(180deg);
+.containercontacto {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  gap: 20px;
+}
+.contratar-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front2 {
+  background-color: #173944;
+  color: white;
+  z-index: 1;
+  background-color: transparent;
+  width: 633px;
+  height: 353px;
+  /* perspective: 1000px; */
+  font-family: sans-serif;
+  /* display: flex; */
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 81px;
+  align-content: flex-start;
 }
 
 .profileCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
 .btn4 {
-    --color: #377079;
-    --color2: rgb(7, 17, 20);
-    padding: 0.8em 1.75em;
-    background-color: transparent;
-    border-radius: 6px;
-    border: .3px solid var(--color);
-    transition: .5s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 1;
-    font-weight: 300;
-    font-size: 17px;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-    text-transform: uppercase;
-    color: var(--color);
-    margin: 15px
+  --color: #377079;
+  --color2: rgb(7, 17, 20);
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  margin: 15px;
 }
 
 .btn4::after,
 .btn4::before {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    transform: skew(90deg) translate(-50%, -50%);
-    position: absolute;
-    inset: 50%;
-    left: 25%;
-    z-index: -1;
-    transition: .5s ease-out;
-    background-color: var(--color);
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
 }
 
 .btn4::before {
-    top: -50%;
-    left: -25%;
-    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
 }
 
 .btn4:hover::before {
-    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
 }
 
 .btn4:hover::after {
-    transform: skew(45deg) translate(-50%, -50%);
+  transform: skew(45deg) translate(-50%, -50%);
 }
 
 .btn4:hover {
-    color: var(--color2);
+  color: var(--color2);
 }
 
 .btn4:active {
-    filter: brightness(.7);
-    transform: scale(.98);
+  filter: brightness(0.7);
+  transform: scale(0.98);
 }

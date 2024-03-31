@@ -1,193 +1,298 @@
 .a {
-    text-decoration: none;
-    color: #dc3545
+  text-decoration: none;
+  color: #dc3545;
 }
 
 a:hover {
-    color: #377079;
+  color: #377079;
 }
 
-
-
-
-
 .ServiceCard:hover {
-    box-shadow: 10px 10px 15px #c5c5c5,
-        -10px -10px 15px #ffffff;
+  box-shadow: 10px 10px 15px #c5c5c5, -10px -10px 15px #ffffff;
 }
 
 .ServiceCard {
-    width: 190px;
-    height: 254px;
-    border-radius: 30px;
-
-
+  width: 190px;
+  height: 254px;
+  border-radius: 30px;
 }
 
 .card {
-    width: 240px;
-    height: 191px;
-    border-radius: 20px;
-    position: relative;
-    padding: 1.8rem;
-    border: 2px solid #c3c6ce;
-    transition: 0.5s ease-out;
-    overflow: visible;
-    background-color: #377079;
-    opacity: 0.9;
-    margin: 10px;
+  width: 359px;
+  height: 217px;
+  border-radius: 3px;
+  position: relative;
+  padding: 1.8rem;
+  /* border: 2px solid #c3c6ce; */
+  transition: 0.5s ease-out;
+  overflow: visible;
+  background-color: #377079;
+  opacity: 0.9;
+  /* margin: 10px; */
+  padding: 0px;
+  /* opacity: 0.8; */
 }
-
+.titledetail {
+  font-size: 0.8em;
+  font-weight: 100;
+  text-align: center;
+  color: aliceblue;
+}
 .card-details {
-    color: black;
-    height: 100%;
-    gap: .5em;
-    display: grid;
-    place-content: center;
+  color: black;
+  height: 100%;
+  gap: 0.5em;
+  display: grid;
+  place-content: center;
 }
-
-
 
 .card-button {
-    --color: #d9e2e3;
-    --color2: #377079;
-    padding: 0.8em 1.75em;
-    background-color: transparent;
-    border-radius: 6px;
-    border: .3px solid var(--color);
-    transition: .5s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 1;
-    font-weight: 300;
-    font-size: 17px;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-    text-transform: uppercase;
-    color: var(--color);
+  --color: #d9e2e3;
+  --color2: #377079;
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
 }
 
 .card-button::after,
 .card-button::before {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    transform: skew(90deg) translate(-50%, -50%);
-    position: absolute;
-    inset: 50%;
-    left: 25%;
-    z-index: -1;
-    transition: .5s ease-out;
-    background-color: var(--color);
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
 }
 
 .card-button::before {
-    top: -50%;
-    left: -25%;
-    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
 }
 
 .card-button:hover::before {
-    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
 }
 
 .card-button:hover::after {
-    transform: skew(45deg) translate(-50%, -50%);
+  transform: skew(45deg) translate(-50%, -50%);
 }
 
 .card-button:hover {
-    color: var(--color2);
+  color: var(--color2);
 }
 
 .card-button:active {
-    filter: brightness(.7);
-    transform: scale(.98);
+  filter: brightness(0.7);
+  transform: scale(0.98);
 }
 
-
-
-
-
-
-
-
-
 .card-button {
-    transform: translate(-50%, 125%);
-    width: 60%;
-    border: none;
-    font-size: 1rem;
-    padding: .5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.3s ease-out;
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
 }
 
 .text-body {
-    color: rgb(134, 134, 134);
+  color: rgb(134, 134, 134);
 }
 
 /*Text*/
 .text-title {
-    font-size: 1.5em;
-    font-weight: bold;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 /*Hover*/
 .card:hover {
-    border-color: #377079;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+  border-color: #377079;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
 .card:hover .card-button {
-    transform: translate(-50%, 50%);
-    opacity: 1;
+  transform: translate(-50%, 50%);
+  opacity: 1;
 }
 
 .card-body {
-    padding: 0px;
-    margin: 0px;
-    color: #fcfcfc;
-    margin-top: 0px;
+  padding: 0px;
+  margin: 0px;
+  color: #fcfcfc;
+  margin-top: 0px;
 }
 
 .d-grid {
-    padding: 0px;
-    margin: 0px;
+  padding: 9px;
+  margin: 0px;
+  font-family: "Roboto";
+  font-weight: 100;
 }
 
-
-
-
 .button10 {
-    position: relative;
-    font-weight: 600;
-    height: 40px;
-    padding: 12px 20px;
-    outline: none;
-    border: 1px solid rgb(235, 235, 235);
-    background-color: transparent;
-    border-radius: 5px;
-    color: #173a45;
+  position: relative;
+  font-weight: 600;
+  height: 40px;
+  padding: 12px 20px;
+  outline: none;
+  border: 1px solid rgb(235, 235, 235);
+  background-color: transparent;
+  border-radius: 5px;
+  color: #173a45;
 }
 
 .button10:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    top: 7px;
-    left: 7px;
-    height: 100%;
-    background-color: #57aab7;
-    z-index: -1;
-    transition: all 0.35s;
-    border-radius: inherit;
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 7px;
+  left: 7px;
+  height: 100%;
+  background-color: #57aab7;
+  z-index: -1;
+  transition: all 0.35s;
+  border-radius: inherit;
 }
 
 .button10:hover:after {
-    top: 0px;
-    left: 0px;
+  top: 0px;
+  left: 0px;
+}
+
+.btnContratar {
+  --color: #e2e2e2;
+  --color2: rgb(10, 25, 30);
+  padding: 0.2em 0.75em;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  margin-top: 10px;
+}
+
+.btnContratar::after,
+.btnContratar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
+}
+
+.btnContratar::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnContratar:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnContratar:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btnContratar:hover {
+  color: var(--color2);
+}
+
+.btnContratar:active {
+  filter: brightness(0.7);
+  transform: scale(0.98);
+}
+
+.btnContratar-eliminar {
+  --color: #b80c0c;
+  --color2: rgb(102, 135, 146);
+  padding: 0.2em 0.75em;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  margin-top: 10px;
+}
+
+.btnContratar-eliminar::after,
+.btnContratar-eliminar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
+}
+
+.btnContratar-eliminar::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnContratar-elimnar:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnContratar-eliminar:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btnContratar-eliminar:hover {
+  color: var(--color2);
+}
+
+.btnContratar-eliminar:active {
+  filter: brightness(0.7);
+  transform: scale(0.98);
 }

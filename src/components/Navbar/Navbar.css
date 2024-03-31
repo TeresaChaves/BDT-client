@@ -1,25 +1,33 @@
 .greeting:hover {
-    color: white;
+  color: white;
 }
 
 .greeting {
-    color: white;
+  color: white;
 }
 
 .navBar {
-    background-color: #24596a;
-    opacity: 0.7;
-    color: white;
+  background-color: #24596a;
+  opacity: 0.7;
+  color: white;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #ffebee;
+  text-decoration: none;
+  color: #ffebee;
+}
+.nav-link img {
+  opacity: 0.8;
+  filter: hue-rotate(180deg);
+}
 
-
+.navbar-brand {
+  padding: 0px;
 }
 
 .nameNav {
-    color: #79b1c0;
-
+  color: #79b1c0;
+}
+.mt-1 {
+  margin: 0px !important;
 }
