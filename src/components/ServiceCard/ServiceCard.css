@@ -4,7 +4,7 @@
 }
 
 a:hover {
-  color: #377079;
+  color: #181818;
 }
 
 .ServiceCard:hover {
@@ -26,7 +26,7 @@ a:hover {
   /* border: 2px solid #c3c6ce; */
   transition: 0.5s ease-out;
   overflow: visible;
-  background-color: #377079;
+  background-color: #181818;
   opacity: 0.9;
   /* margin: 10px; */
   padding: 0px;
@@ -140,15 +140,18 @@ a:hover {
 .card-body {
   padding: 0px;
   margin: 0px;
-  color: #fcfcfc;
+  color: #ffffff;
   margin-top: 0px;
 }
 
 .d-grid {
-  padding: 9px;
+  /* padding: 9px; */
   margin: 0px;
   font-family: "Roboto";
   font-weight: 100;
+  /* height: 150px; */
+  /* display: flex; */
+  /* display: block; */
 }
 
 .button10 {
@@ -182,23 +185,23 @@ a:hover {
 }
 
 .btnContratar {
-  --color: #e2e2e2;
-  --color2: rgb(10, 25, 30);
   padding: 0.2em 0.75em;
-  background-color: transparent;
+  background-color: #ffffff;
   border-radius: 3px;
-  border: 0.3px solid var(--color);
   transition: 0.5s;
+  border: 1px solid black;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   z-index: 1;
   font-weight: 300;
-  font-size: 17px;
+  font-size: 18px;
   font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
-  color: var(--color);
+  color: #171718;
   margin-top: 10px;
+  border-radius: 5px;
+  letter-spacing: -0.05em;
 }
 
 .btnContratar::after,
@@ -213,7 +216,8 @@ a:hover {
   left: 25%;
   z-index: -1;
   transition: 0.5s ease-out;
-  background-color: var(--color);
+  background-color: grey;
+  color: white;
 }
 
 .btnContratar::before {
@@ -231,7 +235,7 @@ a:hover {
 }
 
 .btnContratar:hover {
-  color: var(--color2);
+  color: white;
 }
 
 .btnContratar:active {
@@ -243,7 +247,7 @@ a:hover {
   --color: #b80c0c;
   --color2: rgb(102, 135, 146);
   padding: 0.2em 0.75em;
-  background-color: transparent;
+  background-color: var(--bs-white);
   border-radius: 3px;
   border: 0.3px solid var(--color);
   transition: 0.5s;
@@ -252,11 +256,12 @@ a:hover {
   cursor: pointer;
   z-index: 1;
   font-weight: 300;
-  font-size: 17px;
+  font-size: 18px;
   font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
   color: var(--color);
   margin-top: 10px;
+  letter-spacing: -0.05em;
 }
 
 .btnContratar-eliminar::after,
@@ -295,4 +300,27 @@ a:hover {
 .btnContratar-eliminar:active {
   filter: brightness(0.7);
   transform: scale(0.98);
+}
+
+.container-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  /* height: 150px; */
+  width: 100%;
+  font-size: 42px;
+  letter-spacing: -0.05em;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 0.9;
+  word-break: break-word;
+  margin: 0px;
+  padding-bottom: 10px;
+  mix-blend-mode: soft-light;
+  font-weight: 100;
+}
+.container-name p {
+  font-size: 12px;
 }

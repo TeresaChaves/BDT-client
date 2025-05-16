@@ -1,85 +1,119 @@
-import "./ServicesListPage.css"
-import { useState, useEffect, useContext } from "react"
-import servicesService from "../../services/services.service"
-import { Container, Button, Modal } from "react-bootstrap"
-import { Link } from 'react-router-dom'
-import AddServiceForm from "../../components/AddServiceForm/AddServiceForm"
+import "./ServicesListPage.css";
+import { useState, useEffect, useContext } from "react";
+import servicesService from "../../services/services.service";
+import { Container, Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import AddServiceForm from "../../components/AddServiceForm/AddServiceForm";
 // import Loader from "../../components/Loader/Loader"
-import { MessageContext } from '../../contexts/userMessage.context'
-import { AuthContext } from '../../contexts/auth.context'
-import SearchBar from "../../components/SearchBar/SearchBar"
-import SearchResults from "../../components/SearchResults/SearchResults"
-
+import { MessageContext } from "../../contexts/userMessage.context";
+import { AuthContext } from "../../contexts/auth.context";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchResults from "../../components/SearchResults/SearchResults";
+import { Oval } from "react-loader-spinner";
 
 const ServicesListPage = () => {
+  const [services, setServices] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [load, isLoading] = useState(true);
 
-    const [services, setServices] = useState([])
-    const [searchResults, setSearchResults] = useState([])
-    const [showModal, setShowModal] = useState(false)
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
+  const { setShowToast, setToastMessage } = useContext(MessageContext);
+  const { user } = useContext(AuthContext);
 
-    const { setShowToast, setToastMessage } = useContext(MessageContext)
-    const { user } = useContext(AuthContext)
+  useEffect(() => {
+    // Espera 2 segundos antes de cargar los servicios
+    loadServices();
+  }, []);
+  const loadServices = () => {
+    isLoading(true);
+    servicesService
+      .getServices()
+      .then(({ data }) => {
+        setServices(data);
+        setSearchResults(data);
+        isLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
 
+  const fireFinalActions = () => {
+    setShowToast(true);
+    setToastMessage("Nuevo servicio creado");
+    closeModal();
+    loadServices();
+  };
 
-    useEffect(() => {
-        loadServices()
-    }, [])
-
-    const loadServices = () => {
-        servicesService
-            .getServices()
-            .then(({ data }) => {
-                setServices(data)
-                setSearchResults(data)
-            })
-            .catch(err => console.log(err))
-    }
-
-    const fireFinalActions = () => {
-        setShowToast(true)
-        setToastMessage("Nuevo servicio creado")
-        closeModal()
-        loadServices()
-    }
-
-    return (
+  return (
+    <>
+      {load ? (
         <>
-
-            <Container>
-
-                <div className="container3"> <a href="#" class="button">
-                    <div className="button__line"></div>
-                    <div className="button__line"></div> <span class="button__text">SERVICIOS</span>
-                    <div className="button__drow1"></div>
-                    <div className="button__drow2"></div>
-                </a>
-                    {/* <LottieComp /> */}
-                    <div  >
-                        {user && <button className="btn2" onClick={openModal} >Da de alta tu servicio</button>}
-
-                    </div>
-                </div>
-                <SearchBar services={services} setSearchResults={setSearchResults} />
-                <SearchResults searchResults={searchResults} loadServices={loadServices} />
-                <br />
-
-            </Container>
-            <hr />
-
-            <Modal show={showModal} onHide={closeModal} >
-                <Modal.Header closeButton>
-                    <Modal.Title>Servicio</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <AddServiceForm fireFinalActions={fireFinalActions} />
-                </Modal.Body>
-            </Modal>
+          {" "}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "80vh", // Ajusta según el alto de tu pantalla
+            }}>
+            <Oval
+              visible={true}
+              height="80"
+              width="80"
+              color="#181818"
+              ariaLabel="oval-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              secondaryColor="#181818"
+            />
+          </div>
         </>
+      ) : (
+        <Container>
+          <div className="header_title">
+            <h1>¿Qué necesitas?</h1>
+          </div>
+          <div className="container3">
+            {" "}
+            {/* <a href="#" class="button">
+              <div className="button__line"></div>
+              <div className="button__line"></div>{" "}
+              <span class="button__text">SERVICIOS</span>
+              <div className="button__drow1"></div>
+              <div className="button__drow2"></div>
+            </a> */}
+            {/* <LottieComp /> */}
+            <div>
+              {user && (
+                <button className="btn2" onClick={openModal}>
+                  Da de alta tu servicio
+                </button>
+              )}
+            </div>
+          </div>
+          <SearchBar services={services} setSearchResults={setSearchResults} />
+          <SearchResults
+            searchResults={searchResults}
+            loadServices={loadServices}
+          />
+          <br />
+        </Container>
+      )}
 
-    )
-}
+      <hr />
 
-export default ServicesListPage
+      <Modal show={showModal} onHide={closeModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Servicio</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddServiceForm fireFinalActions={fireFinalActions} />
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+};
+
+export default ServicesListPage;

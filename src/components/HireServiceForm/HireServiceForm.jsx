@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
-import { Form, Button, Row, Col, FormGroup } from "react-bootstrap";
-// import RangeSlider from 'react-bootstrap-range-slider'
-// import servicesService from "../../services/services.service"
-import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import uploadHours from "../../services/hours.service";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth.context";
 import { MessageContext } from "../../contexts/userMessage.context";
 import "./HireServiceForm.css";
 
-function HireServiceForm({ owner, loadService, closeModal }) {
+function HireServiceForm({ owner, loadService, closeModal, serviceId }) {
   const [hours, setHours] = useState(0);
   const [availableHours, setAvailableHours] = useState(0);
   const { user, refreshToken } = useContext(AuthContext);
-
   const { setShowToast, setToastMessage } = useContext(MessageContext);
 
   useEffect(() => {
@@ -37,13 +33,23 @@ function HireServiceForm({ owner, loadService, closeModal }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    // Verifica si las horas son válidas antes de hacer la solicitud
+    if (hours <= 0 || hours > availableHours) {
+      setShowToast(true);
+      setToastMessage("La cantidad de horas debe ser válida.");
+      return;
+    }
+
+    // Llamada para contratar el servicio, pasando el `owner._id`, las `hours`, y el `serviceId`
     uploadHours
-      .updateHours(owner._id, hours)
+      .saveServiceContract(owner._id, serviceId, hours)
       .then(() => {
+        // Llamamos a la acción final solo después de que el servicio se haya contratado
         fireFinalActions();
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((err) => {
+        console.log(err);
         closeModal();
         setShowToast(true);
         setToastMessage("Ha ocurrido un problema");
@@ -54,16 +60,26 @@ function HireServiceForm({ owner, loadService, closeModal }) {
     <div className="content-contrato">
       <Form onSubmit={handleFormSubmit}>
         <Row>
-          <Form.Label>¿Cuanto tiempo necesitas?</Form.Label>
+          <Form.Label
+            style={{
+              fontSize: "22px",
+              textAlign: "center",
+              marginBottom: "20px",
+              letterSpacing: "-0.05em",
+            }}>
+            ¿Cuánto tiempo necesitas?
+          </Form.Label>
         </Row>
         <Row>
           <Col>
-            <h5>Te quedan {availableHours} horas</h5>
+            <p>
+              Te quedan <b>{availableHours}</b> horas
+            </p>
           </Col>
-        </Row>
-        <Row>
           <Col>
-            <h5> Estás solicitando {hours} horas</h5>
+            <p>
+              Estás solicitando <b>{hours}</b> horas
+            </p>
           </Col>
         </Row>
         <Form.Control
@@ -74,11 +90,14 @@ function HireServiceForm({ owner, loadService, closeModal }) {
           min={0}
           max={availableHours}
         />
-        <button className="btn2" style={{ marginLeft: "0px" }} type="submit">
-          Contratar
-        </button>
+        <div style={{ marginTop: "20px" }}>
+          <button className="btn2" style={{ marginLeft: "0px" }} type="submit">
+            Contratar
+          </button>
+        </div>
       </Form>
     </div>
   );
 }
+
 export default HireServiceForm;

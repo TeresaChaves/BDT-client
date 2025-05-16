@@ -8,6 +8,7 @@ import EditServiceForm from "../../components/EditServiceForm/EditServiceForm";
 import Loader from "../../components/Loader/Loader";
 import HireServiceForm from "../../components/HireServiceForm/HireServiceForm";
 import "./ServicesDetailsPage.css";
+import { RoughNotation } from "react-rough-notation";
 
 function ServiceDetailsPage() {
   const { service_id } = useParams();
@@ -19,7 +20,16 @@ function ServiceDetailsPage() {
   const openModal = () => {
     !user ? navigate("/usuario/iniciar-sesion") : setShowModal(true);
   };
-  const closeModal = () => setShowModal(false);
+  const closeModal = () => {
+    setShowModal(false);
+    setModalDelete(false);
+  };
+
+  const [modalDelete, setModalDelete] = useState(false);
+
+  const openModalDelete = () => {
+    setModalDelete(true);
+  };
 
   useEffect(() => {
     loadService();
@@ -35,60 +45,66 @@ function ServiceDetailsPage() {
   const delOneServcice = () => {
     servicesService
       .deleteService(service_id)
-      .then(({ data }) => {
-        loadServices();
+      .then(() => {
+        navigate(`/usuario/mi-perfil`);
       })
       .catch((err) => console.error(err));
   };
 
-  const loadServices = () => {
-    servicesService
-      .getServices()
-      .then(({ data }) => {
-        setService(data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
-    <Container>
-      {!service ? (
-        <Loader />
-      ) : (
-        <div>
-          <div className="container6">
-            {" "}
-            {/* <a href="#" class="button">
-              <div className="button__line"></div>
-              <div className="button__line"></div>{" "}
-              <h4 class="button__text">mi servicio</h4>
-              <div className="button__drow1"></div>
-              <div className="button__drow2"></div>
-            </a> */}
-          </div>
+    <>
+      {/* <div className="img-sup_card">
+        <img className="image3_sup" src={service?.image} alt="" />
+      </div> */}
 
-          <div className="profileCenter">
-            <div class="flip-card">
-              <div class="flip-card-front">
-                <p className="cardName">{service.name}</p>
-                <div className="container-img-detail">
-                  <img className="detailPhoto" src={service.image} />
-                </div>
+      <Container>
+        {!service ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="img-detail-card">
+              <img className="image3" src={service.image} alt="" />
+              <div className="image1-wrapper">
+                <img className="image1" src={service.image} alt="" />
               </div>
-              <div class="flip-card-front2">
-                <p class="titledetail">DESCRIPCIÓN</p>
-                <p>{service.description}</p>
-                <p class="titledetail">DISPONIBILIDAD</p>
-                <p>{service.disponibility}</p>
 
+              {/* <img className="image1" src={service.image} alt="" /> */}
+              <img className="image2" src={service.image} alt="" />
+            </div>
+            <div>
+              <div
+                style={{
+                  fontWeight: "100",
+                  fontSize: "50px",
+                  letterSpacing: "-0.05em",
+                  marginBottom: "20px",
+                  paddingTop: "20px",
+                  display: "flex",
+                }}>
+                <RoughNotation type="box" color="red" show>
+                  <span> {service.name}</span>
+                </RoughNotation>
+              </div>
+              <div className="card_detail-services">
+                <p>{service.description}</p>
+              </div>
+              <div
+                style={{
+                  fontWeight: "100",
+                  fontSize: "32px",
+                  letterSpacing: "-0.05em",
+                  marginBottom: "20px",
+                  display: "flex",
+                }}>
+                <RoughNotation type="underline" color="grey" show>
+                  <span>Disponibilidad</span>
+                </RoughNotation>
+              </div>
+              <p>{service.disponibility}</p>
+              <div>
                 <div className="containercontacto">
-                  <div className="mail">
-                    <a href={`mailto:${service.owner.email}`}>
-                      <button className="btnContratar">Contacta</button>
-                    </a>
-                  </div>
                   <div className="contratar-detail-container">
-                    {service.owner._id == user?._id ? (
+                    {service?.owner?._id == user?._id ? (
                       <>
                         <button onClick={openModal} className="btnContratar">
                           Editar
@@ -96,7 +112,12 @@ function ServiceDetailsPage() {
 
                         <Modal show={showModal} onHide={closeModal}>
                           <Modal.Header closeButton>
-                            <Modal.Title>Editar</Modal.Title>
+                            <Modal.Title>
+                              Editar{" "}
+                              <span style={{ fontWeight: "100" }}>
+                                {service.name}
+                              </span>
+                            </Modal.Title>
                           </Modal.Header>
                           <Modal.Body>
                             <EditServiceForm
@@ -108,34 +129,74 @@ function ServiceDetailsPage() {
                         </Modal>
                         <Col>
                           <div className="d-grid">
-                            <Link to="/">
-                              <button
-                                className="btnContratar-eliminar"
-                                onClick={delOneServcice}
-                              >
-                                Eliminar
-                              </button>
-                            </Link>
+                            <button
+                              className="btnContratar-eliminar"
+                              onClick={openModalDelete}>
+                              Eliminar
+                            </button>
+                            <Modal show={modalDelete} onHide={closeModal}>
+                              <Modal.Header closeButton></Modal.Header>
+                              <Modal.Body>
+                                <Modal.Title>
+                                  <div
+                                    style={{
+                                      fontWeight: "100",
+                                      fontSize: "28px",
+                                      letterSpacing: "-0.05em",
+                                      lineHeight: "30px",
+                                      marginBottom: "20px",
+                                    }}>
+                                    ¿Estás seguro de que quieres eliminar {""}
+                                    <span
+                                      style={{
+                                        fontWeight: "100",
+                                        fontSize: "40px",
+                                        letterSpacing: "-0.05em",
+                                        lineHeight: "30px",
+                                        marginBottom: "20px",
+                                      }}>
+                                      {service.name}?
+                                    </span>
+                                  </div>
+                                  <button
+                                    onClick={delOneServcice}
+                                    className="btn2">
+                                    Eliminar
+                                  </button>
+                                </Modal.Title>
+                              </Modal.Body>
+                            </Modal>
                           </div>
                         </Col>
                       </>
                     ) : (
                       <>
+                        <div className="mail">
+                          <a href={`mailto:${service.owner.email}`}>
+                            <button className="btnContratar">Contacta</button>
+                          </a>
+                        </div>
                         <button onClick={openModal} className="btnContratar">
                           Contratar
                         </button>
-
                         <Modal show={showModal} onHide={closeModal}>
-                          <Modal.Header closeButton>
-                            <Modal.Title className="nameServMod">
-                              Servicio
-                            </Modal.Title>
-                            <HireServiceForm
-                              owner={service.owner}
-                              loadService={loadService}
-                              closeModal={closeModal}
-                            />
-                          </Modal.Header>
+                          <Modal.Header closeButton></Modal.Header>
+                          <Modal.Title
+                            style={{
+                              fontWeight: "100",
+                              fontSize: "50px",
+                              letterSpacing: "-0.05em",
+                              lineHeight: "60px",
+                              marginBottom: "20px",
+                            }}>
+                            {service.name}
+                          </Modal.Title>
+                          <HireServiceForm
+                            owner={service.owner}
+                            loadService={loadService}
+                            closeModal={closeModal}
+                            serviceId={service._id}
+                          />
                         </Modal>
                       </>
                     )}
@@ -143,10 +204,10 @@ function ServiceDetailsPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </>
   );
 }
 

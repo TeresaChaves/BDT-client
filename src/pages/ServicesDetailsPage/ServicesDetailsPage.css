@@ -13,10 +13,15 @@
   margin-bottom: 20px;
 }
 
+.card_detail-services p::first-letter {
+  text-transform: capitalize;
+}
+
 .card-img-top {
   max-width: 370px;
   max-height: 129px;
   object-fit: cover;
+  filter: contrast(0.7);
 }
 
 .btn-dark {
@@ -25,10 +30,14 @@
 
 .nameServMod {
   display: inline;
-  border-bottom: 3px solid #609f80;
+  border-bottom: 1px solid #000000;
   text-transform: uppercase;
   margin: 20px;
   width: 100%;
+}
+.modal-content {
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .mailToOwner {
@@ -79,10 +88,22 @@
 
 .cardName {
   color: white;
-  padding-left: 8px;
-  text-align: center;
-  text-transform: uppercase;
-  padding-top: 10px;
+  /* padding-left: 8px; */
+  /* text-align: center; */
+  /* padding-top: 10px; */
+  font-size: 50px;
+  line-height: 10px;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  line-height: 0.9;
+  word-break: break-word;
+  margin: 0px;
+  mix-blend-mode: soft-light;
+  font-weight: 100 !important;
+  font-size: 60px;
 }
 
 .flip-card-inner {
@@ -121,7 +142,7 @@
 }
 
 .flip-card-front {
-  background-color: #24596a;
+  background-color: #181818;
 }
 .mail {
   margin: 0px;
@@ -139,6 +160,78 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+.img-detail-card {
+  margin: 0px;
+}
+.image1-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.image1-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+
+  /* RALLAJOS (rayas diagonales) */
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  z-index: 2;
+}
+
+/* IMAGEN DENTRO DEL CONTENEDOR */
+.image1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0% 50%;
+  border-top: 1px solid rgb(151, 34, 34);
+  border-bottom: 1px solid rgb(151, 34, 34);
+  filter: blur(1px);
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 1) 50%
+  );
+}
+
+.image2 {
+  width: 100%;
+  height: 30px;
+  margin-top: 2px;
+  object-fit: cover;
+  object-position: bottom;
+  filter: blur(2px) grayscale();
+}
+.image3 {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 6px;
+  filter: blur(2px) grayscale();
+}
+
+.img-sup_card {
+  position: relative;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.image3_sup {
+  position: absolute;
 }
 
 .flip-card-front2 {
@@ -168,8 +261,8 @@
 }
 
 .btn4 {
-  --color: #377079;
-  --color2: rgb(7, 17, 20);
+  --color: var(--bs-black);
+  --color2: var(--bs-white);
   padding: 0.8em 1.75em;
   background-color: transparent;
   border-radius: 6px;
@@ -184,7 +277,8 @@
   font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
   color: var(--color);
-  margin: 15px;
+  /* margin: 15px; */
+  width: 100%;
 }
 
 .btn4::after,

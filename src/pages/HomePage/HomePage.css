@@ -8,8 +8,11 @@
 }
 
 .Josiah {
-  max-height: 200px;
   padding: 0px 10px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 .colBtn {
@@ -19,9 +22,22 @@
   margin: 5%;
   padding: 10px;
 }
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 32px;
+  font-weight: 100;
+  letter-spacing: -0.05em;
+}
 
 .offcanvasText {
   padding: 10px;
+  opacity: 1 !important;
+}
+.offcanvasText p {
+  padding: 10px;
+  opacity: 1;
+  font-size: 14px;
 }
 
 .offcanvas {
@@ -31,26 +47,37 @@
 .homeCardImage {
   object-fit: cover;
 }
+.container_home {
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .btn2 {
-  --color: #377079;
-  --color2: rgb(10, 25, 30);
-  padding: 0.8em 1em;
-  background-color: transparent;
+  --color: #ffffff;
+  --color2: rgb(24 24 24);
+  /* padding: 0.8em 1em; */
+  background-color: #181818;
   border-radius: 6px;
-  border: 0.3px solid var(--color);
+  border: 1px solid #181818;
   transition: 0.5s;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   z-index: 1;
-  font-weight: 300;
-  font-size: 17px;
+  font-weight: 100;
+  font-size: 28px;
   font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
   color: var(--color);
-  margin: 15px;
-  max-height: 50px;
+
+  width: 100%;
+  letter-spacing: -0.05em;
 }
 
 .btn2::after,
@@ -97,12 +124,7 @@
 }
 
 body {
-  background: rgb(187, 210, 197);
-  background: linear-gradient(
-    90deg,
-    rgba(187, 210, 197, 1) 35%,
-    rgba(83, 105, 118, 1) 100%
-  );
+  background: #ffffff;
 }
 
 .button {
@@ -113,7 +135,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
-  color: var(--line_color);
+  color: var(--bs-black);
   letter-spacing: 2px;
   transition: all 0.3s ease;
 }
@@ -132,9 +154,9 @@ body {
 .button__text::after {
   content: "";
   position: absolute;
-  height: 3px;
+  height: 1px;
   border-radius: 2px;
-  background: var(--line_color);
+  background: var(--bs-black);
   transition: all 0.5s ease;
 }
 
@@ -178,7 +200,7 @@ body {
   height: 100%;
   box-sizing: border-box;
   border-radius: 300px;
-  border: solid 3px var(--line_color);
+  border: solid 1px var(--bs-black);
 }
 
 .button__line:nth-child(1),
@@ -283,7 +305,7 @@ body {
 .button__drow2,
 .button__drow2::before,
 .button__drow2::after {
-  background: var(--back_color);
+  background: var(--bs-gray-500);
 }
 
 .button:hover .button__drow1 {
@@ -444,10 +466,9 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 20px;
-  margin: 2px;
-  position: relative;
+
   top: 57px;
+  gap: 60px;
 }
 
 .lottieDim {
@@ -681,24 +702,29 @@ body {
 
 /* Here are just some visual styles. 🖌 */
 
-.container10 {
-  place-items: center;
-  text-align: center;
-}
-
 .title10 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 800;
-  font-size: 8.5vw;
+  font-weight: 100;
+  font-size: 13.8vw;
   text-transform: uppercase;
-  color: #24596a;
+  color: #181818;
+  letter-spacing: -0.05em;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 22px;
+  opacity: 0.5;
+  letter-spacing: -0.05em;
+  line-height: 20px;
 }
 .title12 {
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
   font-size: 1.2vw;
   text-transform: uppercase;
-  color: #5f808b;
+  color: #181818;
+  letter-spacing: -0.05em;
 }
 
 @media only screen and (max-width: 768px) {
@@ -709,4 +735,8 @@ body {
   .title12 {
     font-size: 4vw;
   }
+}
+.nav-link:focus,
+.nav-link:hover {
+  color: var(--bs-gray-500);
 }

@@ -4,20 +4,26 @@
   "private": true,
   "dependencies": {
     "@remotion/lottie": "^3.3.25",
+    "@restart/ui": "^1.9.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react-router": "^5.1.20",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
+    "framer-motion": "^12.10.6",
     "lottie-web": "^5.10.1",
     "react": "^18.2.0",
     "react-bodymovin": "^2.0.0",
-    "react-bootstrap": "^2.6.0",
+    "react-bootstrap": "^2.10.10",
     "react-bootstrap-range-slider": "^3.0.8",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-rough-notation": "^1.0.5",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
+    "react-scroll-parallax": "^3.4.5",
+    "simple-parallax-js": "^6.1.1",
     "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4"
   },
@@ -44,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.6"
   }
 }

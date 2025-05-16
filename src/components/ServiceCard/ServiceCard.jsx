@@ -20,9 +20,9 @@ function ServiceCard({ name, image, _id, owner, loadServices, description }) {
 
   return (
     <Card className="mb-4 ServiceCard">
-      <Card.Img variant="top" src={image} />
-      <Card.Body>
-        <div className="d-grid">
+      <Link to={`/servicios/detalles/${_id}`}>
+        <Card.Img variant="top" src={image} />
+        <Card.Body>
           {user?.role === "ADMIN" ? (
             <>
               <div className="d-grid">
@@ -47,15 +47,14 @@ function ServiceCard({ name, image, _id, owner, loadServices, description }) {
             </>
           ) : (
             <>
-              {name}
-
-              <Link to={`/servicios/detalles/${_id}`}>
-                <button className="btnContratar">Contratar</button>
-              </Link>
+              <>
+                {" "}
+                <div className="container-name">{name}</div>
+              </>
             </>
           )}
-        </div>
-      </Card.Body>
+        </Card.Body>
+      </Link>
     </Card>
   );
 }

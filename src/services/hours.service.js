@@ -1,37 +1,55 @@
-import axios from 'axios'
+import axios from "axios";
 
 class UploadHours {
+  constructor() {
+    this.api = axios.create({
+      baseURL: `${process.env.REACT_APP_API_URL}/uploadHours`,
+    });
 
-    constructor() {
+    this.api.interceptors.request.use((config) => {
+      const storedToken = localStorage.getItem("authToken");
 
-        this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/uploadHours`
-        })
+      if (storedToken) {
+        config.headers = { Authorization: `Bearer ${storedToken}` };
+      }
 
-        this.api.interceptors.request.use((config) => {
+      return config;
+    });
+  }
 
-            const storedToken = localStorage.getItem("authToken");
+  getAvailableHours(user_id) {
+    return this.api.get(`/users/${user_id}/get-available-hours`);
+  }
 
-            if (storedToken) {
-                config.headers = { Authorization: `Bearer ${storedToken}` }
-            }
+  updateHours(ownerId, bankAccountTime) {
+    return this.api.put(`/update-hours/${ownerId}`, { hours: bankAccountTime });
+  }
+  getServicesContracted(user_id) {
+    return this.api.get(`/users/${user_id}/services-contracted`);
+  }
 
-            return config
-        })
-
+  saveServiceContract(ownerId, service_id, hours) {
+    // Verifica si las horas están definidas
+    if (!hours || isNaN(hours) || hours <= 0) {
+      return Promise.reject(
+        new Error("Las horas deben ser un valor válido mayor que 0")
+      );
     }
 
-    getAvailableHours(user_id) {
-        return this.api.get(`/get-available-hours/${user_id}`)
-    }
-
-    updateHours(ownerId, bankAccountTime) {
-        return this.api.put(`/update-hours/${ownerId}`, { hours: bankAccountTime })
-    }
-
-
+    // Enviar el POST con el servicio y las horas, y pasar ownerId en los params
+    return this.api.post(`/users/${ownerId}/contract-service`, {
+      service_id,
+      hours,
+    });
+  }
+  getServiceRequests(user_id) {
+    return this.api.get(`/users/${user_id}/get-services-requests`);
+  }
+  acceptServiceContract(clientId, serviceId) {
+    return this.api.post("/services/accept", { clientId, serviceId });
+  }
 }
 
-const uploadHours = new UploadHours()
+const uploadHours = new UploadHours();
 
-export default uploadHours
+export default uploadHours;

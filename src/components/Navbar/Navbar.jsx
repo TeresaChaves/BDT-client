@@ -13,13 +13,13 @@ function NavBar() {
       <Container>
         <Link to="/">
           <Navbar.Brand className="nav-link">
-            <img
+            {/* <img
               src={logo}
               width="30"
               height="30"
               className="d-inline-block align-top mt-1 me-1 "
               alt="React Bootstrap logo"
-            />
+            /> */}
             <span className="nameNav">TIMESHARE</span>
           </Navbar.Brand>
         </Link>
@@ -27,16 +27,31 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Link className="navLink" to="/servicios">
-              <Nav.Link as="div">Servicios</Nav.Link>
+              <Nav.Link
+                as="div"
+                style={{
+                  fontWeight: "100",
+                  letterSpacing: "-0.05em",
+                }}>
+                Servicios
+              </Nav.Link>
             </Link>
 
             {user ? (
               <>
+                {" "}
                 <Link to="/usuario/mi-perfil">
                   <Nav.Link as="div">Mi perfil</Nav.Link>
                 </Link>
                 <Link onClick={logoutUser}>
-                  <Nav.Link as="div" onClick={logoutUser}>
+                  <Nav.Link
+                    style={{
+                      fontWeight: "100",
+                      letterSpacing: "-0.05em",
+                    }}
+                    as="div"
+                    onClick={logoutUser}>
+                    {" "}
                     Cerrar sesión
                   </Nav.Link>
                 </Link>
@@ -44,18 +59,28 @@ function NavBar() {
             ) : (
               <>
                 <Link to="/usuario/registro">
-                  <Nav.Link as="div">Registro</Nav.Link>
+                  <Nav.Link
+                    as="div"
+                    style={{
+                      fontWeight: "100",
+                      letterSpacing: "-0.05em",
+                    }}>
+                    Registro
+                  </Nav.Link>
                 </Link>
 
                 <Link to="/usuario/iniciar-sesion">
-                  <Nav.Link as="div">Acceder</Nav.Link>
+                  <Nav.Link
+                    as="div"
+                    style={{
+                      fontWeight: "100",
+                      letterSpacing: "-0.05em",
+                    }}>
+                    Acceder
+                  </Nav.Link>
                 </Link>
               </>
             )}
-
-            <Nav.Link as="div" className="greeting">
-              Hola {!user ? "invitad@" : user.username}
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
