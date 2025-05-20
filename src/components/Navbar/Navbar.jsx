@@ -27,14 +27,7 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Link className="navLink" to="/servicios">
-              <Nav.Link
-                as="div"
-                style={{
-                  fontWeight: "100",
-                  letterSpacing: "-0.05em",
-                }}>
-                Servicios
-              </Nav.Link>
+              <Nav.Link as="div">Servicios</Nav.Link>
             </Link>
 
             {user ? (
@@ -44,13 +37,7 @@ function NavBar() {
                   <Nav.Link as="div">Mi perfil</Nav.Link>
                 </Link>
                 <Link onClick={logoutUser}>
-                  <Nav.Link
-                    style={{
-                      fontWeight: "100",
-                      letterSpacing: "-0.05em",
-                    }}
-                    as="div"
-                    onClick={logoutUser}>
+                  <Nav.Link as="div" onClick={logoutUser}>
                     {" "}
                     Cerrar sesión
                   </Nav.Link>
@@ -59,25 +46,11 @@ function NavBar() {
             ) : (
               <>
                 <Link to="/usuario/registro">
-                  <Nav.Link
-                    as="div"
-                    style={{
-                      fontWeight: "100",
-                      letterSpacing: "-0.05em",
-                    }}>
-                    Registro
-                  </Nav.Link>
+                  <Nav.Link as="div">Registro</Nav.Link>
                 </Link>
 
                 <Link to="/usuario/iniciar-sesion">
-                  <Nav.Link
-                    as="div"
-                    style={{
-                      fontWeight: "100",
-                      letterSpacing: "-0.05em",
-                    }}>
-                    Acceder
-                  </Nav.Link>
+                  <Nav.Link as="div">Acceder</Nav.Link>
                 </Link>
               </>
             )}

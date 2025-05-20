@@ -57,7 +57,7 @@ function ServiceDetailsPage() {
         {!service ? (
           <Loader />
         ) : (
-          <>
+          <Container>
             <div class="parent">
               <div class="div1">
                 <div className="containerDetail_title_header">
@@ -74,7 +74,7 @@ function ServiceDetailsPage() {
                 <div className="container_description_cardDetail">
                   {" "}
                   <p className="description_cardDetail">
-                    Descripción:
+                    {service.name}:
                     <br />
                     {service.description}
                   </p>
@@ -93,8 +93,18 @@ function ServiceDetailsPage() {
                       ¿CUÁNDO LO QUIERES?
                     </h3>
                   </div>
-                  <div className="container_disponibility">
-                    <p>{service.disponibility}</p>
+                  <div className="container_disponibility"></div>
+                  <div className="calendar-container">
+                    <div className="calendar_detail">
+                      <span className="day_calendar">MIE</span>
+                      <br />
+                      <span className="hours_calendar">17:00</span>
+                    </div>
+                    <div className="calendar_detail">
+                      <span className="day_calendar">MIE</span>
+                      <br />
+                      <span className="hours_calendar">17:00</span>
+                    </div>
                   </div>
 
                   <div className="buttons_contract">
@@ -204,7 +214,7 @@ function ServiceDetailsPage() {
               </div>
               <div class="background-half grid-background"></div>
             </div>
-          </>
+          </Container>
         )}
       </>
     </>

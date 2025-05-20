@@ -317,8 +317,8 @@
 h1.title_header {
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  font-size: 120px;
-  font-weight: bolder;
+  font-size: 100px;
+  font-weight: 500;
   line-height: 105px;
   border-radius: 8px;
   width: 100%; /* ocupa todo el ancho disponible del div */
@@ -339,8 +339,9 @@ h1.title_header {
 
 .containerDetail_image_header {
   text-align: right;
-  margin: 10px;
-  width: 98%;
+  margin-top: 10px;
+  /* width: 98%; */
+  margin-bottom: 10px;
 }
 
 .containerDetail_image_header img {
@@ -349,7 +350,7 @@ h1.title_header {
   height: auto; /* mantiene proporción */
   object-fit: cover;
   width: 600px;
-  height: 510px;
+  height: 480px;
   border-radius: 3px;
 }
 
@@ -357,8 +358,8 @@ h1.title_header {
   color: white;
 }
 .card_description_title {
-  font-weight: bolder;
-  font-size: 40px;
+  font-weight: 500;
+  font-size: 30px;
   letter-spacing: -0.05em;
   margin-bottom: 20px;
   display: flex;
@@ -386,7 +387,7 @@ h1.title_header {
 }
 
 h1.title_header {
-  width: 90%;
+  width: 99%;
 }
 
 .background-half {
@@ -501,7 +502,7 @@ h1.title_header {
   filter: grayscale();
 }
 .title_footer_detail {
-  font-size: 10vw;
+  font-size: 7vw;
   width: 100%;
   text-align: center;
   /* margin: 0; */
@@ -527,4 +528,35 @@ h1.title_header {
 .title_footer_detail {
   white-space: nowrap;
   overflow: hidden;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+.calendar_detail {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 3px;
+}
+.day_calendar {
+  font-size: 42px;
+  margin: 0px;
+  line-height: 30px;
+  letter-spacing: -3.25px;
+  font-weight: 500;
+}
+.hours_calendar {
+  font-size: 22px;
+  line-height: 10px;
+  font-size: 42px;
+  margin: 0px;
+  line-height: 30px;
+  letter-spacing: -4.25px;
+  font-weight: 500;
 }

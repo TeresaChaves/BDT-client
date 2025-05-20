@@ -194,11 +194,11 @@ a:hover {
   overflow: hidden;
   cursor: pointer;
   z-index: 1;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 18px;
   font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
-  color: #171718;
+  color: #181818;
   margin-top: 10px;
   border-radius: 20px;
   letter-spacing: -0.05em;

@@ -13,10 +13,11 @@
 }
 
 .nav-link {
-  text-decoration: none;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
+  font-weight: 100;
+  letter-spacing: -0.05em;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: white;
 }
 .nav-link img {
   opacity: 0.8;
