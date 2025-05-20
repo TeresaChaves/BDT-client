@@ -53,57 +53,51 @@ function ServiceDetailsPage() {
 
   return (
     <>
-      {/* <div className="img-sup_card">
-        <img className="image3_sup" src={service?.image} alt="" />
-      </div> */}
-
-      <Container>
+      <>
         {!service ? (
           <Loader />
         ) : (
           <>
-            <div className="img-detail-card">
-              <img className="image3" src={service.image} alt="" />
-              <div className="image1-wrapper">
-                <img className="image1" src={service.image} alt="" />
+            <div class="parent">
+              <div class="div1">
+                <div className="containerDetail_title_header">
+                  <h1 className="title_header"> {service.name}</h1>
+                </div>
               </div>
+              <div class="div2">
+                {" "}
+                <div className="containerDetail_image_header">
+                  <img src={service.image} alt="imagen del servicio" />
+                </div>
+              </div>
+              <div class="div4">
+                <div className="container_description_cardDetail">
+                  {" "}
+                  <p className="description_cardDetail">
+                    Descripción:
+                    <br />
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+              <div class="div5">
+                <div className="display_valoracion">
+                  <h3 className="card_description_title">VALORACION</h3>
+                  <span>⭐⭐⭐</span>
+                </div>
+              </div>
+              <div className="div7">
+                <div className="container_disponibility-div">
+                  <div>
+                    <h3 className="card_description_title">
+                      ¿CUÁNDO LO QUIERES?
+                    </h3>
+                  </div>
+                  <div className="container_disponibility">
+                    <p>{service.disponibility}</p>
+                  </div>
 
-              {/* <img className="image1" src={service.image} alt="" /> */}
-              <img className="image2" src={service.image} alt="" />
-            </div>
-            <div>
-              <div
-                style={{
-                  fontWeight: "100",
-                  fontSize: "50px",
-                  letterSpacing: "-0.05em",
-                  marginBottom: "20px",
-                  paddingTop: "20px",
-                  display: "flex",
-                }}>
-                <RoughNotation type="box" color="red" show>
-                  <span> {service.name}</span>
-                </RoughNotation>
-              </div>
-              <div className="card_detail-services">
-                <p>{service.description}</p>
-              </div>
-              <div
-                style={{
-                  fontWeight: "100",
-                  fontSize: "32px",
-                  letterSpacing: "-0.05em",
-                  marginBottom: "20px",
-                  display: "flex",
-                }}>
-                <RoughNotation type="underline" color="grey" show>
-                  <span>Disponibilidad</span>
-                </RoughNotation>
-              </div>
-              <p>{service.disponibility}</p>
-              <div>
-                <div className="containercontacto">
-                  <div className="contratar-detail-container">
+                  <div className="buttons_contract">
                     {service?.owner?._id == user?._id ? (
                       <>
                         <button onClick={openModal} className="btnContratar">
@@ -128,7 +122,7 @@ function ServiceDetailsPage() {
                           </Modal.Body>
                         </Modal>
                         <Col>
-                          <div className="d-grid">
+                          <div>
                             <button
                               className="btnContratar-eliminar"
                               onClick={openModalDelete}>
@@ -203,10 +197,16 @@ function ServiceDetailsPage() {
                   </div>
                 </div>
               </div>
+              <div class="div6">
+                <div className="container_title_footer_detail">
+                  <h2 className="title_footer_detail">TUTIEMPOVALEORO</h2>
+                </div>
+              </div>
+              <div class="background-half grid-background"></div>
             </div>
           </>
         )}
-      </Container>
+      </>
     </>
   );
 }

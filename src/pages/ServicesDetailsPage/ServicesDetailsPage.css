@@ -1,22 +1,3 @@
-.detailPhoto {
-  max-height: 512px;
-  max-width: 763px;
-  min-height: 389px;
-  object-fit: cover;
-  opacity: 0.3;
-  overflow: hidden;
-}
-
-.nameDetail {
-  border-bottom: 3px solid #609f80;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.card_detail-services p::first-letter {
-  text-transform: capitalize;
-}
-
 .card-img-top {
   max-width: 370px;
   max-height: 129px;
@@ -24,66 +5,9 @@
   filter: contrast(0.7);
 }
 
-.btn-dark {
-  background-color: #4b574d;
-}
-
-.nameServMod {
-  display: inline;
-  border-bottom: 1px solid #000000;
-  text-transform: uppercase;
-  margin: 20px;
-  width: 100%;
-}
 .modal-content {
   border-radius: 5px;
   padding: 20px;
-}
-
-.mailToOwner {
-  text-decoration: none;
-  color: #24596a;
-  box-shadow: inset 0 0 0 0 #24596a;
-  color: #24596a;
-  padding: 0 0.25rem;
-  margin: 0 -0.25rem;
-  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.mailToOwner:hover {
-  color: #fff;
-  box-shadow: inset 200px 0 0 0 #609c7d;
-}
-
-.container6 {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-  padding: 0px;
-}
-
-.flip-card {
-  background-color: transparent;
-  width: 633px;
-  height: 353px;
-  perspective: 1000px;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  padding: 20px;
-}
-
-.title3 {
-  font-size: 1em;
-  font-weight: 700;
-  text-align: center;
-  margin: 20px;
-  color: aliceblue;
 }
 
 .cardName {
@@ -207,6 +131,54 @@
     rgba(0, 0, 0, 1) 50%
   );
 }
+.container-img-banner {
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  height: 300px;
+}
+
+.imageppal {
+  width: 500px;
+  object-fit: cover;
+}
+
+.imagesec {
+  max-width: 30px;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale() blur(0.3px);
+  transform: scale(350%);
+}
+
+.imageter {
+  filter: grayscale(1);
+  height: 100%;
+  object-fit: cover;
+  flex: 1;
+  overflow: hidden;
+}
+
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 255, 0.5),
+    rgba(0, 128, 255, 0.5)
+  );
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
 
 .image2 {
   width: 100%;
@@ -317,4 +289,242 @@
 .btn4:active {
   filter: brightness(0.7);
   transform: scale(0.98);
+}
+.header_container {
+  display: flex;
+  align-items: stretch;
+  /* width: 100%; */
+  min-height: 120px;
+  margin: 10px; /* opcional, asegura altura mínima */
+  position: relative;
+}
+
+.containerDetail_title_header {
+  flex: 0 0 40%; /* 40% del ancho */
+  text-align: left;
+  width: 40%;
+}
+
+.line_divide {
+  width: 2px;
+  height: 800px;
+  background-color: #c2bbbb;
+  margin: 0 20px;
+  position: absolute;
+  right: 1100px;
+}
+
+h1.title_header {
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  font-size: 120px;
+  font-weight: bolder;
+  line-height: 105px;
+  border-radius: 8px;
+  width: 100%; /* ocupa todo el ancho disponible del div */
+  word-wrap: break-word; /* permite romper palabras largas */
+  overflow-wrap: break-word; /* lo mismo, más moderno y compatible */
+  white-space: normal;
+}
+.containerDetail_description {
+  background-color: #181818;
+}
+
+.parent {
+  position: relative; /* Necesario para el background absoluto */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, auto); /* ← importante que sean dinámicas */
+}
+
+.containerDetail_image_header {
+  text-align: right;
+  margin: 10px;
+  width: 98%;
+}
+
+.containerDetail_image_header img {
+  width: 80%; /* ocupa el 80% de su contenedor */
+  max-width: 600px; /* nunca crece más de 600px */
+  height: auto; /* mantiene proporción */
+  object-fit: cover;
+  width: 600px;
+  height: 510px;
+  border-radius: 3px;
+}
+
+.div2 p {
+  color: white;
+}
+.card_description_title {
+  font-weight: bolder;
+  font-size: 40px;
+  letter-spacing: -0.05em;
+  margin-bottom: 20px;
+  display: flex;
+  color: white;
+  margin: 0;
+}
+
+.container_disponibility {
+  display: flex;
+}
+.container_disponibility p {
+  color: #ffffff;
+}
+
+.buttons_contract {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.containerDetail_title_header {
+  grid-row: span 4; /* ocupa 4 de las 6 filas */
+  width: 100%;
+  overflow: hidden;
+}
+
+h1.title_header {
+  width: 90%;
+}
+
+.background-half {
+  position: absolute;
+  grid-column: 1 / -1;
+  grid-row: 5 / 8;
+  inset: 0;
+  z-index: -1;
+  background-color: #181818;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.description_cardDetail {
+  font-size: 16px;
+  margin: 0px;
+  color: #ffffff;
+}
+.container_description_cardDetail {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.parent {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, auto);
+}
+
+/* Fondo negro dinámico */
+.grid-background {
+  grid-column: 1 / -1;
+  grid-row: 5 / 8;
+  background-color: #181818;
+  z-index: 0;
+}
+
+/* Asegura que el contenido esté por encima del fondo */
+.parent > div:not(.grid-background) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos base del layout (puedes adaptar según lo que ya tienes) */
+.div1 {
+  grid-column: span 2;
+  grid-row: 1 / 5; /* solo filas 1 a 4 */
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  border-right: 2px solid #e0d6d6;
+}
+
+.div2 {
+  grid-column: 3 / span 3;
+  grid-row: span 4;
+  color: white;
+}
+
+.div4 {
+  grid-column: 3 / span 3;
+  grid-row-start: 5;
+  border-bottom: 2px solid #5a5959;
+  margin: 3px;
+}
+
+.div5 {
+  grid-column: 3 / span 3;
+  grid-row-start: 6;
+  margin: 3px;
+}
+
+.div6 {
+  grid-column: 1 / -1;
+  grid-row-start: 7;
+  border-top: 2px solid #5a5959;
+  color: white;
+}
+
+.containerDetail_title_header {
+  grid-row: 1 / 5; /* ocupa las filas 1 a 4 */
+  width: 100%;
+  overflow: hidden;
+}
+
+.container_disponibility-div {
+  grid-row: 5 / 7; /* ocupa filas 5 y 6 */
+  width: 100%;
+  padding: 10px;
+  overflow: auto; /* evita desbordes si el contenido es grande */
+}
+.div7 {
+  grid-column: 1 / span 2; /* donde quieras que esté, igual que div1 */
+  grid-row: 5 / 7; /* empieza en fila 5 para alinear con div4 */
+  z-index: 1;
+  border-right: 2px solid #e0d6d6;
+}
+.display_valoracion {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
+.display_valoracion span {
+  font-size: 24px;
+  filter: grayscale();
+}
+.title_footer_detail {
+  font-size: 10vw;
+  width: 100%;
+  text-align: center;
+  /* margin: 0; */
+  /* padding: 0; */
+  line-height: 0.7;
+  padding-bottom: 15px;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  opacity: 0.1;
+}
+
+.container_title_footer_detail {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.div6 {
+  margin: 0;
+  padding: 0;
+}
+.title_footer_detail {
+  white-space: nowrap;
+  overflow: hidden;
 }
