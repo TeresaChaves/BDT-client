@@ -317,20 +317,21 @@
 h1.title_header {
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  font-size: 100px;
-  font-weight: 500;
+  font-size: 50px;
+  font-weight: bolder;
   line-height: 105px;
   border-radius: 8px;
-  width: 100%; /* ocupa todo el ancho disponible del div */
-  word-wrap: break-word; /* permite romper palabras largas */
-  overflow-wrap: break-word; /* lo mismo, más moderno y compatible */
+  width: 100%;
+  /* word-wrap: break-word; */
+  /* overflow-wrap: break-word; */
   white-space: normal;
+  line-height: 60px;
 }
 .containerDetail_description {
   background-color: #181818;
 }
 
-.parent {
+.parent_ServiceDetailPaget {
   position: relative; /* Necesario para el background absoluto */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -354,7 +355,7 @@ h1.title_header {
   border-radius: 3px;
 }
 
-.div2 p {
+.div2_containerDetail_image_header p {
   color: white;
 }
 .card_description_title {
@@ -387,7 +388,7 @@ h1.title_header {
 }
 
 h1.title_header {
-  width: 99%;
+  width: 60%;
 }
 
 .background-half {
@@ -415,7 +416,7 @@ h1.title_header {
   align-items: center;
 }
 
-.parent {
+.parent_ServiceDetailPage {
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -431,13 +432,13 @@ h1.title_header {
 }
 
 /* Asegura que el contenido esté por encima del fondo */
-.parent > div:not(.grid-background) {
+.parent_ServiceDetailPage > div:not(.grid-background) {
   position: relative;
   z-index: 1;
 }
 
 /* Estilos base del layout (puedes adaptar según lo que ya tienes) */
-.div1 {
+.div1_containerDetail_title_header_containerDetail_title_header {
   grid-column: span 2;
   grid-row: 1 / 5; /* solo filas 1 a 4 */
   display: grid;
@@ -445,26 +446,26 @@ h1.title_header {
   border-right: 2px solid #e0d6d6;
 }
 
-.div2 {
+.div2_containerDetail_image_header {
   grid-column: 3 / span 3;
   grid-row: span 4;
   color: white;
 }
 
-.div4 {
+.div4_container_description_cardDetail {
   grid-column: 3 / span 3;
   grid-row-start: 5;
   border-bottom: 2px solid #5a5959;
   margin: 3px;
 }
 
-.div5 {
+.div5_display_valoracion {
   grid-column: 3 / span 3;
   grid-row-start: 6;
   margin: 3px;
 }
 
-.div6 {
+.div6_container_title_footer_detail {
   grid-column: 1 / -1;
   grid-row-start: 7;
   border-top: 2px solid #5a5959;
@@ -483,9 +484,9 @@ h1.title_header {
   padding: 10px;
   overflow: auto; /* evita desbordes si el contenido es grande */
 }
-.div7 {
-  grid-column: 1 / span 2; /* donde quieras que esté, igual que div1 */
-  grid-row: 5 / 7; /* empieza en fila 5 para alinear con div4 */
+.div7_container_disponibility-div {
+  grid-column: 1 / span 2; /* donde quieras que esté, igual que div1_containerDetail_title_header */
+  grid-row: 5 / 7; /* empieza en fila 5 para alinear con div4_container_description_cardDetail */
   z-index: 1;
   border-right: 2px solid #e0d6d6;
 }
@@ -521,7 +522,7 @@ h1.title_header {
   padding: 0;
 }
 
-.div6 {
+.div6_container_title_footer_detail {
   margin: 0;
   padding: 0;
 }
@@ -537,6 +538,14 @@ h1.title_header {
   align-items: center;
   gap: 30px;
   margin-top: 10px;
+}
+.calendar-container--sm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  align-items: flex-end;
 }
 .calendar_detail {
   width: 80px;
@@ -556,7 +565,39 @@ h1.title_header {
   line-height: 10px;
   font-size: 42px;
   margin: 0px;
-  line-height: 30px;
+  line-height: 40px;
   letter-spacing: -4.25px;
   font-weight: 500;
+}
+
+.calendar_detail--sm {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 3px;
+}
+.day_calendar--sm {
+  font-size: 26px;
+  margin: 0px;
+  line-height: 20px;
+  letter-spacing: -1.25px;
+  font-weight: 100;
+  text-align: center;
+  padding-left: 3px;
+}
+.hours_calendar--sm {
+  font-size: 20px;
+  margin: 0px;
+  line-height: 20px;
+  letter-spacing: -0.25px;
+  font-weight: 100;
+  padding-left: 3px;
+}
+.calendar_detail-text_hours {
+  font-size: 17px;
+  margin: 0px;
+  line-height: 10px;
+  letter-spacing: -1.25px;
+  font-weight: 100;
+  padding-left: 3px;
 }

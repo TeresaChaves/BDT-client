@@ -58,19 +58,19 @@ function ServiceDetailsPage() {
           <Loader />
         ) : (
           <Container>
-            <div class="parent">
-              <div class="div1">
+            <div class="parent_ServiceDetailPage">
+              <div class="div1_containerDetail_title_header">
                 <div className="containerDetail_title_header">
                   <h1 className="title_header"> {service.name}</h1>
                 </div>
               </div>
-              <div class="div2">
+              <div class="div2_containerDetail_image_header">
                 {" "}
                 <div className="containerDetail_image_header">
                   <img src={service.image} alt="imagen del servicio" />
                 </div>
               </div>
-              <div class="div4">
+              <div class="div4_container_description_cardDetail">
                 <div className="container_description_cardDetail">
                   {" "}
                   <p className="description_cardDetail">
@@ -80,13 +80,13 @@ function ServiceDetailsPage() {
                   </p>
                 </div>
               </div>
-              <div class="div5">
+              <div class="div5_display_valoracion">
                 <div className="display_valoracion">
                   <h3 className="card_description_title">VALORACION</h3>
                   <span>⭐⭐⭐</span>
                 </div>
               </div>
-              <div className="div7">
+              <div className="div7_container_disponibility-div">
                 <div className="container_disponibility-div">
                   <div>
                     <h3 className="card_description_title">
@@ -207,7 +207,7 @@ function ServiceDetailsPage() {
                   </div>
                 </div>
               </div>
-              <div class="div6">
+              <div class="div6_container_title_footer_detail">
                 <div className="container_title_footer_detail">
                   <h2 className="title_footer_detail">TUTIEMPOVALEORO</h2>
                 </div>

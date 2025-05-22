@@ -1,0 +1,9 @@
+.form-label {
+  margin-bottom: 0.5rem;
+  line-height: -0.05;
+  font-weight: 100;
+  letter-spacing: -0.05em;
+  font-size: 22px;
+  /* text-transform: uppercase; */
+  /* color: white; */
+}

@@ -2,7 +2,7 @@ import "./ServiceCard.css";
 import { Button, ButtonGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth.context";
 import servicesService from "../../services/services.service";
 

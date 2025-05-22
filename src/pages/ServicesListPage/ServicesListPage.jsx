@@ -24,9 +24,9 @@ const ServicesListPage = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    // Espera 2 segundos antes de cargar los servicios
     loadServices();
   }, []);
+
   const loadServices = () => {
     isLoading(true);
     servicesService
@@ -77,14 +77,6 @@ const ServicesListPage = () => {
           </div>
           <div className="container3">
             {" "}
-            {/* <a href="#" class="button">
-              <div className="button__line"></div>
-              <div className="button__line"></div>{" "}
-              <span class="button__text">SERVICIOS</span>
-              <div className="button__drow1"></div>
-              <div className="button__drow2"></div>
-            </a> */}
-            {/* <LottieComp /> */}
             <div>
               {user && (
                 <button className="btn2" onClick={openModal}>

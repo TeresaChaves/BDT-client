@@ -118,6 +118,37 @@
   transform: scale(0.98);
 }
 
+/* 🔶 Modificador: editar */
+.btn2--edit {
+  --color: #050505;
+  --color2: #ffffff;
+  background-color: #fceb07;
+  border: 1px solid #fceb07;
+  font-size: 16px;
+}
+
+/* 🔴 Modificador: eliminar */
+.btn2--delete {
+  --color: #ffffff;
+  --color2: #000000;
+  background-color: #e53935;
+  border: 1px solid #e53935;
+  font-size: 16px;
+}
+
+/* 🟢 Modificador: aceptar */
+.btn2--accept {
+  --color: #ffffff;
+  --color2: #000000;
+  background-color: #39a009;
+  border: 1px solid #39a009;
+  font-size: 16px;
+}
+.btn2--profile {
+  height: 50px;
+  font-size: 22px;
+}
+
 :root {
   --line_color: #24596a;
   --back_color: #defffa;
