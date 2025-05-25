@@ -1,8 +1,7 @@
 import "./ServicesListPage.css";
 import { useState, useEffect, useContext } from "react";
 import servicesService from "../../services/services.service";
-import { Container, Button, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Modal } from "react-bootstrap";
 import AddServiceForm from "../../components/AddServiceForm/AddServiceForm";
 // import Loader from "../../components/Loader/Loader"
 import { MessageContext } from "../../contexts/userMessage.context";
