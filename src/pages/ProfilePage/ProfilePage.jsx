@@ -62,7 +62,7 @@ function ProfilePage() {
     setShowToast(true);
     setToastMessage("Nuevo servicio creado");
     closeModal();
-    loadServices();
+    loadServicesProfile();
   };
 
   const handleAcceptRequest = async (request) => {
