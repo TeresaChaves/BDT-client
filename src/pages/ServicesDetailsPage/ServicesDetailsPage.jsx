@@ -110,8 +110,13 @@ function ServiceDetailsPage() {
                   <div className="buttons_contract">
                     {service?.owner?._id == user?._id ? (
                       <>
-                        <button onClick={openModal} className="btnContratar">
+                        <button onClick={openModal} className="btn2 btn2--edit">
                           Editar
+                        </button>
+                        <button
+                          className="btn2 btn2--delete"
+                          onClick={openModalDelete}>
+                          Eliminar
                         </button>
 
                         <Modal show={showModal} onHide={closeModal}>
@@ -131,56 +136,49 @@ function ServiceDetailsPage() {
                             />
                           </Modal.Body>
                         </Modal>
-                        <Col>
-                          <div>
-                            <button
-                              className="btnContratar-eliminar"
-                              onClick={openModalDelete}>
-                              Eliminar
-                            </button>
-                            <Modal show={modalDelete} onHide={closeModal}>
-                              <Modal.Header closeButton></Modal.Header>
-                              <Modal.Body>
-                                <Modal.Title>
-                                  <div
-                                    style={{
-                                      fontWeight: "100",
-                                      fontSize: "28px",
-                                      letterSpacing: "-0.05em",
-                                      lineHeight: "30px",
-                                      marginBottom: "20px",
-                                    }}>
-                                    ¿Estás seguro de que quieres eliminar {""}
-                                    <span
-                                      style={{
-                                        fontWeight: "100",
-                                        fontSize: "40px",
-                                        letterSpacing: "-0.05em",
-                                        lineHeight: "30px",
-                                        marginBottom: "20px",
-                                      }}>
-                                      {service.name}?
-                                    </span>
-                                  </div>
-                                  <button
-                                    onClick={delOneServcice}
-                                    className="btn2">
-                                    Eliminar
-                                  </button>
-                                </Modal.Title>
-                              </Modal.Body>
-                            </Modal>
-                          </div>
-                        </Col>
+                        <Modal show={modalDelete} onHide={closeModal}>
+                          <Modal.Header closeButton></Modal.Header>
+                          <Modal.Body>
+                            <Modal.Title>
+                              <div
+                                style={{
+                                  fontWeight: "100",
+                                  fontSize: "28px",
+                                  letterSpacing: "-0.05em",
+                                  lineHeight: "30px",
+                                  marginBottom: "20px",
+                                }}>
+                                ¿Estás seguro de que quieres eliminar {""}
+                                <span
+                                  style={{
+                                    fontWeight: "100",
+                                    fontSize: "40px",
+                                    letterSpacing: "-0.05em",
+                                    lineHeight: "30px",
+                                    marginBottom: "20px",
+                                  }}>
+                                  {service.name}?
+                                </span>
+                              </div>
+                              <button onClick={delOneServcice} className="btn2">
+                                Eliminar
+                              </button>
+                            </Modal.Title>
+                          </Modal.Body>
+                        </Modal>
                       </>
                     ) : (
                       <>
                         <div className="mail">
                           <a href={`mailto:${service.owner.email}`}>
-                            <button className="btnContratar">Contacta</button>
+                            <button className="btn2 btn2--white">
+                              Contacta
+                            </button>
                           </a>
                         </div>
-                        <button onClick={openModal} className="btnContratar">
+                        <button
+                          onClick={openModal}
+                          className="btn2 btn2--white">
                           Contratar
                         </button>
                         <Modal show={showModal} onHide={closeModal}>

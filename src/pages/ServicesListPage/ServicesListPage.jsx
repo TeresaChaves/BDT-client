@@ -79,7 +79,7 @@ const ServicesListPage = () => {
             {" "}
             <div>
               {user && (
-                <button className="btn2" onClick={openModal}>
+                <button className="btn2 btn2--profile" onClick={openModal}>
                   Da de alta tu servicio
                 </button>
               )}
@@ -98,7 +98,23 @@ const ServicesListPage = () => {
 
       <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Servicio</Modal.Title>
+          <Modal.Title
+            style={{
+              textAlign: "center",
+              fontWeight: "100",
+              fontSize: "50px",
+              letterSpacing: "-0.05em",
+            }}>
+            ¿Qué sabes hacer?
+            <p
+              style={{
+                opacity: "0.5",
+                fontSize: "16px",
+                letterSpacing: "0px",
+              }}>
+              Súbelo a tu comunidad y empieza a itercambiar horas con el resto
+            </p>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AddServiceForm fireFinalActions={fireFinalActions} />

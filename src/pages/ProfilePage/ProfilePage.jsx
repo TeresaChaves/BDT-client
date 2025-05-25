@@ -9,6 +9,7 @@ import { RoughNotation } from "react-rough-notation";
 import uploadHours from "../../services/hours.service";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
+import { Link } from "react-router-dom";
 
 function ProfilePage() {
   const [profileServices, setProfileServices] = useState([]);
@@ -108,7 +109,7 @@ function ProfilePage() {
               {" "}
               <Row>
                 <div style={{ marginBottom: "30px" }}></div>
-                <div className="container5">
+                <div className="container-profile-info">
                   <div className="container_name">
                     <p>{user.username}</p>
                     <img src={user.avatar} className="avatar" />
@@ -145,24 +146,30 @@ function ProfilePage() {
             </div>
             <div class="div4">
               <h3 className="title_section-profile">TUS SERVICIOS</h3>
-              <div className="div4_container">
-                {profileServices.map((el, idx) => (
-                  <>
-                    <div className="card_profile-tusservicios" id={idx}>
-                      <div className="card_profile_container_name">
-                        <span>{el.name}</span>
-                      </div>
-                      <div className="card_profile-body-tusservicios">
-                        <div className="stars">⭐⭐⭐</div>
-                        <div className="button-edit-container">
-                          <button className="btn2 btn2--edit">Editar</button>
+              <SimpleBar style={{ maxHeight: "100%" }}>
+                <div className="div4_container">
+                  {profileServices.map((el, idx) => (
+                    <>
+                      <div className="card_profile-tusservicios" id={idx}>
+                        <div className="card_profile_container_name">
+                          <span>{el.name}</span>
+                        </div>
+                        <div className="card_profile-body-tusservicios">
+                          <div className="stars">⭐⭐⭐</div>
+                          <div className="button-edit-container">
+                            <Link to={`/servicios/detalles/${el._id}`}>
+                              <button className="btn2 btn2--edit">
+                                Editar
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <hr />
-                  </>
-                ))}
-              </div>
+                      <hr />
+                    </>
+                  ))}
+                </div>
+              </SimpleBar>
             </div>
             <div class="div5">
               {" "}
@@ -203,19 +210,20 @@ function ProfilePage() {
                                 </span>
                               </div>
                             </div>
-
-                            <div className="button-edit-container">
-                              <button
-                                className="btn2 btn2--accept"
-                                onClick={() => handleAcceptRequest(request)}>
-                                Aceptar
-                              </button>
-                            </div>
-                            <div className="button-edit-container">
-                              <button className="btn2 btn2--delete">
-                                {" "}
-                                Cancelar
-                              </button>
+                            <div className="button-profile-container">
+                              <div className="button-edit-container">
+                                <button
+                                  className="btn2 btn2--accept"
+                                  onClick={() => handleAcceptRequest(request)}>
+                                  Aceptar
+                                </button>
+                              </div>
+                              <div className="button-edit-container">
+                                <button className="btn2 btn2--delete">
+                                  {" "}
+                                  Cancelar
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>

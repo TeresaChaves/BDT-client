@@ -18,21 +18,25 @@
 .header_title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 50%;
+  padding-right: 20px;
 }
 .header_title h1 {
-  font-weight: 100;
-  letter-spacing: -0.05em;
+  font-weight: bolder;
+  letter-spacing: -0.06em;
   /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 0.9;
+  line-height: 1;
   word-break: break-word;
   margin: 0px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 50px;
   /* mix-blend-mode: soft-light; */
-  font-weight: 100;
-  font-size: 100px;
+  font-size: clamp(2rem, 8vw, 100px);
+
+  text-transform: uppercase;
 }
 
 .modal-header {

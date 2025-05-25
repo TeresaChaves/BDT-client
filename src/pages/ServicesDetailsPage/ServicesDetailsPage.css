@@ -317,15 +317,15 @@
 h1.title_header {
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  font-size: 50px;
   font-weight: bolder;
-  line-height: 105px;
   border-radius: 8px;
   width: 100%;
   /* word-wrap: break-word; */
   /* overflow-wrap: break-word; */
   white-space: normal;
   line-height: 60px;
+  font-size: clamp(24px, 6vw, 50px);
+  line-height: clamp(32px, 8vw, 60px);
 }
 .containerDetail_description {
   background-color: #181818;
@@ -346,12 +346,11 @@ h1.title_header {
 }
 
 .containerDetail_image_header img {
-  width: 80%; /* ocupa el 80% de su contenedor */
-  max-width: 600px; /* nunca crece más de 600px */
-  height: auto; /* mantiene proporción */
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 5 / 4; /* opcional, similar a 600x480 */
   object-fit: cover;
-  width: 600px;
-  height: 480px;
   border-radius: 3px;
 }
 
@@ -359,7 +358,7 @@ h1.title_header {
   color: white;
 }
 .card_description_title {
-  font-weight: 500;
+  font-weight: 100;
   font-size: 30px;
   letter-spacing: -0.05em;
   margin-bottom: 20px;
@@ -558,7 +557,7 @@ h1.title_header {
   margin: 0px;
   line-height: 30px;
   letter-spacing: -3.25px;
-  font-weight: 500;
+  font-weight: 100;
 }
 .hours_calendar {
   font-size: 22px;
@@ -566,8 +565,8 @@ h1.title_header {
   font-size: 42px;
   margin: 0px;
   line-height: 40px;
-  letter-spacing: -4.25px;
-  font-weight: 500;
+  letter-spacing: -2.25px;
+  font-weight: 100;
 }
 
 .calendar_detail--sm {
@@ -600,4 +599,69 @@ h1.title_header {
   letter-spacing: -1.25px;
   font-weight: 100;
   padding-left: 3px;
+}
+
+@media (max-width: 768px) {
+  .parent_ServiceDetailPage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    display: inline;
+  }
+
+  .div1_containerDetail_title_header_containerDetail_title_header,
+  .div2_containerDetail_image_header,
+  .div4_container_description_cardDetail,
+  .div5_display_valoracion,
+  .div6_container_title_footer_detail,
+  .div7_container_disponibility-div {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    border-right: none;
+  }
+  h1.title_header {
+    color: white;
+  }
+
+  .title_footer_detail {
+    font-size: 10vw;
+  }
+
+  .calendar_detail {
+    width: 60px;
+    height: 60px;
+  }
+
+  .day_calendar,
+  .hours_calendar {
+    font-size: 28px;
+    line-height: 20px;
+  }
+
+  .calendar-container {
+    gap: 12px;
+    justify-content: flex-start;
+  }
+  .buttons_contract {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 964px) {
+  .display_valoracion {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card_description_title {
+    font-size: 20px;
+  }
+  .div5_display_valoracion {
+    background-color: #181818;
+    border-bottom: 1px solid #b5b3b3;
+  }
+  .div4_container_description_cardDetail {
+    background-color: #181818;
+  }
 }

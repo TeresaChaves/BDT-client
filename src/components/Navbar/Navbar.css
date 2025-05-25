@@ -52,3 +52,7 @@
 .mt-1 {
   margin: 0px !important;
 }
+
+.navbar-expand-sm .navbar-nav .nav-link {
+  padding-right: 0px;
+}

@@ -76,7 +76,7 @@
   text-transform: uppercase;
   color: var(--color);
 
-  width: 100%;
+  /* width: 100%; */
   letter-spacing: -0.05em;
 }
 
@@ -143,10 +143,18 @@
   background-color: #39a009;
   border: 1px solid #39a009;
   font-size: 16px;
+  width: 100%;
 }
 .btn2--profile {
-  height: 50px;
+  /* height: 50px; */
   font-size: 22px;
+  padding: 0px 8px 0px 8px;
+}
+.btn2--white {
+  font-size: 18px;
+  padding: 0px 8px 0px 8px;
+  background-color: white;
+  color: #000000;
 }
 
 :root {
