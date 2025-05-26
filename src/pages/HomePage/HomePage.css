@@ -782,6 +782,10 @@ p {
   .title12 {
     font-size: 4vw;
   }
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 }
 .nav-link:focus,
 .nav-link:hover {

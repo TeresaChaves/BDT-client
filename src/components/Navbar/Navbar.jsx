@@ -1,39 +1,38 @@
 import "./Navbar.css";
 
-import { useContext } from "react";
-import { Navbar, Nav, Container, NavDropdown, NavItem } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth.context";
-import logo from "../../assests/images/logo.ico";
 
 function NavBar() {
   const { user, logoutUser } = useContext(AuthContext);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleToggle = () => setExpanded((prev) => !prev);
+  const closeMenu = () => setExpanded(false);
   return (
-    <Navbar className="navBar" sticky="top" expand="sm">
+    <Navbar className="navBar" sticky="top" expand="sm" expanded={expanded}>
       <Container>
         <Link to="/">
-          <Navbar.Brand className="nav-link">
-            {/* <img
-              src={logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top mt-1 me-1 "
-              alt="React Bootstrap logo"
-            /> */}
+          <Navbar.Brand className="nav-link" onClick={closeMenu}>
             <span className="nameNav">TIMESHARE</span>
           </Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          onClick={handleToggle}
+        />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link className="navLink" to="/servicios">
+            <Link className="navLink" to="/servicios" onClick={closeMenu}>
               <Nav.Link as="div">Servicios</Nav.Link>
             </Link>
 
             {user ? (
               <>
                 {" "}
-                <Link to="/usuario/mi-perfil">
+                <Link to="/usuario/mi-perfil" onClick={closeMenu}>
                   <Nav.Link as="div">Mi perfil</Nav.Link>
                 </Link>
                 <Link onClick={logoutUser}>
@@ -45,11 +44,11 @@ function NavBar() {
               </>
             ) : (
               <>
-                <Link to="/usuario/registro">
+                <Link to="/usuario/registro" onClick={closeMenu}>
                   <Nav.Link as="div">Registro</Nav.Link>
                 </Link>
 
-                <Link to="/usuario/iniciar-sesion">
+                <Link to="/usuario/iniciar-sesion" onClick={closeMenu}>
                   <Nav.Link as="div">Acceder</Nav.Link>
                 </Link>
               </>

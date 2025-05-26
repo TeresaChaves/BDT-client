@@ -290,4 +290,7 @@
   .container-profile-info {
     justify-content: space-between;
   }
+  .div4_container {
+    margin-top: 10px;
+  }
 }
