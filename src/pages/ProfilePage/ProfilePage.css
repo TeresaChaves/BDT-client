@@ -287,4 +287,7 @@
   .div5 .card_profile-tusservicios {
     margin-top: 30px;
   }
+  .container-profile-info {
+    justify-content: space-between;
+  }
 }

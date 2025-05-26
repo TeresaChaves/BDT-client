@@ -48,6 +48,9 @@ class UploadHours {
   acceptServiceContract(clientId, serviceId) {
     return this.api.post("/services/accept", { clientId, serviceId });
   }
+  finishServiceContract(clientId, serviceId) {
+    return this.api.post("/services/finish", { clientId, serviceId });
+  }
 }
 
 const uploadHours = new UploadHours();

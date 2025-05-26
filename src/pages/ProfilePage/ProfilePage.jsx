@@ -10,6 +10,7 @@ import uploadHours from "../../services/hours.service";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import { Link } from "react-router-dom";
+import EmptyData from "../../components/EmptyData/EmptyData";
 
 function ProfilePage() {
   const [profileServices, setProfileServices] = useState([]);
@@ -22,6 +23,8 @@ function ProfilePage() {
 
   const { setShowToast, setToastMessage } = useContext(MessageContext);
   const { user } = useContext(AuthContext);
+
+  console.log(serviceRequest);
 
   useEffect(() => {
     if (user?._id) {
@@ -60,7 +63,6 @@ function ProfilePage() {
 
   const fireFinalActions = () => {
     setShowToast(true);
-    setToastMessage("Nuevo servicio creado");
     closeModal();
     loadServicesProfile();
   };
@@ -100,6 +102,46 @@ function ProfilePage() {
       setToastMessage("Error aceptando solicitud: " + error.message);
     }
   };
+
+  const handleFinishContract = async (request) => {
+    try {
+      await uploadHours.finishServiceContract(
+        request.client._id,
+        request.service._id
+      );
+
+      // Obtener las solicitudes actualizadas desde el backend
+      const { data: updatedRequests } = await uploadHours.getServiceRequests(
+        user._id
+      );
+
+      setServiceRequest(updatedRequests);
+
+      setShowToast(true);
+      setToastMessage("Contrato finalizado con éxito");
+    } catch (error) {
+      setShowToast(true);
+      setToastMessage("Error al finalizar el contrato");
+    }
+  };
+
+  const pendingRequests = serviceRequest.filter(
+    (request) => request?.service && request?.status === "pendiente"
+  );
+  const acceptedRequest = serviceRequest.filter(
+    (request) => request?.service && request?.status === "aceptado"
+  );
+
+  const pendingContractedServices = contractedServices.filter(
+    (request) => request && request.status === "pendiente"
+  );
+  const acceptedOrFinished = contractedServices.filter(
+    (request) =>
+      request?.service &&
+      (request.status === "aceptado" || request.status === "finalizado")
+  );
+
+  const isMobile = window.innerWidth < 768;
   return (
     <>
       <Container>
@@ -117,15 +159,18 @@ function ProfilePage() {
 
                   <div className="container_hour">
                     TIENES{" "}
-                    <RoughNotation type="highlight" color="yellow" show>
-                      <span>{user.bankAccountTime}</span>
-                    </RoughNotation>
+                    {!isMobile && (
+                      <RoughNotation type="highlight" color="yellow" show>
+                        <span>{user.bankAccountTime}</span>
+                      </RoughNotation>
+                    )}
+                    {isMobile && <span>{user.bankAccountTime}</span>}
                     HORAS
                   </div>
                 </div>
               </Row>
             </div>
-            <div class="div2">
+            <div className="div2">
               <div className="container_button-create_profile">
                 {" "}
                 {user && (
@@ -137,14 +182,14 @@ function ProfilePage() {
                 )}
               </div>
             </div>
-            <div class="div3">
+            <div className="div3">
               <div className="div3_container_title_footer_detail">
                 <h2 className="title_intermediate_offer">
                   SERVICIOS QUE OFRECES
                 </h2>
               </div>
             </div>
-            <div class="div4">
+            <div className="div4">
               <h3 className="title_section-profile">TUS SERVICIOS</h3>
               <SimpleBar style={{ maxHeight: "100%" }}>
                 <div className="div4_container">
@@ -171,133 +216,146 @@ function ProfilePage() {
                 </div>
               </SimpleBar>
             </div>
-            <div class="div5">
+            <div className="div5">
               {" "}
               <h3 className="title_section-profile" style={{ color: "white" }}>
                 SOLICITUDES PENDIENTES
               </h3>
-              <SimpleBar style={{ maxHeight: "100%" }}>
-                <div className="div4_container">
-                  {serviceRequest
-                    .filter(
-                      (request) =>
-                        request?.service && request?.status === "pendiente"
-                    )
-                    .map((request, idx) => (
-                      <>
-                        <div className="card_profile-tusservicios" id={idx}>
-                          <div className="card_profile_container_name">
-                            <span style={{ color: "white" }}>
-                              {request?.service?.name}
-                            </span>
-                          </div>
-                          <div className="card_profile-body-solicitudes">
-                            <div className="calendar-container--sm">
-                              <div className="calendar_detail--sm">
-                                <span className="day_calendar--sm">MIE</span>
-                                <br />
-                                <span className="hours_calendar--sm">
-                                  17:00
-                                </span>
+              {pendingRequests.length === 0 ? (
+                <>
+                  <EmptyData whiteText="true" />
+                  <hr style={{ color: "white" }} />
+                </>
+              ) : (
+                <>
+                  <SimpleBar style={{ maxHeight: "100%" }}>
+                    <div className="div4_container">
+                      {pendingRequests?.map((request, idx) => (
+                        <>
+                          <div className="card_profile-tusservicios" id={idx}>
+                            <div className="card_profile_container_name">
+                              <span style={{ color: "white" }}>
+                                {request?.service?.name}
+                              </span>
+                            </div>
+                            <div className="card_profile-body-solicitudes">
+                              <div className="calendar-container--sm">
+                                <div className="calendar_detail--sm">
+                                  <span className="day_calendar--sm">MIE</span>
+                                  <br />
+                                  <span className="hours_calendar--sm">
+                                    17:00
+                                  </span>
+                                </div>
+                                <div className="calendar_detail--sm">
+                                  <span className="day_calendar--sm">
+                                    {request?.hours}
+                                  </span>
+                                  <br />
+                                  <span className="calendar_detail-text_hours">
+                                    HORAS
+                                  </span>
+                                </div>
                               </div>
-                              <div className="calendar_detail--sm">
-                                <span className="day_calendar--sm">
-                                  {request?.hours}
-                                </span>
-                                <br />
-                                <span className="calendar_detail-text_hours">
-                                  HORAS
-                                </span>
+                              <div className="button-profile-container">
+                                <div className="button-edit-container">
+                                  <button
+                                    className="btn2 btn2--accept"
+                                    onClick={() =>
+                                      handleAcceptRequest(request)
+                                    }>
+                                    Aceptar
+                                  </button>
+                                </div>
+                                <div className="button-edit-container">
+                                  <button className="btn2 btn2--delete">
+                                    {" "}
+                                    Cancelar
+                                  </button>
+                                </div>
                               </div>
                             </div>
-                            <div className="button-profile-container">
-                              <div className="button-edit-container">
-                                <button
-                                  className="btn2 btn2--accept"
-                                  onClick={() => handleAcceptRequest(request)}>
-                                  Aceptar
-                                </button>
-                              </div>
-                              <div className="button-edit-container">
-                                <button className="btn2 btn2--delete">
-                                  {" "}
-                                  Cancelar
-                                </button>
-                              </div>
-                            </div>
                           </div>
-                        </div>
-                        <hr style={{ color: "white" }} />
-                      </>
-                    ))}
-                </div>
-              </SimpleBar>
+                          <hr style={{ color: "white" }} />
+                        </>
+                      ))}
+                    </div>
+                  </SimpleBar>
+                </>
+              )}{" "}
             </div>
             <div className="div6">
               {" "}
               <h3 className="title_section-profile">SOLICITUDES ACEPTADAS</h3>
-              <SimpleBar style={{ maxHeight: "100%" }}>
-                <div className="div4_container">
-                  {serviceRequest
-                    .filter(
-                      (request) =>
-                        request?.service && request?.status === "aceptado"
-                    )
-                    .map((request, idx) => (
-                      <>
-                        <div className="card_profile-tusservicios" key={idx}>
-                          <div className="card_profile_container_name">
-                            <span>{request?.service?.name}</span>
-                          </div>
-                          <div className="card_profile-body-solicitudes">
-                            <div className="calendar-container--sm">
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  MIE
-                                </span>
-                                <br />
-                                <span
-                                  className="hours_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  17:00
-                                </span>
-                              </div>
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  {request?.hours}
-                                </span>
-                                <br />
-                                <span
-                                  className="calendar_detail-text_hours"
-                                  style={{ color: "white" }}>
-                                  HORAS
-                                </span>
-                              </div>
-                              <div className="button-edit-container">
-                                <button className="btn2 btn2--accept">
-                                  {" "}
-                                  Finalizar
-                                </button>
+              {acceptedRequest.length === 0 ? (
+                <>
+                  <EmptyData color="white" />
+                  <hr />
+                </>
+              ) : (
+                <>
+                  <SimpleBar style={{ maxHeight: "100%" }}>
+                    <div className="div4_container">
+                      {acceptedRequest?.map((request, idx) => (
+                        <>
+                          <div className="card_profile-tusservicios" key={idx}>
+                            <div className="card_profile_container_name">
+                              <span>{request?.service?.name}</span>
+                            </div>
+                            <div className="card_profile-body-solicitudes">
+                              <div className="calendar-container--sm">
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    MIE
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="hours_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    17:00
+                                  </span>
+                                </div>
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    {request?.hours}
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="calendar_detail-text_hours"
+                                    style={{ color: "white" }}>
+                                    HORAS
+                                  </span>
+                                </div>
+                                <div className="button-edit-container">
+                                  <button
+                                    className="btn2 btn2--accept"
+                                    onClick={() =>
+                                      handleFinishContract(request)
+                                    }>
+                                    Finalizar
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                      </>
-                    ))}
-                </div>
-              </SimpleBar>
+                          <hr />
+                        </>
+                      ))}
+                    </div>
+                  </SimpleBar>
+                </>
+              )}
             </div>
 
-            <div class="div7">
+            <div className="div7">
               {" "}
               <div className="div3_container_title_footer_detail">
                 <h2 className="title_intermediate_offer">
@@ -305,134 +363,155 @@ function ProfilePage() {
                 </h2>
               </div>
             </div>
-            <div class="div8">
+            <div className="div8">
               <h3 className="title_section-profile">SOLICITUDES PENDIENTES</h3>
-              <SimpleBar style={{ maxHeight: "100%" }}>
-                <div className="div4_container">
-                  {contractedServices
-                    .filter(
-                      (request) =>
-                        request?.service && request?.status === "pendiente"
-                    )
-                    .map((request, idx) => (
-                      <>
-                        <div className="card_profile-tusservicios" id={idx}>
-                          <div className="card_profile_container_name">
-                            <span>{request?.service?.name}</span>
-                          </div>
-                          <div className="card_profile-body-solicitudes">
-                            <div className="calendar-container--sm">
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  MIE
-                                </span>
-                                <br />
-                                <span
-                                  className="hours_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  17:00
-                                </span>
-                              </div>
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  {request?.hours}
-                                </span>
-                                <br />
-                                <span
-                                  className="calendar_detail-text_hours"
-                                  style={{ color: "white" }}>
-                                  HORAS
-                                </span>
-                              </div>
-                              <div className="button-edit-container">
-                                <span>Estado</span>
-                                <br />
-                                <button className="btn2 btn2--accept">
-                                  {" "}
-                                  {request.status}
-                                </button>
+              {pendingContractedServices.length === 0 ? (
+                <>
+                  <EmptyData color="white" />
+                  <hr />
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <SimpleBar style={{ maxHeight: "100%" }}>
+                    <div className="div4_container">
+                      {pendingContractedServices.map((request, idx) => (
+                        <>
+                          <div className="card_profile-tusservicios" id={idx}>
+                            <div className="card_profile_container_name">
+                              <span>{request?.service?.name}</span>
+                            </div>
+                            <div className="card_profile-body-solicitudes">
+                              <div className="calendar-container--sm">
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    MIE
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="hours_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    17:00
+                                  </span>
+                                </div>
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    {request?.hours}
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="calendar_detail-text_hours"
+                                    style={{ color: "white" }}>
+                                    HORAS
+                                  </span>
+                                </div>
+                                <div className="button-edit-container">
+                                  <span>Estado</span>
+                                  <br />
+                                  <button className="btn2 btn2--accept">
+                                    {" "}
+                                    {request.status}
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                      </>
-                    ))}
-                </div>
-              </SimpleBar>
+                          <hr />
+                        </>
+                      ))}
+                    </div>
+                  </SimpleBar>
+                </>
+              )}
             </div>
-            <div class="div9">
+            <div className="div9">
               {" "}
               <h3 className="title_section-profile">SOLICITUDES ACEPTADAS</h3>
-              <SimpleBar style={{ maxHeight: "100%" }}>
-                <div className="div4_container">
-                  {contractedServices
-                    .filter(
-                      (request) =>
-                        request?.service && request?.status === "aceptado"
-                    )
-                    .map((request, idx) => (
-                      <>
-                        <div className="card_profile-tusservicios" id={idx}>
-                          <div className="card_profile_container_name">
-                            <span>{request?.service?.name}</span>
-                          </div>
-                          <div className="card_profile-body-solicitudes">
-                            <div className="calendar-container--sm">
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  MIE
-                                </span>
-                                <br />
-                                <span
-                                  className="hours_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  17:00
-                                </span>
-                              </div>
-                              <div
-                                className="calendar_detail--sm"
-                                style={{ backgroundColor: "black" }}>
-                                <span
-                                  className="day_calendar--sm"
-                                  style={{ color: "white" }}>
-                                  {request?.hours}
-                                </span>
-                                <br />
-                                <span
-                                  className="calendar_detail-text_hours"
-                                  style={{ color: "white" }}>
-                                  HORAS
-                                </span>
-                              </div>
-                              <div className="button-edit-container">
-                                <span>Estado</span>
-                                <br />
-                                <button className="btn2 btn2--accept">
-                                  {" "}
-                                  {request.status}
-                                </button>
+              {acceptedOrFinished.length === 0 ? (
+                <>
+                  <EmptyData color="white" />
+                  <hr />
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <SimpleBar style={{ maxHeight: "100%" }}>
+                    <div className="div4_container">
+                      {acceptedOrFinished?.map((request, idx) => (
+                        <>
+                          <div className="card_profile-tusservicios" id={idx}>
+                            <div className="card_profile_container_name">
+                              <span>{request?.service?.name}</span>
+                            </div>
+                            <div className="card_profile-body-solicitudes">
+                              <div className="calendar-container--sm">
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    MIE
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="hours_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    17:00
+                                  </span>
+                                </div>
+                                <div
+                                  className="calendar_detail--sm"
+                                  style={{ backgroundColor: "black" }}>
+                                  <span
+                                    className="day_calendar--sm"
+                                    style={{ color: "white" }}>
+                                    {request?.hours}
+                                  </span>
+                                  <br />
+                                  <span
+                                    className="calendar_detail-text_hours"
+                                    style={{ color: "white" }}>
+                                    HORAS
+                                  </span>
+                                </div>
+                                <div className="button-edit-container">
+                                  <span>
+                                    {request.status === "finalizado"
+                                      ? ""
+                                      : "Estado"}
+                                  </span>
+                                  <br />
+                                  <button
+                                    className={
+                                      request.status === "finalizado"
+                                        ? "btn2 btn2--rate " // clase personalizada para 'Valorar'
+                                        : "btn2 btn2--accept" // clase normal para 'aceptado'
+                                    }>
+                                    {request.status === "finalizado"
+                                      ? "Valorar"
+                                      : request.status}
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                      </>
-                    ))}
-                </div>
-              </SimpleBar>
+                          <hr />
+                        </>
+                      ))}
+                    </div>
+                  </SimpleBar>
+                </>
+              )}
+              <></>
             </div>
           </div>
         </>

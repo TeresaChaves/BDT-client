@@ -1,0 +1,16 @@
+.pruebadeempty {
+  background-color: red;
+  color: white;
+}
+.container-emptyData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-emptyData span {
+  letter-spacing: -0.05rem;
+  color: white;
+  margin: 10px;
+  font-size: 20px;
+}
