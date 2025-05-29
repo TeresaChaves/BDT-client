@@ -68,7 +68,7 @@
   grid-auto-columns: min-content;
 }
 
-.div2 {
+.div2-container-button-create-service {
   grid-column: span 2 / span 2;
   grid-column-start: 7;
 }
@@ -105,12 +105,34 @@
   font-size: 22px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 20px;
 }
+.title_section-profile-subtext {
+  font-weight: 100;
+  letter-spacing: -0.05em;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffff00;
+  display: block;
+  line-height: 0px;
+}
+
 .div4_container {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.container-button-noservice {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  padding-right: 10px;
 }
 
 .card_profile-tusservicios {
@@ -228,7 +250,7 @@
 
 @media screen and (max-width: 1024px) {
   .div1,
-  .div2,
+  .div2-container-button-create-service,
   .div3,
   .div4,
   .div5,

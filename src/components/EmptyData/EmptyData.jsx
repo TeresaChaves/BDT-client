@@ -1,4 +1,5 @@
 import "../EmptyData/EmptyData.css";
+import { RoughNotation } from "react-rough-notation";
 
 function EmptyData({ whiteText }) {
   return (

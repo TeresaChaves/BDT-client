@@ -4,7 +4,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 
 import "./HomePage.css";
-import TimeShare from "../../assests/images/ExampleBDT.jpg";
+import TimeShare from "../../assests/images/ExampleBDT02.jpg";
 import Josiah from "../../assests/images/JosiahWarren.jpg";
 
 function HomePage() {

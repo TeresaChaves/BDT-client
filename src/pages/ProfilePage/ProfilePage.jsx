@@ -4,18 +4,25 @@ import AddServiceForm from "../../components/AddServiceForm/AddServiceForm";
 import { AuthContext } from "../../contexts/auth.context";
 import { useState, useContext, useEffect } from "react";
 import { MessageContext } from "../../contexts/userMessage.context";
-import { Container, Row, Modal } from "react-bootstrap";
-import { RoughNotation } from "react-rough-notation";
+import { Container, Modal } from "react-bootstrap";
 import uploadHours from "../../services/hours.service";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import { Link } from "react-router-dom";
 import EmptyData from "../../components/EmptyData/EmptyData";
+import InfoProfile from "../../components/ProfileComponents/InfoProfile";
+import CalendarSM from "../../components/ProfileComponents/CalendarSM";
+import { RoughNotation } from "react-rough-notation";
 
 function ProfilePage() {
   const [profileServices, setProfileServices] = useState([]);
   const [serviceRequest, setServiceRequest] = useState([]);
   const [contractedServices, setContractedServices] = useState([]);
+
+  const [showRatingModal, setShowRatingModal] = useState(false);
+  const [selectedServiceToRate, setSelectedServiceToRate] = useState(null);
+  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingComment, setRatingComment] = useState("");
 
   const [showModal, setShowModal] = useState(false);
   const openModal = () => setShowModal(true);
@@ -24,7 +31,41 @@ function ProfilePage() {
   const { setShowToast, setToastMessage } = useContext(MessageContext);
   const { user } = useContext(AuthContext);
 
-  console.log(serviceRequest);
+  const openRatingModal = (serviceRequest) => {
+    setSelectedServiceToRate(serviceRequest);
+    setShowRatingModal(true);
+  };
+
+  const handleSubmitRating = async () => {
+    try {
+      const ratingData = {
+        rating: ratingValue,
+        comment: ratingComment,
+      };
+
+      await servicesService.rateService(
+        selectedServiceToRate.service._id,
+        ratingData
+      );
+
+      setShowToast(true);
+      setToastMessage("Valoración enviada con éxito");
+
+      // Opcional: refrescar datos
+      const { data: updatedRequests } = await uploadHours.getServiceRequests(
+        user._id
+      );
+      setContractedServices(updatedRequests);
+
+      // Reset modal
+      setShowRatingModal(false);
+      setRatingValue(0);
+      setRatingComment("");
+    } catch (err) {
+      setShowToast(true);
+      setToastMessage("Error al enviar valoración");
+    }
+  };
 
   useEffect(() => {
     if (user?._id) {
@@ -140,8 +181,6 @@ function ProfilePage() {
       request?.service &&
       (request.status === "aceptado" || request.status === "finalizado")
   );
-
-  const isMobile = window.innerWidth < 768;
   return (
     <>
       <Container>
@@ -149,28 +188,9 @@ function ProfilePage() {
           <div class="parent_ProfilePage">
             <div class="div1">
               {" "}
-              <Row>
-                <div style={{ marginBottom: "30px" }}></div>
-                <div className="container-profile-info">
-                  <div className="container_name">
-                    <p>{user.username}</p>
-                    <img src={user.avatar} className="avatar" />
-                  </div>
-
-                  <div className="container_hour">
-                    TIENES{" "}
-                    {!isMobile && (
-                      <RoughNotation type="highlight" color="yellow" show>
-                        <span>{user.bankAccountTime}</span>
-                      </RoughNotation>
-                    )}
-                    {isMobile && <span>{user.bankAccountTime}</span>}
-                    HORAS
-                  </div>
-                </div>
-              </Row>
+              <InfoProfile user={user} />
             </div>
-            <div className="div2">
+            <div className="div2-container-button-create-service">
               <div className="container_button-create_profile">
                 {" "}
                 {user && (
@@ -191,6 +211,43 @@ function ProfilePage() {
             </div>
             <div className="div4">
               <h3 className="title_section-profile">TUS SERVICIOS</h3>
+              <span
+                className="title_section-profile-subtext"
+                style={{ color: "black" }}>
+                que ofreces a la comunidad
+              </span>
+              {profileServices.length === 0 ? (
+                <>
+                  {" "}
+                  <div className="container-emptyData">
+                    <span style={{ color: "black" }}>
+                      ¡Anímate,{" "}
+                      <RoughNotation
+                        type="bracket"
+                        brackets={["left", "right"]}
+                        color="black">
+                        <b
+                          style={{
+                            textTransform: "capitalize",
+                            color: "black",
+                          }}>
+                          {user.username}
+                        </b>
+                      </RoughNotation>
+                      sube tu primer servicio y empieza a intercambiar hroas con
+                      la comunidad!⏱️
+                    </span>
+                    <div></div>
+                  </div>
+                  <div className="container-button-noservice">
+                    <button className="btn2 btn2--profile" onClick={openModal}>
+                      Crear Nuevo Servicio
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
               <SimpleBar style={{ maxHeight: "100%" }}>
                 <div className="div4_container">
                   {profileServices.map((el, idx) => (
@@ -221,6 +278,9 @@ function ProfilePage() {
               <h3 className="title_section-profile" style={{ color: "white" }}>
                 SOLICITUDES PENDIENTES
               </h3>
+              <span className="title_section-profile-subtext">
+                de los servicios que ofreces
+              </span>
               {pendingRequests.length === 0 ? (
                 <>
                   <EmptyData whiteText="true" />
@@ -239,24 +299,7 @@ function ProfilePage() {
                               </span>
                             </div>
                             <div className="card_profile-body-solicitudes">
-                              <div className="calendar-container--sm">
-                                <div className="calendar_detail--sm">
-                                  <span className="day_calendar--sm">MIE</span>
-                                  <br />
-                                  <span className="hours_calendar--sm">
-                                    17:00
-                                  </span>
-                                </div>
-                                <div className="calendar_detail--sm">
-                                  <span className="day_calendar--sm">
-                                    {request?.hours}
-                                  </span>
-                                  <br />
-                                  <span className="calendar_detail-text_hours">
-                                    HORAS
-                                  </span>
-                                </div>
-                              </div>
+                              <CalendarSM hours={request?.hours} />
                               <div className="button-profile-container">
                                 <div className="button-edit-container">
                                   <button
@@ -287,6 +330,11 @@ function ProfilePage() {
             <div className="div6">
               {" "}
               <h3 className="title_section-profile">SOLICITUDES ACEPTADAS</h3>
+              <span
+                className="title_section-profile-subtext"
+                style={{ color: "black" }}>
+                de los servicios que ofreces
+              </span>
               {acceptedRequest.length === 0 ? (
                 <>
                   <EmptyData color="white" />
@@ -303,46 +351,16 @@ function ProfilePage() {
                               <span>{request?.service?.name}</span>
                             </div>
                             <div className="card_profile-body-solicitudes">
-                              <div className="calendar-container--sm">
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    MIE
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="hours_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    17:00
-                                  </span>
-                                </div>
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    {request?.hours}
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="calendar_detail-text_hours"
-                                    style={{ color: "white" }}>
-                                    HORAS
-                                  </span>
-                                </div>
-                                <div className="button-edit-container">
-                                  <button
-                                    className="btn2 btn2--accept"
-                                    onClick={() =>
-                                      handleFinishContract(request)
-                                    }>
-                                    Finalizar
-                                  </button>
-                                </div>
+                              <CalendarSM
+                                hours={request.hours}
+                                blackBackgroung
+                              />
+                              <div className="button-edit-container">
+                                <button
+                                  className="btn2 btn2--accept"
+                                  onClick={() => handleFinishContract(request)}>
+                                  Finalizar
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -365,6 +383,11 @@ function ProfilePage() {
             </div>
             <div className="div8">
               <h3 className="title_section-profile">SOLICITUDES PENDIENTES</h3>
+              <span
+                className="title_section-profile-subtext"
+                style={{ color: "black" }}>
+                de los servicios que pides
+              </span>
               {pendingContractedServices.length === 0 ? (
                 <>
                   <EmptyData color="white" />
@@ -382,45 +405,17 @@ function ProfilePage() {
                               <span>{request?.service?.name}</span>
                             </div>
                             <div className="card_profile-body-solicitudes">
-                              <div className="calendar-container--sm">
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    MIE
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="hours_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    17:00
-                                  </span>
-                                </div>
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    {request?.hours}
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="calendar_detail-text_hours"
-                                    style={{ color: "white" }}>
-                                    HORAS
-                                  </span>
-                                </div>
-                                <div className="button-edit-container">
-                                  <span>Estado</span>
-                                  <br />
-                                  <button className="btn2 btn2--accept">
-                                    {" "}
-                                    {request.status}
-                                  </button>
-                                </div>
+                              <CalendarSM
+                                hours={request?.hours}
+                                blackBackgroung
+                              />
+                              <div className="button-edit-container">
+                                <span>Estado</span>
+                                <br />
+                                <button className="btn2 btn2--accept">
+                                  {" "}
+                                  {request.status}
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -435,6 +430,11 @@ function ProfilePage() {
             <div className="div9">
               {" "}
               <h3 className="title_section-profile">SOLICITUDES ACEPTADAS</h3>
+              <span
+                className="title_section-profile-subtext"
+                style={{ color: "black" }}>
+                de los servicios que pides
+              </span>
               {acceptedOrFinished.length === 0 ? (
                 <>
                   <EmptyData color="white" />
@@ -452,55 +452,32 @@ function ProfilePage() {
                               <span>{request?.service?.name}</span>
                             </div>
                             <div className="card_profile-body-solicitudes">
-                              <div className="calendar-container--sm">
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    MIE
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="hours_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    17:00
-                                  </span>
-                                </div>
-                                <div
-                                  className="calendar_detail--sm"
-                                  style={{ backgroundColor: "black" }}>
-                                  <span
-                                    className="day_calendar--sm"
-                                    style={{ color: "white" }}>
-                                    {request?.hours}
-                                  </span>
-                                  <br />
-                                  <span
-                                    className="calendar_detail-text_hours"
-                                    style={{ color: "white" }}>
-                                    HORAS
-                                  </span>
-                                </div>
-                                <div className="button-edit-container">
-                                  <span>
-                                    {request.status === "finalizado"
-                                      ? ""
-                                      : "Estado"}
-                                  </span>
-                                  <br />
-                                  <button
-                                    className={
-                                      request.status === "finalizado"
-                                        ? "btn2 btn2--rate " // clase personalizada para 'Valorar'
-                                        : "btn2 btn2--accept" // clase normal para 'aceptado'
-                                    }>
-                                    {request.status === "finalizado"
-                                      ? "Valorar"
-                                      : request.status}
-                                  </button>
-                                </div>
+                              <CalendarSM
+                                hours={request?.hours}
+                                blackBackgroung
+                              />
+                              <div className="button-edit-container">
+                                <span>
+                                  {request.status === "finalizado"
+                                    ? ""
+                                    : "Estado"}
+                                </span>
+                                <br />
+                                <button
+                                  className={
+                                    request.status === "finalizado"
+                                      ? "btn2 btn2--rate"
+                                      : "btn2 btn2--accept"
+                                  }
+                                  onClick={
+                                    request.status === "finalizado"
+                                      ? () => openRatingModal(request)
+                                      : undefined
+                                  }>
+                                  {request.status === "finalizado"
+                                    ? "Valorar"
+                                    : request.status}
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -539,6 +516,43 @@ function ProfilePage() {
           </Modal.Title>
           <AddServiceForm fireFinalActions={fireFinalActions} />
         </Modal.Body>
+      </Modal>
+
+      <Modal show={showRatingModal} onHide={() => setShowRatingModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Valora el servicio</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <label>⭐ Puntuación:</label>
+          <select
+            value={ratingValue}
+            onChange={(e) => setRatingValue(Number(e.target.value))}
+            className="form-control">
+            <option value="0">Selecciona una puntuación</option>
+            <option value="1">1 ⭐</option>
+            <option value="2">2 ⭐</option>
+            <option value="3">3 ⭐</option>
+            <option value="4">4 ⭐</option>
+            <option value="5">5 ⭐</option>
+          </select>
+
+          <label className="mt-3">📝 Comentario:</label>
+          <textarea
+            className="form-control"
+            value={ratingComment}
+            onChange={(e) => setRatingComment(e.target.value)}
+            rows={3}></textarea>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className="btn2 btn2--cancel"
+            onClick={() => setShowRatingModal(false)}>
+            Cancelar
+          </button>
+          <button className="btn2 btn2--accept" onClick={handleSubmitRating}>
+            Enviar valoración
+          </button>
+        </Modal.Footer>
       </Modal>
     </>
   );
