@@ -181,6 +181,7 @@ function ProfilePage() {
       request?.service &&
       (request.status === "aceptado" || request.status === "finalizado")
   );
+
   return (
     <>
       <Container>
@@ -388,7 +389,7 @@ function ProfilePage() {
                 style={{ color: "black" }}>
                 de los servicios que pides
               </span>
-              {pendingContractedServices.length === 0 ? (
+              {pendingContractedServices?.length === 0 ? (
                 <>
                   <EmptyData color="white" />
                   <hr />
@@ -398,7 +399,7 @@ function ProfilePage() {
                   {" "}
                   <SimpleBar style={{ maxHeight: "100%" }}>
                     <div className="div4_container">
-                      {pendingContractedServices.map((request, idx) => (
+                      {pendingContractedServices?.map((request, idx) => (
                         <>
                           <div className="card_profile-tusservicios" id={idx}>
                             <div className="card_profile_container_name">
