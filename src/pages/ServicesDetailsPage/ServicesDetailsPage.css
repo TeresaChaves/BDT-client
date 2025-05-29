@@ -335,7 +335,7 @@ h1.title_header {
   position: relative; /* Necesario para el background absoluto */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(7, auto); /* ← importante que sean dinámicas */
+  grid-template-rows: repeat(8, auto); /* ← importante que sean dinámicas */
 }
 
 .containerDetail_image_header {
@@ -347,7 +347,7 @@ h1.title_header {
 
 .containerDetail_image_header img {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: auto;
   aspect-ratio: 5 / 4; /* opcional, similar a 600x480 */
   object-fit: cover;
@@ -387,7 +387,7 @@ h1.title_header {
 }
 
 h1.title_header {
-  width: 60%;
+  width: 90%;
 }
 
 .background-half {
@@ -468,6 +468,7 @@ h1.title_header {
   grid-column: 1 / -1;
   grid-row-start: 7;
   border-top: 2px solid #5a5959;
+  border-bottom: 2px solid #5a5959;
   color: white;
 }
 
@@ -475,6 +476,10 @@ h1.title_header {
   grid-row: 1 / 5; /* ocupa las filas 1 a 4 */
   width: 100%;
   overflow: hidden;
+}
+.container-valorations {
+  display: flex;
+  justify-content: space-between;
 }
 
 .container_disponibility-div {
@@ -645,6 +650,46 @@ h1.title_header {
     margin-top: 20px;
   }
 }
+
+.div8_container_collapsed_reviews {
+  grid-column: 1 / -1;
+  grid-row-start: 8;
+
+  padding: 10px;
+  background-color: #181818;
+}
+.container-valorations-header {
+  display: flex;
+  justify-content: space-between;
+}
+.hr-opacity {
+  color: #b5b3b3;
+  opacity: 0.1;
+}
+
+.collapsed-review {
+  max-height: 100px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-top: 10px;
+}
+.collapsed-review p {
+  font-size: 16px;
+  margin: 0px;
+  color: #ffffff;
+}
+.collapsed-review.expanded {
+  max-height: 500px; /* o auto */
+}
+
+.view-more-btn {
+  background: none;
+  border: none;
+  color: #0a0a0a;
+  cursor: pointer;
+  padding: 0;
+}
+
 @media (max-width: 964px) {
   .display_valoracion {
     display: flex;

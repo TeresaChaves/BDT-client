@@ -1,47 +1,53 @@
-import axios from 'axios'
+import axios from "axios";
 
 class ServicesService {
+  constructor() {
+    this.api = axios.create({
+      baseURL: `${process.env.REACT_APP_API_URL}/services`,
+    });
 
-    constructor() {
+    this.api.interceptors.request.use((config) => {
+      const storedToken = localStorage.getItem("authToken");
 
-        this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/services`
-        })
+      if (storedToken) {
+        config.headers = { Authorization: `Bearer ${storedToken}` };
+      }
 
-        this.api.interceptors.request.use((config) => {
+      return config;
+    });
+  }
 
-            const storedToken = localStorage.getItem("authToken");
+  getServices(userId) {
+    return this.api.get(`/allServices?user=${userId}`);
+  }
 
-            if (storedToken) {
-                config.headers = { Authorization: `Bearer ${storedToken}` }
-            }
+  getOneService(service_id) {
+    return this.api.get(`/serviceDetails/${service_id}`);
+  }
 
-            return config
-        })
-    }
+  saveService(serviceData) {
+    return this.api.post("/addService", serviceData);
+  }
 
+  deleteService(service_id) {
+    return this.api.delete(`/delete-service/${service_id}`);
+  }
 
-    getServices(userId) {
-        return this.api.get(`/allServices?user=${userId}`)
-    }
+  editService(service_id, serviceData) {
+    return this.api.put(`/edit-service/${service_id}`, serviceData);
+  }
 
-    getOneService(service_id) {
-        return this.api.get(`/serviceDetails/${service_id}`)
-    }
+  // ⭐ NUEVO: Enviar valoración
+  rateService(service_id, ratingData) {
+    return this.api.post(`/rate/${service_id}`, ratingData);
+  }
 
-    saveService(serviceData) {
-        return this.api.post('/addService', serviceData)
-    }
-
-    deleteService(service_id) {
-        return this.api.delete(`/delete-service/${service_id}`)
-    }
-
-    editService(service_id, serviceData) {
-        return this.api.put(`/edit-service/${service_id}`, serviceData)
-    }
+  // ⭐ NUEVO: Obtener valoraciones
+  getServiceRatings(service_id) {
+    return this.api.get(`/ratings/${service_id}`);
+  }
 }
 
-const servicesService = new ServicesService()
+const servicesService = new ServicesService();
 
-export default servicesService
+export default servicesService;
