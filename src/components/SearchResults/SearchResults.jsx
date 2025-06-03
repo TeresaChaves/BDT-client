@@ -2,6 +2,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 import { Col, Row } from "react-bootstrap";
 
 function SearchResultsPages({ searchResults, loadServices }) {
+  console.log("serar", searchResults);
   return (
     <>
       {searchResults?.length ? (

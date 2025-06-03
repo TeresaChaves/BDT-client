@@ -12,6 +12,7 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { CiCirclePlus } from "react-icons/ci";
 import { useRef } from "react";
 import StartRating from "../../components/StartRating/StartRating";
+import useAbbreviatonDay from "../../utils/useAbbreviation";
 
 function ServiceDetailsPage() {
   const { service_id } = useParams();
@@ -20,6 +21,7 @@ function ServiceDetailsPage() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
+
   const toggleExpanded = () => {
     setIsExpanded((prev) => {
       const newExpanded = !prev;
@@ -36,7 +38,7 @@ function ServiceDetailsPage() {
   };
 
   const valorationsRef = useRef(null);
-  console.log(service);
+  const getAbbreviation = useAbbreviatonDay();
 
   const openModal = () => {
     !user ? navigate("/usuario/iniciar-sesion") : setShowModal(true);
@@ -119,18 +121,18 @@ function ServiceDetailsPage() {
                       ¿CUÁNDO LO QUIERES?
                     </h3>
                   </div>
-                  <div className="container_disponibility"></div>
-                  <div className="calendar-container">
-                    <div className="calendar_detail">
-                      <span className="day_calendar">MIE</span>
-                      <br />
-                      <span className="hours_calendar">17:00</span>
-                    </div>
-                    <div className="calendar_detail">
-                      <span className="day_calendar">MIE</span>
-                      <br />
-                      <span className="hours_calendar">17:00</span>
-                    </div>
+                  <div className="container_disponibility">
+                    {service?.disponibility?.map((el, index) => (
+                      <div className="calendar-container" key={index}>
+                        <div className="calendar_detail">
+                          <span className="day_calendar">
+                            {getAbbreviation(el.day)}
+                          </span>
+                          <br />
+                          <span className="hours_calendar">{el.time}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="buttons_contract">
@@ -146,14 +148,16 @@ function ServiceDetailsPage() {
                         </button>
 
                         <Modal show={showModal} onHide={closeModal}>
-                          <Modal.Header closeButton>
-                            <Modal.Title>
-                              Editar{" "}
-                              <span style={{ fontWeight: "100" }}>
-                                {service.name}
-                              </span>
-                            </Modal.Title>
-                          </Modal.Header>
+                          <Modal.Header closeButton></Modal.Header>
+                          <Modal.Title
+                            style={{
+                              textAlign: "center",
+                              fontWeight: "100",
+                              fontSize: "50px",
+                              letterSpacing: "-0.05em",
+                            }}>
+                            Editar
+                          </Modal.Title>
                           <Modal.Body>
                             <EditServiceForm
                               {...service}
@@ -263,7 +267,7 @@ function ServiceDetailsPage() {
                           <p>{ratingsWithComments[0].comment}</p>
                         </>
                       ) : (
-                        <p>Sin valoraciones aún.</p>
+                        <p></p>
                       )}
 
                       <hr className="hr-opacity" />

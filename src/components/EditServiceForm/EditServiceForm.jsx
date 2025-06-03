@@ -3,6 +3,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import servicesService from "../../services/services.service";
 import uploadServices from "../../services/upload.service";
 // import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import { FiTrash2 } from "react-icons/fi";
 
 function EditServiceForm({
   _id,
@@ -45,6 +46,11 @@ function EditServiceForm({
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (!editServ.disponibility.length) {
+      setErrors(["Debes añadir al menos una disponibilidad."]);
+      return;
+    }
+
     servicesService
       .editService(_id, editServ)
       .then(() => {
@@ -52,6 +58,24 @@ function EditServiceForm({
         closeModal();
       })
       .catch((err) => setErrors(err.response.data.errorMessages));
+  };
+
+  const [day, setDay] = useState("");
+  const [time, setTime] = useState("");
+
+  const handleAddDisponibility = () => {
+    if (day && time) {
+      const newDisponibility = [...editServ.disponibility, { day, time }];
+      setEditService({ ...editServ, disponibility: newDisponibility });
+      setDay("");
+      setTime("");
+    }
+  };
+  const handleRemoveDisponibility = (indexToRemove) => {
+    const newDisponibility = editServ.disponibility.filter(
+      (_, idx) => idx !== indexToRemove
+    );
+    setEditService({ ...editServ, disponibility: newDisponibility });
   };
 
   return (
@@ -76,14 +100,52 @@ function EditServiceForm({
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="disponibility">
-          <Form.Label>Disponibilidad</Form.Label>
-          <Form.Control
-            type="text"
-            value={editServ.disponibility}
-            onChange={handleInputChange}
-            name="disponibility"
-          />
+          <Form.Label>Días y horas disponibles</Form.Label>
+          <Row>
+            <Col>
+              <Form.Select value={day} onChange={(e) => setDay(e.target.value)}>
+                <option value="">Selecciona un día</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miércoles">Miércoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+              </Form.Select>
+            </Col>
+            <Col>
+              <Form.Control
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <Button variant="secondary" onClick={handleAddDisponibility}>
+                Añadir
+              </Button>
+            </Col>
+          </Row>
+          <ul className="mt-2">
+            {editServ.disponibility.map((slot, idx) => (
+              <li
+                key={idx}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}>
+                {slot.day} a las {slot.time}
+                <FiTrash2
+                  style={{ cursor: "pointer", color: "red" }}
+                  onClick={() => handleRemoveDisponibility(idx)}
+                />
+              </li>
+            ))}
+          </ul>
         </Form.Group>
+
         <Row>
           <Col>
             <Form.Group className="mb-3" controlId="image">
@@ -92,13 +154,7 @@ function EditServiceForm({
             </Form.Group>
           </Col>
         </Row>
-        {/* {errors.length ? (
-          <ErrorMessage>
-            {errors.map((elm) => (
-              <p key={elm}>{elm}</p>
-            ))}
-          </ErrorMessage>
-        ) : undefined} */}
+
         <div className="d-grid">
           <button className="btn4" type="submit" disabled={loadingImage}>
             {loadingImage ? "Subiendo imagen..." : "Editar servicio"}

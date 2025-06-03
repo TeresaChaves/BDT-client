@@ -397,8 +397,14 @@ a:hover {
 
 .container-valoration-calendar {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.container-calendar-card {
+  display: flex;
+  gap: 5px;
 }
 .container-title-card h3 {
   font-weight: bolder;

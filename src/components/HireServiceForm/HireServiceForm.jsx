@@ -91,7 +91,10 @@ function HireServiceForm({ owner, loadService, closeModal, serviceId }) {
           max={availableHours}
         />
         <div style={{ marginTop: "20px" }}>
-          <button className="btn2" style={{ marginLeft: "0px" }} type="submit">
+          <button
+            className="btn2 btn2--profile"
+            style={{ marginLeft: "0px" }}
+            type="submit">
             Contratar
           </button>
         </div>

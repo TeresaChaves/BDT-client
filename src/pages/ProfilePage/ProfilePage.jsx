@@ -13,6 +13,7 @@ import EmptyData from "../../components/EmptyData/EmptyData";
 import InfoProfile from "../../components/ProfileComponents/InfoProfile";
 import CalendarSM from "../../components/ProfileComponents/CalendarSM";
 import { RoughNotation } from "react-rough-notation";
+import StartRating from "../../components/StartRating/StartRating";
 
 function ProfilePage() {
   const [profileServices, setProfileServices] = useState([]);
@@ -181,7 +182,7 @@ function ProfilePage() {
       request?.service &&
       (request.status === "aceptado" || request.status === "finalizado")
   );
-
+  console.log(pendingRequests);
   return (
     <>
       <Container>
@@ -258,7 +259,9 @@ function ProfilePage() {
                           <span>{el.name}</span>
                         </div>
                         <div className="card_profile-body-tusservicios">
-                          <div className="stars">⭐⭐⭐</div>
+                          <span>
+                            <StartRating rating={el.averageRating} />
+                          </span>
                           <div className="button-edit-container">
                             <Link to={`/servicios/detalles/${el._id}`}>
                               <button className="btn2 btn2--edit">
@@ -300,7 +303,10 @@ function ProfilePage() {
                               </span>
                             </div>
                             <div className="card_profile-body-solicitudes">
-                              <CalendarSM hours={request?.hours} />
+                              <CalendarSM
+                                hours={request?.hours}
+                                disponibility={request?.service?.disponibility}
+                              />
                               <div className="button-profile-container">
                                 <div className="button-edit-container">
                                   <button
@@ -355,6 +361,8 @@ function ProfilePage() {
                               <CalendarSM
                                 hours={request.hours}
                                 blackBackgroung
+                                days={acceptedRequest}
+                                disponibility={request?.service?.disponibility}
                               />
                               <div className="button-edit-container">
                                 <button
@@ -409,6 +417,7 @@ function ProfilePage() {
                               <CalendarSM
                                 hours={request?.hours}
                                 blackBackgroung
+                                disponibility={request?.service?.disponibility}
                               />
                               <div className="button-edit-container">
                                 <span>Estado</span>
@@ -456,6 +465,7 @@ function ProfilePage() {
                               <CalendarSM
                                 hours={request?.hours}
                                 blackBackgroung
+                                disponibility={request?.service?.disponibility}
                               />
                               <div className="button-edit-container">
                                 <span>

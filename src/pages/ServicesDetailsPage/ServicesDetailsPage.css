@@ -347,7 +347,7 @@ h1.title_header {
 
 .containerDetail_image_header img {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   height: auto;
   aspect-ratio: 5 / 4; /* opcional, similar a 600x480 */
   object-fit: cover;
@@ -369,6 +369,8 @@ h1.title_header {
 
 .container_disponibility {
   display: flex;
+  gap: 20px;
+  flex-direction: row;
 }
 .container_disponibility p {
   color: #ffffff;
@@ -552,7 +554,7 @@ h1.title_header {
   align-items: flex-end;
 }
 .calendar_detail {
-  width: 80px;
+  width: 88px;
   height: 80px;
   background-color: white;
   border-radius: 3px;
@@ -587,7 +589,6 @@ h1.title_header {
   letter-spacing: -1.25px;
   font-weight: 100;
   text-align: center;
-  padding-left: 3px;
 }
 .hours_calendar--sm {
   font-size: 20px;

@@ -11,12 +11,15 @@
     "@types/react-router": "^5.1.20",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
-    "framer-motion": "^12.10.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lottie-web": "^5.10.1",
+    "lucide-react": "^0.511.0",
     "react": "^18.2.0",
     "react-bodymovin": "^2.0.0",
     "react-bootstrap": "^2.10.10",
     "react-bootstrap-range-slider": "^3.0.8",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-loader-spinner": "^6.1.6",
@@ -27,6 +30,7 @@
     "simple-parallax-js": "^6.1.1",
     "simplebar-react": "^3.3.1",
     "socket.io-client": "^4.5.4",
+    "tw-animate-css": "^1.3.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -55,7 +59,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.6"
+    "postcss": "^8.5.3"
   }
 }
