@@ -279,16 +279,14 @@ function ProfilePage() {
             </div>
             <div className="div5">
               {" "}
-              <h3 className="title_section-profile" style={{ color: "white" }}>
-                SOLICITUDES PENDIENTES
-              </h3>
+              <h3 className="title_section-profile">SOLICITUDES PENDIENTES</h3>
               <span className="title_section-profile-subtext">
                 de los servicios que ofreces
               </span>
               {pendingRequests.length === 0 ? (
                 <>
-                  <EmptyData whiteText="true" />
-                  <hr style={{ color: "white" }} />
+                  <EmptyData />
+                  <hr />
                 </>
               ) : (
                 <>
@@ -298,13 +296,12 @@ function ProfilePage() {
                         <>
                           <div className="card_profile-tusservicios" id={idx}>
                             <div className="card_profile_container_name">
-                              <span style={{ color: "white" }}>
-                                {request?.service?.name}
-                              </span>
+                              <span>{request?.service?.name}</span>
                             </div>
                             <div className="card_profile-body-solicitudes">
                               <CalendarSM
                                 hours={request?.hours}
+                                blackBackgroung
                                 disponibility={request?.service?.disponibility}
                               />
                               <div className="button-profile-container">
@@ -326,7 +323,7 @@ function ProfilePage() {
                               </div>
                             </div>
                           </div>
-                          <hr style={{ color: "white" }} />
+                          <hr />
                         </>
                       ))}
                     </div>
@@ -464,7 +461,7 @@ function ProfilePage() {
                             <div className="card_profile-body-solicitudes">
                               <CalendarSM
                                 hours={request?.hours}
-                                blackBackgroung
+                                // blackBackgroung
                                 disponibility={request?.service?.disponibility}
                               />
                               <div className="button-edit-container">
