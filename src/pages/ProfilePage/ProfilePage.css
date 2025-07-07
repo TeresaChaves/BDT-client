@@ -77,7 +77,6 @@
   grid-column: span 8 / span 8;
   grid-row-start: 2;
   height: fit-content;
-  background-color: #181818;
 }
 
 .div3_container_title_footer_detail {
@@ -86,8 +85,8 @@
   color: white;
 }
 .title_intermediate_offer {
-  font-size: 2vw;
-  width: 100%;
+  font-size: 4vw;
+  width: 500px;
   text-align: start;
   /* margin: 0; */
   /* padding: 0; */
@@ -96,8 +95,9 @@
   /* letter-spacing: 2px; */
   font-weight: bolder;
   opacity: 1;
-  background-color: #181818;
+  color: black;
   margin: 0px;
+  padding-bottom: 60px;
 }
 .title_section-profile {
   font-weight: 100;
@@ -111,8 +111,7 @@
   letter-spacing: -0.05em;
   font-size: 18px;
   text-align: center;
-  margin-bottom: 20px;
-  color: #ffff00;
+  margin-bottom: 40px;
   display: block;
   line-height: 0px;
 }
@@ -167,6 +166,12 @@
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
   grid-row-start: 3;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px; /* Aplica 10px a todos los lados */
+  margin-left: 0;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .card_profile_container_name span {
@@ -180,7 +185,13 @@
   grid-row: span 2 / span 2;
   grid-column-start: 3;
   grid-row-start: 3;
-  background-color: #181818;
+  border-right: 1px solid black;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  /* background-color: #181818; */
 }
 
 .div6 {
@@ -188,12 +199,18 @@
   grid-row: span 2 / span 2;
   grid-column-start: 6;
   grid-row-start: 3;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .div7 {
   grid-column: span 8 / span 8;
   grid-row-start: 5;
   background-color: #181818;
+  margin-top: 60px;
 }
 
 .div8 {
