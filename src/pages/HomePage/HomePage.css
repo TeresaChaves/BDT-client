@@ -48,13 +48,15 @@
   object-fit: cover;
 }
 .container_home {
+  min-height: 100vh;
   height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   display: flex;
-  align-content: center;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  flex-direction: column;
   gap: 20px;
 }
 
